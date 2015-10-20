@@ -1,0 +1,192 @@
+body{
+    color: white;
+}
+
+#titulo {
+    position: fixed;
+    box-shadow: 0px 0px 5px white;
+}
+
+.flutuarADireita{
+    float: right !important;
+}
+
+.wrapper{
+    width: 100%;
+    height: 170%;
+    background: rgba(0,0,0,0.4);
+}
+
+.modalBrancoTransparente{
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.modalMetade{
+    width: 50%;
+}
+
+.centro {
+    margin: 0 auto;
+}
+
+.bordasRedonda{
+    border-radius: 10px;
+}
+
+.textoBranco{
+    color: white;
+}
+
+#btCadastro{
+    font-size: 20px;
+    color: white;
+    background: #3399ff;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+form img{
+    margin: 10px;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+}
+
+.botaoPequeno{
+    background: #3399ff;
+    color: white;
+    width: 200px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid white;
+    margin: 10px;
+}
+
+input[type="date"]{
+    color: #b8b8b8;
+}
+
+.botaoMedio{
+    color: black;
+    width: 400px;
+    padding: 10px;
+    border-radius: 5px;
+    border:transparent;
+}
+
+.margin-top{
+    margin-top: 20px;
+}
+
+.botaoPequeno:hover{
+    transition-duration: 1s;
+    color: black;
+    background: #777;
+}
+
+.botaoMedio:focus{
+    box-shadow: 0px 0px 20px #3399ff;
+}
+
+
+#btCadastro:hover{
+    transition-duration: 2s;
+    box-shadow: 0px 0px 20px white;
+}
+
+.menuNavegacao{
+    text-align: center !important;
+    list-style: none !important;
+    margin: 0 auto;
+    padding: 0px;
+}
+
+.generosTexto{
+    font-size: 140%;
+}
+
+.brancoOpaco{
+    border-radius: 10px;
+    margin: 0 auto;
+    width: 50%;
+    background: white;
+    opacity: 0.6;
+}
+
+.brancoOpaco ul li{
+    margin: 5px;
+}
+
+.brancoOpaco ul li:hover{
+    background: #3399ff;
+    border-radius: 10px;
+}
+
+.rodapeFixo{
+    border: none;
+    background: #3399ff;
+    position: fixed;
+    height: 40px;
+    bottom: 0;
+    width: 100%;
+}
+
+.espacamento{
+    margin: 4px;
+}
+
+.espacoEmCima{
+    margin-top: 6px;
+}
+
+.volume{
+    background: white;
+    color: black;
+    border: none;
+    border-radius: 20%;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+
+.deadPool{
+    background-image: url("../imagens/deadpool.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 170%;
+}
+
+
+.deadPool2{
+    background-image: url("../imagens/deadpool.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+
+@media(max-width: 554px){
+    .botaoPequeno{
+        margin-top: 20px;
+        width: 60%;
+    }
+    
+    .brancoOpaco{
+        width: 100%;
+    }
+}
+
+
+@media(max-width: 460px){
+    .flutuarADireita{
+        float: none !important;
+    }
+    
+    .nav-tabs{
+        float: none !important;
+        border-bottom: none !important;
+    }
+    
+    .botaoMedio{
+        width: 100%;
+    }
+}
