@@ -1,0 +1,46 @@
+package servlets;
+
+import entidades.Usuario;
+import gerenciador.GerenciadorUsuario;
+import java.io.IOException;
+import java.sql.Date;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ *
+ * @author dijalma
+ */
+@WebServlet(name = "ControleCadastroUsuario", urlPatterns = {"/ControleCadastroUsuario"})
+public class ControleCadastroUsuario extends HttpServlet {
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        doPost(req, resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        String nomeCompleto = req.getParameter("nomeCompleto");
+        String apelido = req.getParameter("apelido");
+        String senha = req.getParameter("senhaCadastro");
+        String email = req.getParameter("emailCadastro");
+        String data = req.getParameter("dataDeNascimento");
+        String estado = req.getParameter("estado");
+        String cidade = req.getParameter("cidade");
+        String foto = "imagens/user.png";
+
+        Usuario u = new Usuario(senha, nomeCompleto, apelido, Date.valueOf(data), cidade, estado, true, foto);
+        new GerenciadorUsuario().adicionar(u);
+
+        RequestDispatcher r = req.getRequestDispatcher("cadastro.jsp");
+        r.forward(req, resp);
+    }
+
+}

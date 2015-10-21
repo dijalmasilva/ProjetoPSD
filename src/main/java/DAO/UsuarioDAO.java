@@ -17,29 +17,29 @@ public class UsuarioDAO implements InterfaceUsuarioDAO {
 	public boolean adicionar(Usuario usuario) {
 		Connection conn = null;
 		PreparedStatement stm = null;
-		String sql = "INSERT INTO USUARIO(email, senha, nome, apelido, dataNascimento, cidade, estado)"
-				+ " VALUES (?, md5(?), ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO USUARIO(foto, email, senha, nomecompleto, apelido, datanascimento, cidade, estado)"
+				+ " VALUES (?, ?, md5(?), ?, ?, ?, ?, ?)";
 		
 
 		try {
 			
 			conn = Conexao.abrirConexao();
 			stm = Conexao.abrirStatement(sql);
-			stm = Conexao.abrirStatement(sql);
-			stm.setString(1, usuario.getEmail());
-			stm.setString(2, usuario.getSenha());
-			stm.setString(3, usuario.getNome());
-			stm.setString(4, usuario.getApelido());
-			stm.setDate(5, usuario.getDataNAsc());
-			stm.setString(6, usuario.getCidade());
-			stm.setString(7, usuario.getEstado());
+                        stm.setString(1, usuario.getFoto());
+			stm.setString(2, usuario.getEmail());
+			stm.setString(3, usuario.getSenha());
+			stm.setString(4, usuario.getNome());
+			stm.setString(5, usuario.getApelido());
+			stm.setDate(6, usuario.getDataNAsc());
+			stm.setString(7, usuario.getCidade());
+			stm.setString(8, usuario.getEstado());
 			stm.executeUpdate();
 		} catch (ClassNotFoundException | SQLException e) {
 			System.err.println(e.getMessage());
 			e.printStackTrace();
 		} finally {
 			Conexao.fecharStatment(stm);
-			Conexao.fecharConecxao(conn);
+			Conexao.fecharConexao(conn);
 		}
 
 		return true;
@@ -60,7 +60,7 @@ public class UsuarioDAO implements InterfaceUsuarioDAO {
 			e.printStackTrace();
 		} finally {
 
-			Conexao.fecharConecxao(conn);
+			Conexao.fecharConexao(conn);
 		}
 
 		return false;
@@ -105,7 +105,7 @@ public class UsuarioDAO implements InterfaceUsuarioDAO {
 			e.printStackTrace();
 
 		} finally {
-			Conexao.fecharConecxao(conn);
+			Conexao.fecharConexao(conn);
 		}
 		return false;
 	}
@@ -138,7 +138,7 @@ public class UsuarioDAO implements InterfaceUsuarioDAO {
 			System.err.println("Erro " + e.getMessage());
 			e.getStackTrace();
 		} finally {
-			Conexao.fecharConecxao(conn);
+			Conexao.fecharConexao(conn);
 		}
 		return list;
 	}

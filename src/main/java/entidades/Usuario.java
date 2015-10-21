@@ -17,10 +17,9 @@ public class Usuario {
 	public Usuario() {
 	}
 
-	public Usuario(Integer id, String senha, String nome, String apelido,
+	public Usuario(String senha, String nome, String apelido,
 			Date dataNAsc, String cidade, String estado, boolean tipo,
 			String foto) {
-		this.id = id;
 		this.senha = senha;
 		this.nome = nome;
 		this.apelido = apelido;

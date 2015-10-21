@@ -23,7 +23,7 @@ public class Conexao {
 		return conn;
 	}
 	
-	public static void fecharConecxao(Connection conn){
+	public static void fecharConexao(Connection conn){
 		if (conn!= null)
 			try{
 			conn.close();
