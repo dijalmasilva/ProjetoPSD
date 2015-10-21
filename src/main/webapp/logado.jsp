@@ -22,20 +22,21 @@
 
     </head>
     <body>
-        <div id="fundo" class="wrapper">
-            <div class="text-right" id="volume">
-                <label class="espacoEmCima espacamento">Volume</label>
-                <button class="espacamento tubular-volume-up volume">+</button>
-                <button class="espacamento tubular-volume-down volume">-</button>             
+        <div id="fundo" class="deadPool2">
+            <div class="nav navbar-fixed-bottom nav-perfil">
+                <div class="textVermelho">
+                    <img src="${sessionScope.user.foto}" class="img-circle img-perfil">
+                    <a href="visualizarPerfil.jsp" class="text-uppercase textoBranco">${sessionScope.user.apelido}</a>
+                    <a href="SairLogin" class="flutuarADireita textoBranco">Sair</a>
+                </div>
             </div>
             <div class="container nav-justified">
                 <a href="index.html"><h1 class="text-center textoBranco">Social Movies</h1></a>
                 <br>    
                 <ul class="nav nav-tabs navbar-static-top" id="menuNav">
-                    <li><a data-toggle="tab" href="#inicio" id="home">Início</a></li>
+                    <li class="active"><a data-toggle="tab" href="#inicio" id="home">Início</a></li>
                     <li><a data-toggle="tab" href="#generos">Gêneros</a></li>
-                    <li class="active"><a data-toggle="tab" href="#login">Login</a></li>
-                    <li><a data-toggle="tab" href="#cadastro">Cadastre-se</a></li>
+                    <li><a data-toggle="tab" href="#cadastroFilmes">Cadastrar Filmes</a></li>
                     <li class="flutuarADireita"><a data-toggle="tab" href="#buscar">Buscar</a></li>
                 </ul>
 
@@ -71,39 +72,25 @@
                             </ul>
                         </div>
                     </div>
-                    <div id="login" class="tab-pane fade text-center fade in active">
+                    <div id="cadastroFilmes" class="tab-pane text-center">
                         <br>
-                        <c:if test="${requestScope.cadastrou == true}" var="ca">
-                            <h3>Cadastro realizado com sucesso!</h3>
-                            <p>Faça seu login!</p>
+                        <div class="">
+                            <h3>Cadastre o filme</h3>
+                            <p class="textVermelho">Campos com mais de um nome separe com ", " sem aspas.</p>
                             <div class="form-group">
-                                <form class="container" action="ControleLogarUsuario" method="post">
-                                    <input class="botaoMedio margin-top" type="email" name="emailLogin" placeholder="Email" value="${requestScope.emailCadastro}"><br>
-                                    <input class="botaoMedio margin-top" type="password" name="senhaLogin" placeholder="Senha"><br><br><br>
-                                    <input class="botaoPequeno" type="submit" value="Logar">
+                                <form class="container" action="ControleCadastroFilme" method="post">
+                                    <img src="imagens/user.png" alt="fotoDoFilme"><br>
+                                    <input class="botaoMedio margin-top" type="text" name="titulo" placeholder="Título"><br>
+                                    <input class="botaoMedio margin-top" type="text" name="ano" placeholder="Ano"><br>
+                                    <input class="botaoMedio margin-top" type="text" name="generos" placeholder="Gêneros"><br>
+                                    <input class="botaoMedio margin-top" type="text" name="atoresPrincipais" placeholder="Atores Principais"><br>
+                                    <input class="botaoMedio margin-top" type="text" name="Diretores" placeholder="Diretores"><br>
+                                    <textarea class="form-control">
+                                        
+                                    </textarea>
+                                    <input class="botaoPequeno" type="submit" value="Cadastrar">
                                 </form>
                             </div>
-                        </c:if>
-                        <c:if test="ca == true">
-                            <h3 class="textVermelho">Erro ao cadastrar</h2>
-                        </c:if>
-                    </div>
-                    <div id="cadastro" class="tab-pane fade text-center">
-                        <br>
-                        <h3>Cadastro</h3>
-                        <p>Informe seus dados.</p>
-                        <div class="form-group">
-                            <form class="container" action="ControleCadastroUsuario" method="post">
-                                <img src="imagens/user.png" alt="fotoDoPerfil"><br>
-                                <input class="botaoMedio margin-top" type="text" name="nomeCompleto" placeholder="Nome Completo"> <br>
-                                <input class="botaoMedio margin-top" type="email" name="emailCadastro" placeholder="Email"> <br>
-                                <input class="botaoMedio margin-top" type="password" name="senhaCadastro" placeholder="Senha"><br>
-                                <input class="botaoMedio margin-top" type="text" name="apelido" placeholder="Apelido"> <br>
-                                <input class="botaoMedio margin-top" type="text" name="estado" placeholder="Estado"> <br>
-                                <input class="botaoMedio margin-top" type="text" name="cidade" placeholder="Cidade"> <br>
-                                <input class="botaoMedio margin-top" type="date" name="dataDeNascimento"> <br><br><br>
-                                <input class="botaoPequeno" type="submit" value="Cadastrar">
-                            </form>
                         </div>
                     </div>
                     <div id="buscar" class="tab-pane fade text-center">
@@ -117,12 +104,9 @@
                     </div>
                 </div>
             </div>
-
-            <div class="navbar-fixed-bottom">
-                <footer class="panel-footer text-center rodapeFixo">
-                    <p>Site Desenvolvido por Dijalma Silva & Zilderlan</p>
-                </footer>
-            </div>
         </div>
     </body>
 </html>
+
+
+

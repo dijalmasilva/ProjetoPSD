@@ -35,6 +35,12 @@ public class GerenciadorUsuario {
 		usu.atualizar(u);
 		
 	}
+        
+        public Usuario login(String email, String senha){
+                DAOFactoryPSD fabrica = DAOFactory.createFactory();
+                UsuarioDAO usu = fabrica.criaUsuarioDAO();
+                return usu.login(email, senha);
+        }
 
 
 }

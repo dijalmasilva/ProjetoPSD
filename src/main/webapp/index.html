@@ -31,15 +31,15 @@
                 <a href="index.html"><h1 class="text-center textoBranco">Social Movies</h1></a>
                 <br>    
                 <ul class="nav nav-tabs navbar-static-top" id="menuNav">
-                    <li><a data-toggle="tab" href="#inicio" id="home">Início</a></li>
+                    <li class="active"><a data-toggle="tab" href="#inicio" id="home">Início</a></li>
                     <li><a data-toggle="tab" href="#generos">Gêneros</a></li>
-                    <li class="active"><a data-toggle="tab" href="#login">Login</a></li>
+                    <li><a data-toggle="tab" href="#login">Login</a></li>
                     <li><a data-toggle="tab" href="#cadastro">Cadastre-se</a></li>
                     <li class="flutuarADireita"><a data-toggle="tab" href="#buscar">Buscar</a></li>
                 </ul>
 
                 <div class="tab-content">
-                    <div id="inicio" class="tab-pane text-center">
+                    <div id="inicio" class="tab-pane text-center fade in active">
                         <br><br><br><br>
                         <div class="">
                             <h3>SUA REDE SOCIAL</h3>
@@ -70,13 +70,13 @@
                             </ul>
                         </div>
                     </div>
-                    <div id="login" class="tab-pane fade text-center fade in active">
+                    <div id="login" class="tab-pane fade text-center">
                         <br>
                         <h3>Faça seu login</h3>
                         <p>Preencha com seus dados</p>
                         <div class="form-group">
-                            <form class="container" action="#" method="post">
-                                <input class="botaoMedio margin-top" type="email" name="emailLogin" placeholder="Email"> <br>
+                            <form class="container" action="ControleLogarUsuario" method="post">
+                                <input class="botaoMedio margin-top" type="email" name="emailLogin" placeholder="Email"><br>
                                 <input class="botaoMedio margin-top" type="password" name="senhaLogin" placeholder="Senha"><br><br><br>
                                 <input class="botaoPequeno" type="submit" value="Logar">
                             </form>

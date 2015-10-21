@@ -36,11 +36,13 @@ public class ControleCadastroUsuario extends HttpServlet {
         String cidade = req.getParameter("cidade");
         String foto = "imagens/user.png";
 
-        Usuario u = new Usuario(senha, nomeCompleto, apelido, Date.valueOf(data), cidade, estado, true, foto);
-        new GerenciadorUsuario().adicionar(u);
+        Usuario u = new Usuario(email, senha, nomeCompleto, apelido, Date.valueOf(data), cidade, estado, true, foto);
+        boolean cadastrou = new GerenciadorUsuario().adicionar(u);
+        
+        req.setAttribute("cadastrou", cadastrou);
+        req.setAttribute("emailCadastro", email);
 
-        RequestDispatcher r = req.getRequestDispatcher("cadastro.jsp");
-        r.forward(req, resp);
+        req.getRequestDispatcher("cadastro.jsp").forward(req, resp);
     }
 
 }

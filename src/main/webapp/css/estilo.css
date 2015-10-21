@@ -158,11 +158,29 @@ input[type="date"]{
 
 
 .deadPool2{
+    height: 170%;
     background-image: url("../imagens/deadpool.jpg");
     background-repeat: no-repeat;
     background-size: 100% 100%;
 }
 
+.textVermelho{
+    color: red;
+}
+
+.nav-perfil{
+    box-shadow: 0px -1px 5px white;
+    padding: 10px;
+    background: #3399ff;
+    width: 100%;
+    height: 40px;
+}
+
+.img-perfil{
+    margin-right: 8px;
+    width: 30px;
+    height: 30px;
+}
 
 @media(max-width: 554px){
     .botaoPequeno{

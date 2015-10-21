@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import conexao.Conexao;
 import entidades.Usuario;
 import interfaces.InterfaceUsuarioDAO;
 import conexao.Conexao;
@@ -18,8 +17,8 @@ public class UsuarioDAO implements InterfaceUsuarioDAO {
 		Connection conn = null;
 		PreparedStatement stm = null;
 		String sql = "INSERT INTO USUARIO(foto, email, senha, nomecompleto, apelido, datanascimento, cidade, estado)"
-				+ " VALUES (?, ?, md5(?), ?, ?, ?, ?, ?)";
-		
+				+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+		//md5
 
 		try {
 			
@@ -114,7 +113,7 @@ public class UsuarioDAO implements InterfaceUsuarioDAO {
 	public List<Usuario> consultar() {
 		Connection conn = null;
 		PreparedStatement stm;
-		List<Usuario> list = new ArrayList<Usuario>();
+		List<Usuario> list = new ArrayList<>();
 		try {
 			String sql = "SELECT * FROM Usuario";
 			conn = Conexao.abrirConexao();
@@ -125,10 +124,15 @@ public class UsuarioDAO implements InterfaceUsuarioDAO {
 			while (result.next()) {
 				Usuario u = new Usuario();
 				u.setId(result.getInt("id"));
-				u.setNome(result.getString("nome"));
+				u.setNome(result.getString("nomeCompleto"));
 				u.setApelido(result.getString("apelido"));
 				u.setCidade(result.getString("cidade"));
 				u.setEstado(result.getString("estado"));
+                                u.setFoto(result.getString("foto"));
+                                u.setDataNAsc(result.getDate("dataNascimento"));
+                                u.setTipo(result.getBoolean("tipo"));
+                                u.setEmail(result.getString("email"));
+                                u.setSenha(result.getString("senha"));
 				list.add(u);
 
 			}
@@ -141,6 +145,44 @@ public class UsuarioDAO implements InterfaceUsuarioDAO {
 			Conexao.fecharConexao(conn);
 		}
 		return list;
+	}
+        
+        @Override
+	public Usuario login(String email, String senha) {
+		Connection conn = null;
+		PreparedStatement stm;
+		Usuario us = null;
+                
+		try {
+			String sql = "SELECT * FROM Usuario where email = '"+email+"' and senha = '"+senha+"'";
+			conn = Conexao.abrirConexao();
+			stm = conn.prepareStatement(sql);
+			ResultSet result = stm.executeQuery();
+
+			
+			if (result.next()) {
+				us = new Usuario();
+				us.setId(result.getInt("id"));
+				us.setNome(result.getString("nomeCompleto"));
+				us.setApelido(result.getString("apelido"));
+				us.setCidade(result.getString("cidade"));
+				us.setEstado(result.getString("estado"));
+                                us.setFoto(result.getString("foto"));
+                                us.setDataNAsc(result.getDate("dataNascimento"));
+                                us.setTipo(result.getBoolean("tipo"));
+                                us.setEmail(result.getString("email"));
+                                us.setSenha(result.getString("senha"));
+
+			}
+			
+
+		} catch (ClassNotFoundException | SQLException e) {
+			System.err.println("Erro " + e.getMessage());
+			e.getStackTrace();
+		} finally {
+			Conexao.fecharConexao(conn);
+		}
+		return us;
 	}
 
 }

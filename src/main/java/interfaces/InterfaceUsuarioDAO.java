@@ -13,5 +13,7 @@ public interface InterfaceUsuarioDAO {
 	public boolean atualizar(Usuario usuario);
 
 	public List<Usuario> consultar();
+        
+        public Usuario login(String email, String senha);
 
 }

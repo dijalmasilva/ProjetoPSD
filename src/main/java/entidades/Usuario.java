@@ -17,9 +17,10 @@ public class Usuario {
 	public Usuario() {
 	}
 
-	public Usuario(String senha, String nome, String apelido,
+	public Usuario(String email, String senha, String nome, String apelido,
 			Date dataNAsc, String cidade, String estado, boolean tipo,
 			String foto) {
+                this.email = email;
 		this.senha = senha;
 		this.nome = nome;
 		this.apelido = apelido;
