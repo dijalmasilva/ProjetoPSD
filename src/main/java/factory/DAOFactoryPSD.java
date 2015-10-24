@@ -1,14 +1,11 @@
 package factory;
 
-import DAO.AutorFilmeDAO;
+
 import DAO.AvaliacaoDAO;
-import DAO.ComentarioAvaliacaoDAO;
-import DAO.ComentarioDAO;
 import DAO.ComentarioTopicoDAO;
-import DAO.DiretorFilmeDAO;
 import DAO.FilmeDAO;
-import DAO.GeneroFilmeDAO;
 import DAO.GrupoDAO;
+import DAO.SolicitacoesDAO;
 import DAO.TopicoDAO;
 import DAO.UsuarioDAO;
 
@@ -20,19 +17,11 @@ public interface DAOFactoryPSD {
 	
 	public AvaliacaoDAO criaAvaliacaoDAO();
 	
-	public AutorFilmeDAO criaAutorFilmeDAO();
-
-	public ComentarioAvaliacaoDAO criaComentarioAvaliacaoDAO();
-	
-	public ComentarioDAO criaComentarioDAO();
-	
-	public GeneroFilmeDAO criaGenereoFilmeDAO();
-	
 	public ComentarioTopicoDAO criaComentarioTopicoDAO();
 	
-	public DiretorFilmeDAO criaDiretorFilmeDAO();
+	public GrupoDAO criaGrupoDAO();
 	
-	public GrupoDAO criaGrupoDAODAO();
-	
-	public TopicoDAO criaTopicoDAODAO();
+	public TopicoDAO criaTopicoDAO();
+        
+        public SolicitacoesDAO criaSolicitacaoDAO();
 }

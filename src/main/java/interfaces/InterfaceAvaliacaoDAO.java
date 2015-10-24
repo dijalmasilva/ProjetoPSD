@@ -1,17 +1,15 @@
 package interfaces;
 
+import entidades.Avaliacao;
 import java.util.List;
 
-import entidades.Usuario;
 
 public interface InterfaceAvaliacaoDAO {
 	
-	public boolean adicionar(Usuario usuario);//throws PersistenciaException;
+	public boolean adicionar(Avaliacao a);//throws PersistenciaException;
 
-	public boolean remover(String s);
+	public boolean atualizar(Avaliacao a);
 
-	public boolean atualizar(Usuario usuario);
-
-	public List<Usuario> consultar();
+	public List<Avaliacao> consultarPorIdDeFilme(int idFilme);
 
 }

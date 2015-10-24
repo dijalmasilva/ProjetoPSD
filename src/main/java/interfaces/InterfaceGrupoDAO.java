@@ -1,17 +1,16 @@
 package interfaces;
 
+import entidades.Grupo;
 import java.util.List;
-
-import entidades.Usuario;
 
 public interface InterfaceGrupoDAO {
 
-	public boolean adicionar(Usuario usuario);// throws PersistenciaException;
+	public boolean adicionar(Grupo grupo);// throws PersistenciaException;
 
 	public boolean remover(String s);
 
-	public boolean atualizar(Usuario usuario);
+	public boolean atualizar(Grupo grupo);
 
-	public List<Usuario> consultar();
+	public List<Grupo> consultar();
 
 }
