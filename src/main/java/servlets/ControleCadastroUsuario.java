@@ -4,7 +4,6 @@ import entidades.Usuario;
 import gerenciador.GerenciadorUsuario;
 import java.io.IOException;
 import java.sql.Date;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

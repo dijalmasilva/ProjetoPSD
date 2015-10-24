@@ -6,9 +6,9 @@ import entidades.Filme;
 
 public interface InterfaceFilmeDAO {
 	
-	public boolean add();
+	public boolean add(Filme f);
 	
-	public boolean delete();
+	public boolean delete(Filme f);
 	
 	public boolean update();
 	

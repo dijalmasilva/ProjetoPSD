@@ -12,8 +12,7 @@ public class GerenciadorUsuario {
 	public boolean adicionar(Usuario u){
 		DAOFactoryPSD fabrica = DAOFactory.createFactory();
 		UsuarioDAO usu = fabrica.criaUsuarioDAO();
-		usu.adicionar(u);
-		return true;
+		return usu.adicionar(u);
 	}
 	
 	public void remover(String s){

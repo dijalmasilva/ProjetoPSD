@@ -73,7 +73,7 @@
                     </div>
                     <div id="login" class="tab-pane fade text-center fade in active">
                         <br>
-                        <c:if test="${requestScope.cadastrou == true}" var="ca">
+                        <c:if test="${requestScope.cadastrou == true}">
                             <h3>Cadastro realizado com sucesso!</h3>
                             <p>Faça seu login!</p>
                             <div class="form-group">
@@ -84,9 +84,9 @@
                                 </form>
                             </div>
                         </c:if>
-                        <c:if test="ca == true">
+                        <c:if test="${requestScope.cadastrou == false}">
                             <h3 class="textVermelho">Erro ao cadastrar</h2>
-                        </c:if>
+                            </c:if>
                     </div>
                     <div id="cadastro" class="tab-pane fade text-center">
                         <br>

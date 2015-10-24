@@ -13,6 +13,9 @@ import conexao.Conexao;
 
 public class UsuarioDAO implements InterfaceUsuarioDAO {
 
+    boolean result = false;
+    
+    @Override
 	public boolean adicionar(Usuario usuario) {
 		Connection conn = null;
 		PreparedStatement stm = null;
@@ -33,6 +36,8 @@ public class UsuarioDAO implements InterfaceUsuarioDAO {
 			stm.setString(7, usuario.getCidade());
 			stm.setString(8, usuario.getEstado());
 			stm.executeUpdate();
+                        
+                        result = true;
 		} catch (ClassNotFoundException | SQLException e) {
 			System.err.println(e.getMessage());
 			e.printStackTrace();
@@ -41,11 +46,13 @@ public class UsuarioDAO implements InterfaceUsuarioDAO {
 			Conexao.fecharConexao(conn);
 		}
 
-		return true;
+		return result;
 	}
 
 	@Override
 	public boolean remover(String s) {
+            
+            boolean result = false;
 		Connection conn = null;
 		try {
 			conn = Conexao.abrirConexao();
@@ -54,6 +61,7 @@ public class UsuarioDAO implements InterfaceUsuarioDAO {
 			stm.setString(1, s);
 			stm.executeUpdate();
 
+                        result = true;
 		} catch (ClassNotFoundException | SQLException e) {
 			System.err.println("Erro " + e.getMessage());
 			e.printStackTrace();
@@ -62,7 +70,7 @@ public class UsuarioDAO implements InterfaceUsuarioDAO {
 			Conexao.fecharConexao(conn);
 		}
 
-		return false;
+		return result;
 	}
 
 	// @Override
