@@ -7,9 +7,9 @@ package entidades;
 public class Solicitacoes {
     
     private int     id;
-    private int     idDoUsuario;
-    private int     idDoQuaseAmigo;
-    private Usuario quaseAmigo;
+    private int     idDoUsuario; //quem recebe a solicitacao
+    private int     idDoQuaseAmigo; //quem envia a solicitacao
+    private Usuario quaseAmigo; 
     private boolean pendente;
     private boolean resposta;
     

@@ -2,17 +2,19 @@ package DAO;
 
 import conexao.Conexao;
 import entidades.Solicitacoes;
+import interfaces.InterfaceSolicitacoesDAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  *
  * @author dijalma
  */
-public class SolicitacoesDAO {
+public class SolicitacoesDAO implements InterfaceSolicitacoesDAO{
 
-    public boolean cadastrar(Solicitacoes s) {
+    public boolean adicionar(Solicitacoes s) {
 
         boolean result = false;
         Connection con = null;
@@ -32,5 +34,15 @@ public class SolicitacoesDAO {
         }
 
         return result;
+    }
+
+    @Override
+    public boolean atualizar(Solicitacoes s) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Solicitacoes> consultarPorIdDoUsuario(int idUsuario) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
