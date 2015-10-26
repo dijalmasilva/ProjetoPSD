@@ -53,11 +53,11 @@
                             <br>
                             <h2>Você ainda não tem amigos!</h2>
                             <p class="margin-top">Adicione agora alguns amigos.</p>
-                            <form action="#" method="post">
-                                <input class="botaoMedio margin-top" type="text" name="emailOuApelidoAmigo" placeholder="Digite email ou apelido">
+                            <form action="ControleAcharUsuarios" method="post">
+                                <input class="botaoMedio margin-top" type="text" name="emailOuApelido" placeholder="Digite email ou apelido">
                                 <input class="botaoPequeno margin-top" type="submit" value="Procurar">
                             </form>
-                            <br><br><br><br><br><br><br><br><br><br><br>
+                            
                         </c:if>
                     </div>
                     <div id="generos" class="tab-pane fade text-center">
@@ -117,13 +117,9 @@
                             <input class="botaoMedio" type="text" name="busca" placeholder="Buscar">
                             <input class="botaoPequeno" type="submit" value="Search">
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
     </body>
 </html>
-
-
-

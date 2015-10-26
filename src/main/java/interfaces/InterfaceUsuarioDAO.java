@@ -14,9 +14,9 @@ public interface InterfaceUsuarioDAO {
 
 	public Usuario consultarPorId(int id);
         
-        public List<Usuario> consultarPorApelido(String apelido);
+        public List<Usuario> consultarPorApelido(String apelido, int idUsuario);
         
-        public Usuario consultarPorEmail(String email);
+        public Usuario consultarPorEmail(String email, int idUsuario);
         
         public Usuario login(String email, String senha);
 

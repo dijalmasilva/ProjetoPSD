@@ -6,6 +6,7 @@ import java.util.List;
 import entidades.Filme;
 import interfaces.InterfaceFilmeDAO;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
@@ -16,8 +17,8 @@ public class FilmeDAO implements InterfaceFilmeDAO {
 
         Connection con = null;
         PreparedStatement stmt;
-        String sql = "insert into filme (idUser, titulo, ano, sinopse, foto, generos, atoresprincipais, diretores) values"
-                + "(?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "insert into filme (idUser, titulo, ano, sinopse, foto, generos, atoresprincipais, diretores, dataDeCadastro) values"
+                + "(?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             con = Conexao.abrirConexao();
             stmt = con.prepareStatement(sql);
@@ -29,7 +30,7 @@ public class FilmeDAO implements InterfaceFilmeDAO {
             stmt.setString(6, f.getGeneros());
             stmt.setString(7, f.getAtoresPrincipais());
             stmt.setString(8, f.getDiretores());
-
+            stmt.setDate(9, Date.valueOf(f.getDataDeCadastro()));
             stmt.executeUpdate();
         } catch (SQLException | ClassNotFoundException ex) {
             ex.printStackTrace();
@@ -53,8 +54,12 @@ public class FilmeDAO implements InterfaceFilmeDAO {
     }
 
     @Override
-    public List<Filme> buscar() {
-        // TODO Auto-generated method stub
+    public List<Filme> buscar10filmesRecentes() {
+        
+        String sql = "select * from filme order by dataDeCadastro limit 10";
+        
+        
+        
         return null;
     }
 

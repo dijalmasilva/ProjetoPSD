@@ -9,6 +9,7 @@ import entidades.Filme;
 import entidades.Usuario;
 import gerenciador.GerenciadorFilme;
 import java.io.IOException;
+import java.time.LocalDate;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,10 +38,10 @@ public class ControleCadastroFilme  extends HttpServlet{
         String diretores = req.getParameter("diretores");
         String sinopse = req.getParameter("sinopse");
         String generos = req.getParameter("generos");
-        
+        LocalDate dataDeCadastro = LocalDate.now();
         int idUser = ((Usuario)req.getSession().getAttribute("user")).getId();
         
-        boolean cadastro = new GerenciadorFilme().adicionar(new Filme(idUser, titulo, ano, sinopse, foto, generos, atores, diretores));
+        boolean cadastro = new GerenciadorFilme().adicionar(new Filme(idUser, titulo, ano, sinopse, foto, generos, atores, diretores, dataDeCadastro));
         
         req.setAttribute("cadastrou", cadastro);
         

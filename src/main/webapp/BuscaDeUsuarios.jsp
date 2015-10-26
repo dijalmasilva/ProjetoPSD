@@ -28,10 +28,10 @@
                 <br>    
                 <ul class="nav nav-tabs navbar-static-top" id="menuNav">
                     <li><a data-toggle="tab" href="#feed" id="home">Feed</a></li>
-                    <li><a data-toggle="tab" href="#amigos">Amigos</a></li>
+                    <li class="active"><a data-toggle="tab" href="#amigos">Amigos</a></li>
                     <li><a data-toggle="tab" href="#generos">Gêneros</a></li>
                         <c:if test="${sessionScope.user.tipo == true}">
-                        <li class="active"><a data-toggle="tab" href="#cadastroFilmes">Cadastrar Filmes</a></li>
+                        <li><a data-toggle="tab" href="#cadastroFilmes">Cadastrar Filmes</a></li>
                         <li><a data-toggle="tab" href="#grupos">Grupos</a></li>
                         </c:if>
                     <li class="flutuarADireita"><a data-toggle="tab" href="#buscar">Buscar</a></li>
@@ -48,16 +48,28 @@
                         </section>
                         <%}%>
                     </div>
-                    <div id="amigos" class="tab-pane fade text-center">
-                        <c:if test="${sessionScope.friends == null}">
+                    <div id="amigos" class="tab-pane fade text-center fade in active">
+                        <c:if test="${requestScope.usuariosAchados == null}">
                             <br>
-                            <h2>Você ainda não tem amigos!</h2>
-                            <p class="margin-top">Adicione agora alguns amigos.</p>
+                            <h2>Não existe usuários com esse email ou apelido!</h2>
+                            <p class="margin-top">Faça outra busca.</p>
                             <form action="ControleAcharUsuarios" method="post">
                                 <input class="botaoMedio margin-top" type="text" name="emailOuApelido" placeholder="Digite email ou apelido">
                                 <input class="botaoPequeno margin-top" type="submit" value="Procurar">
                             </form>
-
+                        </c:if>
+                        <c:if test="${requestScope.usuariosAchados != null}">
+                            <br>
+                            <h3>Usuário(s) encontrado(s)!</h3>
+                            <div class="modal-dialog">
+                                <c:forEach items="${requestScope.usuariosAchados}" var="userFind">
+                                    <br>
+                                    <div class="list-inline modal-header">
+                                        <img src="${userFind.foto}" alt="${userFind.apelido}" title="${userFind.apelido}" class="img-perfil">
+                                        <a href="#" class="text-capitalize active">${userFind.apelido}</a>
+                                    </div>
+                                </c:forEach>
+                            </div>
                         </c:if>
                     </div>
                     <div id="generos" class="tab-pane fade text-center">
@@ -83,15 +95,10 @@
                         </div>
                     </div>
                     <c:if test="${sessionScope.user.tipo == true}">
-                        <div id="cadastroFilmes" class="tab-pane text-center fade in active">
+                        <div id="cadastroFilmes" class="tab-pane text-center">
                             <br>
                             <div>
-                            <c:if test="${requestScope.cadastrou == true}">
-                                <h3>Filme cadastrado com sucesso!</h3>
-                            </c:if>
-                                <c:if test="${requestScope.cadastrou == false}">
-                                <h3>Erro ao cadastrar o filme!</h3>
-                            </c:if>
+                                <h3>Cadastre o filme</h3>
                                 <p>Campos com mais de um nome separe com ", " sem aspas.</p>
                                 <div class="form-group">
                                     <form class="container" action="ControleCadastroFilme" method="post">

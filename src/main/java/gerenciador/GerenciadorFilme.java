@@ -15,7 +15,7 @@ public class GerenciadorFilme {
     }
 
     public List<Filme> pesquisar() {
-        return DAOFactory.createFactory().criaFilmeDAO().buscar();
+        return DAOFactory.createFactory().criaFilmeDAO().buscar10filmesRecentes();
 
     }
 

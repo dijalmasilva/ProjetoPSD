@@ -1,5 +1,7 @@
 package entidades;
 
+import java.time.LocalDate;
+
 public class Filme {
     
     private int id;
@@ -11,12 +13,13 @@ public class Filme {
     private String generos;
     private String atoresPrincipais;
     private String diretores;
+    private LocalDate dataDeCadastro;
     
     public Filme(){
         
     }
 
-    public Filme(int idUser, String titulo, int ano, String sinopse, String foto, String generos, String atoresPrincipais, String diretores) {
+    public Filme(int idUser, String titulo, int ano, String sinopse, String foto, String generos, String atoresPrincipais, String diretores, LocalDate dataDeCadastro) {
         this.idUser = idUser;
         this.titulo = titulo;
         this.ano = ano;
@@ -25,6 +28,7 @@ public class Filme {
         this.generos = generos;
         this.atoresPrincipais = atoresPrincipais;
         this.diretores = diretores;
+        this.dataDeCadastro = dataDeCadastro;
     }
 
     public int getId() {
@@ -97,6 +101,14 @@ public class Filme {
 
     public void setSinopse(String sinopse) {
         this.sinopse = sinopse;
+    }
+
+    public LocalDate getDataDeCadastro() {
+        return dataDeCadastro;
+    }
+
+    public void setDataDeCadastro(LocalDate dataDeCadastro) {
+        this.dataDeCadastro = dataDeCadastro;
     }
     
     

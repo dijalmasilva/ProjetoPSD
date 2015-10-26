@@ -15,12 +15,12 @@ public class GerenciadorUsuario {
         return DAOFactory.createFactory().criaUsuarioDAO().remover(s);
     }
 
-    public List<Usuario> consultarPorApelido(String apelido) {
-        return DAOFactory.createFactory().criaUsuarioDAO().consultarPorApelido(apelido);
+    public List<Usuario> consultarPorApelido(String apelido, int idUsuario) {
+        return DAOFactory.createFactory().criaUsuarioDAO().consultarPorApelido(apelido, idUsuario);
     }
 
-    public Usuario consultarPorEmail(String email){
-        return DAOFactory.createFactory().criaUsuarioDAO().consultarPorEmail(email);
+    public Usuario consultarPorEmail(String email, int idUsuario){
+        return DAOFactory.createFactory().criaUsuarioDAO().consultarPorEmail(email, idUsuario);
     }
     
     public Usuario consultarPorId(int id){

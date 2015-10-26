@@ -152,12 +152,12 @@ public class UsuarioDAO implements InterfaceUsuarioDAO {
     }
 
     @Override
-    public Usuario consultarPorEmail(String email){
+    public Usuario consultarPorEmail(String email, int idUSuario){
         Connection conn = null;
         PreparedStatement stm;
         Usuario u = null;
         try {
-            String sql = "SELECT * FROM Usuario where email ilike "+email+"";
+            String sql = "select * from usuario where email ilike '"+email+"' and not id = "+idUSuario+"";
             conn = Conexao.abrirConexao();
             stm = conn.prepareStatement(sql);
             ResultSet result = stm.executeQuery();
@@ -187,13 +187,13 @@ public class UsuarioDAO implements InterfaceUsuarioDAO {
     }
     
     @Override
-    public List<Usuario> consultarPorApelido(String apelido){
+    public List<Usuario> consultarPorApelido(String apelido, int idUsuario){
         
         Connection conn = null;
         PreparedStatement stm;
         List<Usuario> usuarios = new ArrayList<>();
         try {
-            String sql = "SELECT * FROM Usuario where apelido ilike '%"+apelido+"%'";
+            String sql = "SELECT * FROM Usuario where apelido ilike '%"+apelido+"%' and not id = "+idUsuario+"";
             conn = Conexao.abrirConexao();
             stm = conn.prepareStatement(sql);
             ResultSet result = stm.executeQuery();
