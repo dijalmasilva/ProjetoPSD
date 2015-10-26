@@ -29,3 +29,15 @@
         </div>
     </div> 
 </div>
+<div class="text-center navbar-fixed-top fundoCompleto" id="notifications">
+    <aside class="textoBranco flutuarADireita barraLateralDireita">
+        <h2 class="text-capitalize">Notificações</h2>
+    </aside>
+    <aside class="sobraEsquerda" id="sairNotifications"></aside>
+</div>
+<div class="text-center navbar-fixed-top fundoCompleto" id="requests">
+    <aside class="textoBranco flutuarADireita barraLateralDireita">
+        <h2 class="text-capitalize">Solicitações</h2>
+    </aside>
+    <aside class="sobraEsquerda" id="sairSolicitacoes"</aside>
+</div>

@@ -2,6 +2,7 @@ $(document).ready(function () {
 
     jQuery("#menuabaixo").hide();
     jQuery("#notifications").hide();
+    jQuery("#requests").hide();
 
     window.setInterval(function () {
         largura = $(document).width();

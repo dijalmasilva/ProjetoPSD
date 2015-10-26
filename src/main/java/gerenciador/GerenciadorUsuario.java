@@ -15,11 +15,18 @@ public class GerenciadorUsuario {
         return DAOFactory.createFactory().criaUsuarioDAO().remover(s);
     }
 
-    public List<Usuario> consultar() {
-        return DAOFactory.createFactory().criaUsuarioDAO().consultar();
-
+    public List<Usuario> consultarPorApelido(String apelido) {
+        return DAOFactory.createFactory().criaUsuarioDAO().consultarPorApelido(apelido);
     }
 
+    public Usuario consultarPorEmail(String email){
+        return DAOFactory.createFactory().criaUsuarioDAO().consultarPorEmail(email);
+    }
+    
+    public Usuario consultarPorId(int id){
+        return DAOFactory.createFactory().criaUsuarioDAO().consultarPorId(id);
+    }
+    
     public boolean alterar(Usuario u) {
         return DAOFactory.createFactory().criaUsuarioDAO().atualizar(u);
     }

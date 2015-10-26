@@ -22,18 +22,6 @@
     </head>
     <body  id="fundo" class="textoPreto white-background">
         <%@include file="barraUsuario.jsp"%>
-        <div class="text-center navbar-fixed-top fundoCompleto" id="notifications">
-            <aside class="textoBranco flutuarADireita barraLateralDireita">
-                <h2 class="text-capitalize">Notificações</h2>
-            </aside>
-            <aside class="sobraEsquerda" id="sairNotifications"></aside>
-        </div>
-        <div class="text-center navbar-fixed-top fundoCompleto" id="requests">
-            <aside class="textoBranco flutuarADireita barraLateralDireita">
-                <h2 class="text-capitalize">Solicitações</h2>
-            </aside>
-            <aside class="sobraEsquerda" id="sairSolicitacoes"</aside>
-        </div>
         <div class="margin-top-body">
             <div class="container nav-justified">
                 <a href="logado.jsp"><h1 class="text-center textoPreto">Social Movies</h1></a>
