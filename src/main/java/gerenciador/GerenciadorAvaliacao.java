@@ -1,20 +1,20 @@
 package gerenciador;
 
 import entidades.Avaliacao;
-import factory.DAOFactoryBD;
+import factory.DAOFactory;
 import java.util.List;
 
 public class GerenciadorAvaliacao {
 
     public boolean adicionar(Avaliacao a){
-        return new DAOFactoryBD().criaAvaliacaoDAO().adicionar(a);
+        return DAOFactory.createFactory().criaAvaliacaoDAO().adicionar(a);
     }
     
     public boolean atualizar(Avaliacao a){
-        return new DAOFactoryBD().criaAvaliacaoDAO().atualizar(a);
+        return DAOFactory.createFactory().criaAvaliacaoDAO().atualizar(a);
     }
     
     public List<Avaliacao> consultarPorIdDoFilme(int idFilme){
-        return new DAOFactoryBD().criaAvaliacaoDAO().consultarPorIdDeFilme(idFilme);
+        return DAOFactory.createFactory().criaAvaliacaoDAO().consultarPorIdDeFilme(idFilme);
     }
 }

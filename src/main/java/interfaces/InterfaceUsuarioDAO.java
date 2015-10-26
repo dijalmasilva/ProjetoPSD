@@ -1,8 +1,8 @@
 package interfaces;
 
-import java.util.List;
 
 import entidades.Usuario;
+import java.util.List;
 
 public interface InterfaceUsuarioDAO {
 
@@ -12,7 +12,11 @@ public interface InterfaceUsuarioDAO {
 
 	public boolean atualizar(Usuario usuario);
 
-	public List<Usuario> consultar();
+	public Usuario consultarPorId(int id);
+        
+        public List<Usuario> consultarPorApelido(String apelido);
+        
+        public Usuario consultarPorEmail(String email);
         
         public Usuario login(String email, String senha);
 

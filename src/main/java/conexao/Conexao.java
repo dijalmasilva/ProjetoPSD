@@ -27,7 +27,6 @@ public class Conexao {
 		if (conn!= null)
 			try{
 			conn.close();
-			System.out.println("Fechando!!!");
 			} catch(SQLException e){
 				System.out.println("Erro: " + e.getMessage());
 			}

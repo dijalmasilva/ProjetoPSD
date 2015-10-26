@@ -11,5 +11,6 @@ public interface InterfaceSolicitacoesDAO {
 	public boolean atualizar(Solicitacoes s);
 
 	public List<Solicitacoes> consultarPorIdDoUsuario(int idUsuario);
-
+        
+        public boolean remover(int id);
 }

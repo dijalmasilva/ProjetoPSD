@@ -10,11 +10,15 @@ import factory.DAOFactory;
 public class GerenciadorSolicitacoes {
     
     
-    public boolean cadastraSolicitacao(Solicitacoes s){
-        return DAOFactory.createFactory().criaSolicitacaoDAO().cadastrar(s);
+    public boolean adicionar(Solicitacoes s){
+        return DAOFactory.createFactory().criaSolicitacaoDAO().adicionar(s);
     }
     
-    public boolean remover(Solicitacoes s){
-        return true;
+    public boolean atualizar(Solicitacoes s){
+        return DAOFactory.createFactory().criaSolicitacaoDAO().atualizar(s);
+    }
+    
+    public boolean remover(int id){
+        return DAOFactory.createFactory().criaSolicitacaoDAO().remover(id);
     }
 }

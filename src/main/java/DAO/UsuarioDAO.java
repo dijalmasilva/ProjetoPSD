@@ -117,12 +117,83 @@ public class UsuarioDAO implements InterfaceUsuarioDAO {
     }
 
     @Override
-    public List<Usuario> consultar() {
+    public Usuario consultarPorId(int id) {
         Connection conn = null;
         PreparedStatement stm;
-        List<Usuario> list = new ArrayList<>();
+        Usuario u = null;
         try {
-            String sql = "SELECT * FROM Usuario";
+            String sql = "SELECT * FROM Usuario where id ilike "+id+"";
+            conn = Conexao.abrirConexao();
+            stm = conn.prepareStatement(sql);
+            ResultSet result = stm.executeQuery();
+
+            while (result.next()) {
+                u = new Usuario();
+                u.setId(result.getInt("id"));
+                u.setNome(result.getString("nomeCompleto"));
+                u.setApelido(result.getString("apelido"));
+                u.setCidade(result.getString("cidade"));
+                u.setEstado(result.getString("estado"));
+                u.setFoto(result.getString("foto"));
+                u.setDataNAsc(result.getDate("dataNascimento"));
+                u.setTipo(result.getBoolean("tipo"));
+                u.setEmail(result.getString("email"));
+                u.setSenha(result.getString("senha"));
+
+            }
+
+        } catch (ClassNotFoundException | SQLException e) {
+            System.err.println("Erro " + e.getMessage());
+            e.getStackTrace();
+        } finally {
+            Conexao.fecharConexao(conn);
+        }
+        return u;
+    }
+
+    @Override
+    public Usuario consultarPorEmail(String email){
+        Connection conn = null;
+        PreparedStatement stm;
+        Usuario u = null;
+        try {
+            String sql = "SELECT * FROM Usuario where email ilike "+email+"";
+            conn = Conexao.abrirConexao();
+            stm = conn.prepareStatement(sql);
+            ResultSet result = stm.executeQuery();
+
+            while (result.next()) {
+                u = new Usuario();
+                u.setId(result.getInt("id"));
+                u.setNome(result.getString("nomeCompleto"));
+                u.setApelido(result.getString("apelido"));
+                u.setCidade(result.getString("cidade"));
+                u.setEstado(result.getString("estado"));
+                u.setFoto(result.getString("foto"));
+                u.setDataNAsc(result.getDate("dataNascimento"));
+                u.setTipo(result.getBoolean("tipo"));
+                u.setEmail(result.getString("email"));
+                u.setSenha(result.getString("senha"));
+
+            }
+
+        } catch (ClassNotFoundException | SQLException e) {
+            System.err.println("Erro " + e.getMessage());
+            e.getStackTrace();
+        } finally {
+            Conexao.fecharConexao(conn);
+        }
+        return u;
+    }
+    
+    @Override
+    public List<Usuario> consultarPorApelido(String apelido){
+        
+        Connection conn = null;
+        PreparedStatement stm;
+        List<Usuario> usuarios = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM Usuario where apelido ilike '%"+apelido+"%'";
             conn = Conexao.abrirConexao();
             stm = conn.prepareStatement(sql);
             ResultSet result = stm.executeQuery();
@@ -139,8 +210,7 @@ public class UsuarioDAO implements InterfaceUsuarioDAO {
                 u.setTipo(result.getBoolean("tipo"));
                 u.setEmail(result.getString("email"));
                 u.setSenha(result.getString("senha"));
-                list.add(u);
-
+                usuarios.add(u);
             }
 
         } catch (ClassNotFoundException | SQLException e) {
@@ -149,9 +219,9 @@ public class UsuarioDAO implements InterfaceUsuarioDAO {
         } finally {
             Conexao.fecharConexao(conn);
         }
-        return list;
+        return usuarios;
     }
-
+    
     @Override
     public Usuario login(String email, String senha) {
         Connection conn = null;

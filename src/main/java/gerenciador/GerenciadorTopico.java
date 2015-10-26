@@ -1,39 +1,25 @@
 package gerenciador;
 
+import entidades.Topico;
+import factory.DAOFactory;
 import java.util.List;
 
-import DAO.UsuarioDAO;
-import entidades.Usuario;
-import factory.DAOFactory;
-import factory.DAOFactoryPSD;
-
 public class GerenciadorTopico {
-	
-	public boolean adicionar(Usuario u){
-		DAOFactoryPSD fabrica = DAOFactory.createFactory();
-		UsuarioDAO usu = fabrica.criaUsuarioDAO();
-		usu.adicionar(u);
-		return true;
-	}
-	
-	public void remover(String s){
-		DAOFactoryPSD fabrica = DAOFactory.createFactory();
-		UsuarioDAO usu = fabrica.criaUsuarioDAO();
-		usu.remover(s);
-		
-	}
-	
-	public List<Usuario> pesquisar(){
-		DAOFactoryPSD fabrica = DAOFactory.createFactory();
-		UsuarioDAO usu = fabrica.criaUsuarioDAO();
-		return usu.consultar();
-		
-	}
-	public void alterar(Usuario u) {
-		DAOFactoryPSD fabrica = DAOFactory.createFactory();
-		UsuarioDAO usu = fabrica.criaUsuarioDAO();
-		usu.atualizar(u);
-		
-	}
 
+    public boolean adicionar(Topico t) {
+        return DAOFactory.createFactory().criaTopicoDAO().adicionar(t);
+    }
+
+    public boolean remover(int id) {
+        return DAOFactory.createFactory().criaTopicoDAO().remover(id);
+
+    }
+
+    public boolean atualizar(Topico t) {
+        return DAOFactory.createFactory().criaTopicoDAO().atualizar(t);
+    }
+
+    public List<Topico> consultarPorIdDoGrupo(int idDoGrupo){
+        return DAOFactory.createFactory().criaTopicoDAO().consultarPorIdDoGrupo(idDoGrupo);
+    }
 }

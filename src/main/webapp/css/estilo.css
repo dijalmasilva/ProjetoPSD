@@ -34,7 +34,7 @@ body{
 }
 
 .textoBranco{
-    color: white;
+    color: white !important;
 }
 
 #btCadastro{
@@ -109,7 +109,7 @@ input[type="date"]{
     margin: 0 auto;
     width: 50%;
     background: #000;
-    opacity: 0.6;
+    opacity: 0.3;
 }
 
 .pretoOpaco ul li{
@@ -121,6 +121,9 @@ input[type="date"]{
     border-radius: 10px;
 }
 
+.white-background{
+    background: #f2eded;
+}
 
 .brancoOpaco{
     border-radius: 10px;
@@ -180,23 +183,18 @@ input[type="date"]{
     color: black;
 }
 
-
-.img-filme{
-    width: 100px !important;
-    height: 100px !important;
-}
-
 .textVermelho{
     color: red;
 }
 
 .nav-perfil{
     transition-duration: 2s;
-    box-shadow: 0px -1px 5px #000;
+    box-shadow: 0px 1px 5px #000;
     padding: 10px;
     background: #0c6eae;
     width: 100%;
     height: 50px;
+    z-index: 2 !important;
 }
 
 .img-perfil{
@@ -205,18 +203,61 @@ input[type="date"]{
     height: 30px;
 }
 
+.margin-rigth{
+    margin-right: 10px;
+}
+
+.img-filme {
+    width: 300px !important;
+    height: 200px !important;
+}
 .nav-perfil-maior{
     transition-duration: 2s;
-    box-shadow: 0px -5px 5px #000;
+    box-shadow: 0px 2px 5px #000;
     padding: 10px;
     background: #0a486f;
     width: 100%;
     height: 150px;
+    z-index: 2 !important;
 }
 
 .textArea{
     resize: none;
     height: 120px;
+}
+
+.posicaoRelativa{
+    position: relative;
+}
+
+.margin-top-body{
+    margin-top: 70px;
+}
+
+.fundoCompleto {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+}
+
+.fundoCompletoEscuro{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+}
+
+.barraLateralDireita{
+    background: #0c6eae;
+    width: 0%;
+    height: 100%;
+}
+
+.sobraEsquerda{
+    width: 69%;
+    height: 100%;
+    float: left;
 }
 
 @media(max-width: 575px){

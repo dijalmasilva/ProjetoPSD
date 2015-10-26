@@ -39,7 +39,7 @@ public class TopicoDAO implements InterfaceTopicoDAO{
     }
 
     @Override
-    public boolean remover(String s) {
+    public boolean remover(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -49,7 +49,7 @@ public class TopicoDAO implements InterfaceTopicoDAO{
     }
 
     @Override
-    public List<Topico> consultarIdDoGrupo(int idDoGrupo) {
+    public List<Topico> consultarPorIdDoGrupo(int idDoGrupo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

@@ -1,5 +1,8 @@
 $(document).ready(function () {
 
+    jQuery("#menuabaixo").hide();
+    jQuery("#notifications").hide();
+
     window.setInterval(function () {
         largura = $(document).width();
 
@@ -29,20 +32,40 @@ $(document).ready(function () {
 
         jQuery("#menuUser").removeClass("nav-perfil");
         jQuery("#menuUser").addClass("nav-perfil-maior");
+        jQuery("#menuabaixo").fadeIn(2200);
     });
 
     jQuery("#voltar").click(function () {
+        jQuery("#menuabaixo").hide();
         jQuery("#menuUser").removeClass("nav-perfil-maior");
         jQuery("#menuUser").addClass("nav-perfil");
     });
-
-
-
-    window.setInterval(function () {
-        heigth = $(document).height();
-        console.log(heigth);
-        jQuery("#fundo").css({
-            heigth: heigth
+    
+    jQuery("#notificacoes").click(function (){
+        jQuery("#notifications").fadeIn(100);
+        jQuery(".barraLateralDireita").animate({
+            width: "+=15.507%"
+        },500);
+    });
+    
+    jQuery("#sairNotifications").click(function (){
+        jQuery("#notifications").fadeOut(300);
+        jQuery(".barraLateralDireita").css({
+           width: '0px' 
         });
-    }, 500);
+    });
+    
+    jQuery("#solicitacoes").click(function (){
+        jQuery("#requests").fadeIn(100);
+        jQuery(".barraLateralDireita").animate({
+            width: "+=15.507%"
+        },500);
+    });
+    
+    jQuery("#sairSolicitacoes").click(function (){
+        jQuery("#requests").fadeOut(300);
+        jQuery(".barraLateralDireita").css({
+           width: '0px' 
+        });
+    });
 });

@@ -8,10 +8,10 @@ public interface InterfaceTopicoDAO {
 	
 	public boolean adicionar(Topico t);//throws PersistenciaException;
 
-	public boolean remover(String s);
+	public boolean remover(int id);
 
 	public boolean atualizar(Topico t);
 
-	public List<Topico> consultarIdDoGrupo(int idDoGrupo);
+	public List<Topico> consultarPorIdDoGrupo(int idDoGrupo);
 
 }

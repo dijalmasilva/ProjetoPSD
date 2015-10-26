@@ -20,39 +20,31 @@
         <script src="javascript/javascriptOutras.js"></script>
 
     </head>
-    <body  id="fundo" class="textoPreto gray-background">
-        <div>
-            <div class="nav navbar-fixed-bottom nav-perfil" id="menuUser">
-                <div>
-                    <img src="${sessionScope.user.foto}" class="img-circle img-perfil">
-                    <a href="#" id="apelido" class="text-uppercase textoBranco">${sessionScope.user.apelido}</a>
-                    <div class="flutuarSomenteAdireita">
-                        <a href="#">
-                            <strong class="textoBranco">Notificações</strong>
-                            <img class="img-perfil" src="imagens/NotificationIcon.png" alt="notificações">
-                        </a>
-                        <a href="ControleLogout" class="textoBranco">Sair</a>
-                    </div>
-                    <br><br><br>
-                    <a href="#">Editar Perfil</a><br>
-                    <a href="#">Cofigurações de Segurança</a>
-                    <div class="flutuarSomenteAdireita">
-                        <a href="#" class="textoBranco" id="voltar">
-                            <strong class="botaoMedio textoBranco">Voltar</strong>
-                            <img src="imagens/back.png" alt="voltar">
-                        </a>
-                    </div>
-                </div> 
-            </div>
+    <body  id="fundo" class="textoPreto white-background">
+        <%@include file="barraUsuario.jsp"%>
+        <div class="text-center navbar-fixed-top fundoCompleto" id="notifications">
+            <aside class="textoBranco flutuarADireita barraLateralDireita">
+                <h2 class="text-capitalize">Notificações</h2>
+            </aside>
+            <aside class="sobraEsquerda" id="sairNotifications"></aside>
+        </div>
+        <div class="text-center navbar-fixed-top fundoCompleto" id="requests">
+            <aside class="textoBranco flutuarADireita barraLateralDireita">
+                <h2 class="text-capitalize">Solicitações</h2>
+            </aside>
+            <aside class="sobraEsquerda" id="sairSolicitacoes"</aside>
+        </div>
+        <div class="margin-top-body">
             <div class="container nav-justified">
                 <a href="logado.jsp"><h1 class="text-center textoPreto">Social Movies</h1></a>
                 <br>    
                 <ul class="nav nav-tabs navbar-static-top" id="menuNav">
                     <li class="active"><a data-toggle="tab" href="#feed" id="home">Feed</a></li>
+                    <li><a data-toggle="tab" href="#amigos">Amigos</a></li>
                     <li><a data-toggle="tab" href="#generos">Gêneros</a></li>
                         <c:if test="${sessionScope.user.tipo == true}">
                         <li><a data-toggle="tab" href="#cadastroFilmes">Cadastrar Filmes</a></li>
-                        <li><a data-toggle="tab" href="#criarGrupos">Criar Grupo</a></li>
+                        <li><a data-toggle="tab" href="#grupos">Grupos</a></li>
                         </c:if>
                     <li class="flutuarADireita"><a data-toggle="tab" href="#buscar">Buscar</a></li>
                 </ul>
@@ -60,13 +52,25 @@
                 <div class="tab-content">
                     <div id="feed" class="tab-pane fade text-center fade in active">
                         <% for (int i = 0; i < 3; i++) {%>
-                        <div class="text-center">
+                        <section class="text-center small">
                             <br><br><br><br>
-                            <img src="imagens/movie.png" alt="imagemFilme" width="230" height="230">
+                            <img src="imagens/movie.png" alt="imagemFilme" width="300" height="230">
                             <h2>Esse filme eh bom</h2>
                             <p>Vale a pena viu</p>
-                        </div>
+                        </section>
                         <%}%>
+                    </div>
+                    <div id="amigos" class="tab-pane fade text-center">
+                        <c:if test="${sessionScope.friends == null}">
+                            <br>
+                            <h2>Você ainda não tem amigos!</h2>
+                            <p class="margin-top">Adicione agora alguns amigos.</p>
+                            <form action="#" method="post">
+                                <input class="botaoMedio margin-top" type="text" name="emailOuApelidoAmigo" placeholder="Digite email ou apelido">
+                                <input class="botaoPequeno margin-top" type="submit" value="Procurar">
+                            </form>
+                            <br><br><br><br><br><br><br><br><br><br><br>
+                        </c:if>
                     </div>
                     <div id="generos" class="tab-pane fade text-center">
                         <br>
@@ -110,19 +114,11 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="criarGrupos" class="tab-pane text-center">
+                        <div id="grupos" class="tab-pane text-center">
                             <br>
-                            <div>
-                                <h3>Crie um grupo</h3>
-                                <p>Debata com seus amigos sobre os melhores filmes.</p>
-                                <div class="form-group">
-                                    <form class="container" action="ControleCadastroGrupo" method="post">
-                                        <input class="botaoMedio margin-top" type="text" placeholder="Nome do grupo" name="nomeDoGrupo" required="on"><br>
-                                        <textarea class="botaoMedio margin-top textArea" name="descricao" placeholder="Descriçao" required="on"></textarea><br><br>
-                                        <input class="botaoPequeno" type="submit" value="Criar">
-                                    </form>
-                                </div>
-                            </div>
+                            <c:if test="${sessionScope.grupos == null}">
+                                <h3>Você ainda não faz parte de nenhum grupo!</h3>
+                            </c:if>
                         </div>
                     </c:if>
                     <div id="buscar" class="tab-pane fade text-center">
@@ -133,6 +129,7 @@
                             <input class="botaoMedio" type="text" name="busca" placeholder="Buscar">
                             <input class="botaoPequeno" type="submit" value="Search">
                         </div>
+
                     </div>
                 </div>
             </div>
