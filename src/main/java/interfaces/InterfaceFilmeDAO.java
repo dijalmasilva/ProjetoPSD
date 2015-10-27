@@ -12,6 +12,6 @@ public interface InterfaceFilmeDAO {
 	
 	public boolean update();
 	
-	public List<Filme> buscar10filmesRecentes();
+	public List<Filme> buscarCincofilmesRecentes();
 
 }

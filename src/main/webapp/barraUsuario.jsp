@@ -19,7 +19,7 @@
         </div>
         <br><br><br>
         <div id="menuabaixo">
-            <a href="#">Editar Perfil</a><br>
+            <a href="editarPerfil.jsp">Editar Perfil</a><br>
             <a href="#">Cofigurações de Segurança</a>
             <div class="flutuarSomenteAdireita">
                 <a href="#" class="textoBranco" id="voltar">

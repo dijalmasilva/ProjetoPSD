@@ -92,20 +92,24 @@ public class UsuarioDAO implements InterfaceUsuarioDAO {
 
     @Override
     public boolean atualizar(Usuario usuario) {
+        boolean result = false;
+        
         Connection conn = null;
 
         try {
             conn = Conexao.abrirConexao();
-            String sql = "UPDATE Usuario SET nome = ?, email = ?, apelido = ?, cidade = ?, estado = ?"
+            String sql = "UPDATE Usuario SET nomeCompleto = ?, apelido = ?, cidade = ?, estado = ?, foto = ? "
                     + "WHERE id = ?";
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setString(1, usuario.getNome());
-            pst.setString(2, usuario.getEmail());
-            pst.setString(3, usuario.getApelido());
-            pst.setString(4, usuario.getCidade());
-            pst.setString(5, usuario.getEstado());
+            pst.setString(2, usuario.getApelido());
+            pst.setString(3, usuario.getCidade());
+            pst.setString(4, usuario.getEstado());
+            pst.setString(5, usuario.getFoto());
             pst.setInt(6, usuario.getId());
             pst.executeUpdate();
+            
+            result = true;
         } catch (ClassNotFoundException | SQLException e) {
             System.err.println("Erro " + e.getMessage());
             e.printStackTrace();
@@ -113,7 +117,8 @@ public class UsuarioDAO implements InterfaceUsuarioDAO {
         } finally {
             Conexao.fecharConexao(conn);
         }
-        return false;
+        
+        return result;
     }
 
     @Override

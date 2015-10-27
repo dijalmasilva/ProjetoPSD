@@ -8,7 +8,11 @@ import interfaces.InterfaceFilmeDAO;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class FilmeDAO implements InterfaceFilmeDAO {
 
@@ -54,13 +58,41 @@ public class FilmeDAO implements InterfaceFilmeDAO {
     }
 
     @Override
-    public List<Filme> buscar10filmesRecentes() {
+    public List<Filme> buscarCincofilmesRecentes() {
+        List<Filme> filmes = new ArrayList<>();
         
-        String sql = "select * from filme order by dataDeCadastro limit 10";
+        String sql = "select * from filme order by dataDeCadastro limit 5";
         
+        Connection conn = null;
         
+        try {
+            conn = Conexao.abrirConexao();
+            Statement stat = conn.createStatement();
+            ResultSet rs = stat.executeQuery(sql);
+            
+            while(rs.next()){
+                Filme f = new Filme();
+                f.setId(rs.getInt("id"));
+                f.setIdUser(rs.getInt("iduser"));
+                f.setTitulo(rs.getString("titulo"));
+                f.setAno(rs.getInt("ano"));
+                f.setSinopse(rs.getString("sinopse"));
+                f.setFoto(rs.getString("foto"));
+                f.setGeneros(rs.getString("generos"));
+                f.setAtoresPrincipais(rs.getString("atoresprincipais"));
+                f.setDiretores(rs.getString("diretores"));
+                f.setDataDeCadastro(rs.getDate("dataDeCadastro").toLocalDate());
+                
+                filmes.add(f);
+            }
+            
+        } catch (ClassNotFoundException | SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            Conexao.fecharConexao(conn);
+        }
         
-        return null;
+        return filmes;
     }
 
 }

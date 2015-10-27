@@ -1,3 +1,6 @@
+<%@page import="java.util.List"%>
+<%@page import="gerenciador.GerenciadorFilme"%>
+<%@page import="entidades.Filme"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -39,14 +42,18 @@
 
                 <div class="tab-content">
                     <div id="feed" class="tab-pane fade text-center fade in active">
-                        <% for (int i = 0; i < 3; i++) {%>
-                        <section class="text-center small">
-                            <br><br><br><br>
-                            <img src="imagens/movie.png" alt="imagemFilme" width="300" height="230">
-                            <h2>Esse filme eh bom</h2>
-                            <p>Vale a pena viu</p>
-                        </section>
-                        <%}%>
+                        <% 
+                            List<Filme> cincoFilmesRecentes = new GerenciadorFilme().buscarCincoFilmesRecentes();
+                        %>
+                        <c:forEach items="<%=cincoFilmesRecentes%>" var="f">
+                            <section class="text-center margin-top table-responsive modal-header modal-dialog">
+                                <br>
+                                <h2><a href="#">${f.titulo}</a></h2>
+                                <img src="${f.foto}" alt="${f.titulo}" width="300" height="230" title="${f.titulo}">
+                                <h5>${f.sinopse}</h5>
+                                <button class="botaoPequeno margin-top">Ver Filme</button>  
+                            </section>
+                        </c:forEach>
                     </div>
                     <div id="amigos" class="tab-pane fade text-center">
                         <c:if test="${sessionScope.friends == null}">
@@ -57,7 +64,7 @@
                                 <input class="botaoMedio margin-top" type="text" name="emailOuApelido" placeholder="Digite email ou apelido">
                                 <input class="botaoPequeno margin-top" type="submit" value="Procurar">
                             </form>
-                            
+
                         </c:if>
                     </div>
                     <div id="generos" class="tab-pane fade text-center">
