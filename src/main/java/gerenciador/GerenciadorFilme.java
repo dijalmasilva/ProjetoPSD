@@ -15,8 +15,20 @@ public class GerenciadorFilme {
     }
 
     public List<Filme> buscarCincoFilmesRecentes() {
-        return DAOFactory.createFactory().criaFilmeDAO().buscarCincofilmesRecentes();
+        return DAOFactory.createFactory().criaFilmeDAO().buscarCincoFilmesRecentes();
 
+    }
+
+    public List<Filme> buscarFilmesPorGeneros(String genero) {
+        return DAOFactory.createFactory().criaFilmeDAO().buscarFilmesPorGeneros(genero);
+    }
+
+    public List<Filme> buscarFilmesPorAtoresPrincipais(String atoresPrincipal) {
+        return DAOFactory.createFactory().criaFilmeDAO().buscarFilmesPorAtoresPrincipais(atoresPrincipal);
+    }
+
+    public List<Filme> buscarFilmesPorDiretores(String diretor) {
+        return DAOFactory.createFactory().criaFilmeDAO().buscarFilmesPorDiretores(diretor);
     }
 
     public void alterar(Filme f) {

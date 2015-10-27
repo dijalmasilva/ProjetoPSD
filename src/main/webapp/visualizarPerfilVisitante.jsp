@@ -66,7 +66,6 @@
                             <p>Torne-o um administrador agora.</p>
                             <br>
                             <form method="post" action="ControleAtualizarParaAdministrador">
-                                <input> 
                                 <button type="submit" class="botaoPequeno">Torná-lo(a) administrador(a)</button>
                             </form>
                         </c:if>

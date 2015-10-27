@@ -12,6 +12,11 @@ public interface InterfaceFilmeDAO {
 	
 	public boolean update();
 	
-	public List<Filme> buscarCincofilmesRecentes();
+	public List<Filme> buscarCincoFilmesRecentes();
 
+        public List<Filme> buscarFilmesPorGeneros(String genero);
+        
+        public List<Filme> buscarFilmesPorAtoresPrincipais(String atoresPrincipal);
+        
+        public List<Filme> buscarFilmesPorDiretores(String diretor);
 }

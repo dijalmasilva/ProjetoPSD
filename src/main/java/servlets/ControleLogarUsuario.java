@@ -5,12 +5,9 @@
  */
 package servlets;
 
-import entidades.Filme;
 import entidades.Usuario;
-import gerenciador.GerenciadorFilme;
 import gerenciador.GerenciadorUsuario;
 import java.io.IOException;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

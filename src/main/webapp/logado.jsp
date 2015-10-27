@@ -25,6 +25,7 @@
     </head>
     <body  id="fundo" class="textoPreto white-background">
         <%@include file="barraUsuario.jsp"%>
+        <%@include file="grupos.jsp" %>
         <div class="margin-top-body">
             <div class="container nav-justified">
                 <a href="logado.jsp"><h1 class="text-center textoPreto">Social Movies</h1></a>
@@ -42,7 +43,7 @@
 
                 <div class="tab-content">
                     <div id="feed" class="tab-pane fade text-center fade in active">
-                        <% 
+                        <%
                             List<Filme> cincoFilmesRecentes = new GerenciadorFilme().buscarCincoFilmesRecentes();
                         %>
                         <c:forEach items="<%=cincoFilmesRecentes%>" var="f">
@@ -72,21 +73,23 @@
                         <h3>Categorias</h3>
                         <p>Selecione a categoria do filme.</p>
                         <br><br>
-                        <div class="generosTexto pretoOpaco">
-                            <ul class="menuNavegacao">
-                                <li><a href="#action">Ação</a></li>
-                                <li><a href="#action">Aventura</a></li>
-                                <li><a href="#action">Animação</a></li>
-                                <li><a href="#action">Comédia</a></li>
-                                <li><a href="#action">Clássico</a></li>
-                                <li><a href="#action">Documentário</a></li>
-                                <li><a href="#action">Drama</a></li>
-                                <li><a href="#action">Ficção Científica</a></li>
-                                <li><a href="#action">Musical</a></li>
-                                <li><a href="#action">Romance</a></li>
-                                <li><a href="#action">Terror</a></li>
-                                <li><a href="#action">Suspense</a></li>
-                            </ul>
+                        <div class="generosTexto brancoOpaco">
+                            <form action="ControleFilmesPorCategoria" method="post">
+                                <ul class="menuNavegacao">
+                                    <li><a><button type="submit" name="genero" class="botaoDeUsuario" value="Ação">Ação</button></a></li>
+                                    <li><a><button type="submit" name="genero" class="botaoDeUsuario" value="Aventura">Aventura</button></a></li>
+                                    <li><a><button type="submit" name="genero" class="botaoDeUsuario" value="Animação">Animação</button></a></li>
+                                    <li><a><button type="submit" name="genero" class="botaoDeUsuario" value="Comédia">Comédia</button></a></li>
+                                    <li><a><button type="submit" name="genero" class="botaoDeUsuario" value="Clássico">Clássico</button></a></li>
+                                    <li><a><button type="submit" name="genero" class="botaoDeUsuario" value="Documentário">Documentário</button></a></li>
+                                    <li><a><button type="submit" name="genero" class="botaoDeUsuario" value="Drama">Drama</button></a></li>
+                                    <li><a><button type="submit" name="genero" class="botaoDeUsuario" value="Ficção Científica">Ficção Científica</button></a></li>
+                                    <li><a><button type="submit" name="genero" class="botaoDeUsuario" value="Musical">Musical</button></a></li>
+                                    <li><a><button type="submit" name="genero" class="botaoDeUsuario" value="Romance">Romance</button></a></li>
+                                    <li><a><button type="submit" name="genero" class="botaoDeUsuario" value="Terror">Terror</button></a></li>
+                                    <li><a><button type="submit" name="genero" class="botaoDeUsuario" value="Suspense">Suspense</button></a></li>
+                                </ul>
+                            </form>
                         </div>
                     </div>
                     <c:if test="${sessionScope.user.tipo == true}">
@@ -114,6 +117,13 @@
                             <c:if test="${sessionScope.grupos == null}">
                                 <h3>Você ainda não faz parte de nenhum grupo!</h3>
                             </c:if>
+                            <c:if test="${sessionScope.grupos != null}">
+                                <h3>Seus grupos!</h3>
+                            </c:if>
+                            <br>
+                            <div class="flutuarADireita modal-dialog text-center">
+                                <a href="#" id="newGroup">Criar novo grupo</a>
+                            </div>
                         </div>
                     </c:if>
                     <div id="buscar" class="tab-pane fade text-center">

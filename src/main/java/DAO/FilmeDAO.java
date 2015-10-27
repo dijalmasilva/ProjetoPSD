@@ -11,7 +11,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class FilmeDAO implements InterfaceFilmeDAO {
@@ -58,10 +57,48 @@ public class FilmeDAO implements InterfaceFilmeDAO {
     }
 
     @Override
-    public List<Filme> buscarCincofilmesRecentes() {
+    public List<Filme> buscarCincoFilmesRecentes() {
         List<Filme> filmes = new ArrayList<>();
         
-        String sql = "select * from filme order by dataDeCadastro limit 5";
+        String sql = "select * from filme order by dataDeCadastro desc limit 10";
+        
+        Connection conn = null;
+        
+        try {
+            conn = Conexao.abrirConexao();
+            Statement stat = conn.createStatement();
+            ResultSet rs = stat.executeQuery(sql);
+            
+            while(rs.next()){
+                Filme f = new Filme();
+                f.setId(rs.getInt("id"));
+                f.setIdUser(rs.getInt("iduser"));
+                f.setTitulo(rs.getString("titulo"));
+                f.setAno(rs.getInt("ano"));
+                f.setSinopse(rs.getString("sinopse"));
+                f.setFoto(rs.getString("foto"));
+                f.setGeneros(rs.getString("generos"));
+                f.setAtoresPrincipais(rs.getString("atoresprincipais"));
+                f.setDiretores(rs.getString("diretores"));
+                f.setDataDeCadastro(rs.getDate("dataDeCadastro").toLocalDate());
+                
+                filmes.add(f);
+            }
+            
+        } catch (ClassNotFoundException | SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            Conexao.fecharConexao(conn);
+        }
+        
+        return filmes;
+    }
+    
+    @Override
+    public List<Filme> buscarFilmesPorGeneros(String genero) {
+        List<Filme> filmes = new ArrayList<>();
+        
+        String sql = "select * from filme where generos ilike '%"+genero+"%' order by ano desc";
         
         Connection conn = null;
         
@@ -95,4 +132,82 @@ public class FilmeDAO implements InterfaceFilmeDAO {
         return filmes;
     }
 
+    
+    @Override
+    public List<Filme> buscarFilmesPorAtoresPrincipais(String atorPrincipal) {
+        List<Filme> filmes = new ArrayList<>();
+        
+        String sql = "select * from filme where atoresPrincipais ilike '%"+atorPrincipal+"%' order by ano desc";
+        
+        Connection conn = null;
+        
+        try {
+            conn = Conexao.abrirConexao();
+            Statement stat = conn.createStatement();
+            ResultSet rs = stat.executeQuery(sql);
+            
+            while(rs.next()){
+                Filme f = new Filme();
+                f.setId(rs.getInt("id"));
+                f.setIdUser(rs.getInt("iduser"));
+                f.setTitulo(rs.getString("titulo"));
+                f.setAno(rs.getInt("ano"));
+                f.setSinopse(rs.getString("sinopse"));
+                f.setFoto(rs.getString("foto"));
+                f.setGeneros(rs.getString("generos"));
+                f.setAtoresPrincipais(rs.getString("atoresprincipais"));
+                f.setDiretores(rs.getString("diretores"));
+                f.setDataDeCadastro(rs.getDate("dataDeCadastro").toLocalDate());
+                
+                filmes.add(f);
+            }
+            
+        } catch (ClassNotFoundException | SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            Conexao.fecharConexao(conn);
+        }
+        
+        return filmes;
+    }
+    
+    
+    @Override
+    public List<Filme> buscarFilmesPorDiretores(String diretor) {
+        List<Filme> filmes = new ArrayList<>();
+        
+        String sql = "select * from filme where diretores ilike '%"+diretor+"%' order by ano desc";
+        
+        Connection conn = null;
+        
+        try {
+            conn = Conexao.abrirConexao();
+            Statement stat = conn.createStatement();
+            ResultSet rs = stat.executeQuery(sql);
+            
+            while(rs.next()){
+                Filme f = new Filme();
+                f.setId(rs.getInt("id"));
+                f.setIdUser(rs.getInt("iduser"));
+                f.setTitulo(rs.getString("titulo"));
+                f.setAno(rs.getInt("ano"));
+                f.setSinopse(rs.getString("sinopse"));
+                f.setFoto(rs.getString("foto"));
+                f.setGeneros(rs.getString("generos"));
+                f.setAtoresPrincipais(rs.getString("atoresprincipais"));
+                f.setDiretores(rs.getString("diretores"));
+                f.setDataDeCadastro(rs.getDate("dataDeCadastro").toLocalDate());
+                
+                filmes.add(f);
+            }
+            
+        } catch (ClassNotFoundException | SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            Conexao.fecharConexao(conn);
+        }
+        
+        return filmes;
+    }
+    
 }

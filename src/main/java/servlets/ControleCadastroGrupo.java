@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package servlets;
 
 import entidades.Grupo;
@@ -35,11 +30,8 @@ public class ControleCadastroGrupo extends HttpServlet{
         
         boolean cadastrou = new GerenciadorGrupo().adicionar(new Grupo(IdUsuario, nomeDoGrupo, descricao));
         
-        if (!cadastrou){
-            req.getRequestDispatcher("grupoCadastroErro.jsp").forward(req, resp);
-        }else{
-            req.getRequestDispatcher("grupoCadastro.jsp").forward(req, resp);
-        }
+        req.getRequestDispatcher("grupoCadastro.jsp").forward(req, resp);
+        
     }
     
     

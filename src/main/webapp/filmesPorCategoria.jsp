@@ -1,6 +1,6 @@
+<%@page import="java.util.List"%>
 <%@page import="gerenciador.GerenciadorFilme"%>
 <%@page import="entidades.Filme"%>
-<%@page import="java.util.List"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -31,8 +31,8 @@
                 <a href="logado.jsp"><h1 class="text-center textoPreto">Social Movies</h1></a>
                 <br>    
                 <ul class="nav nav-tabs navbar-static-top" id="menuNav">
-                    <li><a data-toggle="tab" href="#feed" id="home">Feed</a></li>
-                    <li class="active"><a data-toggle="tab" href="#amigos">Amigos</a></li>
+                    <li class="active"><a data-toggle="tab" href="#filmes" id="home">Filmes Encontrados</a></li>
+                    <li><a data-toggle="tab" href="#amigos">Amigos</a></li>
                     <li><a data-toggle="tab" href="#generos">Gêneros</a></li>
                         <c:if test="${sessionScope.user.tipo == true}">
                         <li><a data-toggle="tab" href="#cadastroFilmes">Cadastrar Filmes</a></li>
@@ -42,11 +42,15 @@
                 </ul>
 
                 <div class="tab-content">
-                    <div id="feed" class="tab-pane fade text-center">
+                    <div id="filmes" class="tab-pane fade text-center fade in active">
                         <%
-                            List<Filme> cincoFilmesRecentes = new GerenciadorFilme().buscarCincoFilmesRecentes();
-                        %>
-                        <c:forEach items="<%=cincoFilmesRecentes%>" var="f">
+                            String genero = (String) request.getAttribute("generoEscolhido");
+                            List<Filme> filmes = new GerenciadorFilme().buscarFilmesPorGeneros(genero);
+                            if (filmes.isEmpty()) {%>
+                        <br>
+                        <h3>Não há nenhum filme para esta categoria</h3>
+                        <%}%>
+                        <c:forEach items="<%=filmes%>" var="f">
                             <section class="text-center margin-top table-responsive modal-header modal-dialog">
                                 <br>
                                 <h2><a href="#">${f.titulo}</a></h2>
@@ -56,32 +60,16 @@
                             </section>
                         </c:forEach>
                     </div>
-                    <div id="amigos" class="tab-pane fade text-center fade in active">
-                        <c:if test="${requestScope.usuariosAchados == null}">
+                    <div id="amigos" class="tab-pane fade text-center">
+                        <c:if test="${sessionScope.friends == null}">
                             <br>
-                            <h2>Não existe usuários com esse email ou apelido!</h2>
-                            <p class="margin-top">Faça outra busca.</p>
+                            <h2>Você ainda não tem amigos!</h2>
+                            <p class="margin-top">Adicione agora alguns amigos.</p>
                             <form action="ControleAcharUsuarios" method="post">
                                 <input class="botaoMedio margin-top" type="text" name="emailOuApelido" placeholder="Digite email ou apelido">
                                 <input class="botaoPequeno margin-top" type="submit" value="Procurar">
                             </form>
-                        </c:if>
-                        <c:if test="${requestScope.usuariosAchados != null}">
-                            <br>
-                            <h3>Usuário(s) encontrado(s)!</h3>
-                            <div class="modal-dialog">
-                                <c:forEach items="${requestScope.usuariosAchados}" var="userFind">
-                                    <br>
-                                    <div class="list-inline modal-header table-responsive">
-                                        <form action="ControlePerfilVisitante" method="post">
-                                            <button type="submit" class="botaoDeUsuario" name="idDoUsuario" value="${userFind.id}">
-                                                <img src="${userFind.foto}" alt="${userFind.apelido}" title="${userFind.apelido}" class="img-perfil">
-                                                <a class="text-capitalize active">${userFind.apelido}</a>
-                                            </button>
-                                        </form>
-                                    </div>
-                                </c:forEach>
-                            </div>
+
                         </c:if>
                     </div>
                     <div id="generos" class="tab-pane fade text-center">
