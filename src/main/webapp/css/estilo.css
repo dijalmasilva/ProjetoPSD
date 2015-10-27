@@ -260,6 +260,11 @@ input[type="date"]{
     float: left;
 }
 
+.botaoDeUsuario{
+    background: none !important;
+    border: none !important;
+}
+
 @media(max-width: 575px){
     .botaoPequeno{
         margin-top: 20px;

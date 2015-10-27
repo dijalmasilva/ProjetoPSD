@@ -35,12 +35,12 @@
                 <div class="tab-content">
                     <div id="perfil" class="tab-pane fade text-center fade in active">
                         <br>
-                        <h3>Perfil de ${sessionScope.userVisitante.apelido}</h3>
+                        <h3>Perfil de ${requestScope.userVisitante.apelido}</h3>
                         <div class="form-group">
                             <div class="modal-dialog">
-                                <img src="${sessionScope.userVisitante.foto}" alt="${sessionScope.userVisitante.apelido}" title="${sessionScope.userVisitante.apelido}"><br>
-                                <h4>Cidade: ${sessionScope.userVisitante.cidade}</h4>
-                                <h4>Estado: ${sessionScope.userVisitante.estado}</h4>
+                                <img src="${requestScope.userVisitante.foto}" alt="${requestScope.userVisitante.apelido}" title="${requestScope.userVisitante.apelido}"><br>
+                                <h4>Cidade: ${requestScope.userVisitante.cidade}</h4>
+                                <h4>Estado: ${requestScope.userVisitante.estado}</h4>
                             </div>
                         </div>
                     </div>
@@ -51,10 +51,10 @@
                         <button class="botaoPequeno">Solicitar Amizade</button>
                     </div>
                     <div id="amizade" class="tab-pane fade text-center">
-                        <c:if test="${sessionScope.userVisitante.tipo == true}">
-                            <h3>${sessionScope.userVisitante.apelido} já é administrador!</h3>
+                        <c:if test="${requestScope.userVisitante.tipo == true}">
+                            <h3>${requestScope.userVisitante.apelido} já é administrador!</h3>
                         </c:if>
-                        <c:if test="${sessionScope.userVisitante.tipo == false}">
+                        <c:if test="${requestScope.userVisitante.tipo == false}">
                             <h3>${sessionScope.userVisitante.apelido} não é administrador!</h3>
                             <p>Torne-o um administrador agora.</p>
                             <br><br>

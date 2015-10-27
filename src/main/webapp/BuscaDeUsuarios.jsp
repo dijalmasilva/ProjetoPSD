@@ -42,7 +42,7 @@
 
                 <div class="tab-content">
                     <div id="feed" class="tab-pane fade text-center">
-                        <% 
+                        <%
                             List<Filme> cincoFilmesRecentes = new GerenciadorFilme().buscarCincoFilmesRecentes();
                         %>
                         <c:forEach items="<%=cincoFilmesRecentes%>" var="f">
@@ -72,8 +72,13 @@
                                 <c:forEach items="${requestScope.usuariosAchados}" var="userFind">
                                     <br>
                                     <div class="list-inline modal-header">
-                                        <img src="${userFind.foto}" alt="${userFind.apelido}" title="${userFind.apelido}" class="img-perfil">
-                                        <a href="#" class="text-capitalize active">${userFind.apelido}</a>
+                                        <form action="ControlePerfilVisitante" method="post">
+                                            <button type="submit" class="botaoDeUsuario">
+                                                <input type="text" name="idDoUsuario" class="visible-xs" value="${userFind.id}">
+                                                <img src="${userFind.foto}" alt="${userFind.apelido}" title="${userFind.apelido}" class="img-perfil">
+                                                <a href="#" class="text-capitalize active">${userFind.apelido}</a>
+                                            </button>
+                                        </form>
                                     </div>
                                 </c:forEach>
                             </div>
