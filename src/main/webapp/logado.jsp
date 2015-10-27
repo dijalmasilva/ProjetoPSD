@@ -121,9 +121,16 @@
                                 <h3>Seus grupos!</h3>
                             </c:if>
                             <br>
-                            <div class="flutuarADireita modal-dialog text-center">
+                            <div class="modal-dialog text-center">
                                 <a href="#" id="newGroup">Criar novo grupo</a>
                             </div>
+                            <c:forEach items="${sessionScope.grupos}" var="g">
+                                <section class="text-center margin-top table-responsive modal-header modal-dialog">
+                                    <br>
+                                    <h2><a href="#">${g.nomeDoGrupo}</a></h2>
+                                    <button class="botaoPequeno margin-top">Ver Grupo</button>  
+                                </section>
+                            </c:forEach>
                         </div>
                     </c:if>
                     <div id="buscar" class="tab-pane fade text-center">

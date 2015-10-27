@@ -1,7 +1,6 @@
 package interfaces;
 
 import entidades.Grupo;
-import java.util.List;
 
 public interface InterfaceGrupoDAO {
 
@@ -11,6 +10,8 @@ public interface InterfaceGrupoDAO {
 
 	public boolean atualizar(Grupo grupo);
 
-	public List<Grupo> consultar();
+	public Grupo consultarPorId(int idGrupo);
+        
+        public int retornaMaximo();
 
 }

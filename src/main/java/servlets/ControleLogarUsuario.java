@@ -6,6 +6,7 @@
 package servlets;
 
 import entidades.Usuario;
+import gerenciador.GerenciadorGrupo;
 import gerenciador.GerenciadorUsuario;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -35,8 +36,11 @@ public class ControleLogarUsuario extends HttpServlet {
         Usuario u = new GerenciadorUsuario().login(email, senha);
         if (u == null) {
             req.getRequestDispatcher("loginInvalido.jsp").forward(req, resp);
-        }else{
+        } else {
             req.getSession().setAttribute("user", u);
+            if (!new GerenciadorGrupo().retornaGruposDoUsuario(u.getId()).isEmpty()) {
+                req.getSession().setAttribute("grupos", new GerenciadorGrupo().retornaGruposDoUsuario(u.getId()));
+            }
             req.getRequestDispatcher("logado.jsp").forward(req, resp);
         }
     }

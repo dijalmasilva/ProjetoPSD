@@ -3,6 +3,7 @@ package gerenciador;
 import java.util.List;
 import entidades.Grupo;
 import factory.DAOFactory;
+import java.util.ArrayList;
 
 public class GerenciadorGrupo {
 
@@ -14,12 +15,29 @@ public class GerenciadorGrupo {
         return DAOFactory.createFactory().criaGrupoDAO().remover(s);
     }
 
-    public List<Grupo> pesquisar() {
-        return DAOFactory.createFactory().criaGrupoDAO().consultar();
+    public List<Grupo> retornaGruposDoUsuario(int idUser) {
+        List<Grupo> grupos = new ArrayList<>();
+        
+        for (Integer id : DAOFactory.createFactory().criaParticipaGrupoDAO().retornaGrupos(idUser)) {
+            grupos.add(DAOFactory.createFactory().criaGrupoDAO().consultarPorId(id));
+        }
+        
+        return grupos;
     }
 
     public void alterar(Grupo grupo) {
         DAOFactory.createFactory().criaGrupoDAO().atualizar(grupo);
     }
 
+    public boolean adicionaRelacao(int idUser, int idGrupo){
+        return DAOFactory.createFactory().criaParticipaGrupoDAO().adicionaRelacao(idUser, idGrupo);
+    }
+    
+    public boolean adicionaRelacaoAdmin(int idUser, int idGrupo){
+        return DAOFactory.createFactory().criaParticipaGrupoDAO().adicionaRelacaoAdmin(idUser, idGrupo);
+    }
+    
+    public int retornaMaximo(){
+        return DAOFactory.createFactory().criaGrupoDAO().retornaMaximo();
+    }
 }

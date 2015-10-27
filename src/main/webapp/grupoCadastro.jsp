@@ -31,26 +31,22 @@
                 <a href="logado.jsp"><h1 class="text-center textoPreto">Social Movies</h1></a>
                 <br>    
                 <ul class="nav nav-tabs navbar-static-top" id="menuNav">
-                    <li class="active"><a data-toggle="tab" href="#filmes" id="home">Filmes Encontrados</a></li>
+                    <li><a data-toggle="tab" href="#feed" id="home">Feed</a></li>
                     <li><a data-toggle="tab" href="#amigos">Amigos</a></li>
                     <li><a data-toggle="tab" href="#generos">Gêneros</a></li>
                         <c:if test="${sessionScope.user.tipo == true}">
                         <li><a data-toggle="tab" href="#cadastroFilmes">Cadastrar Filmes</a></li>
-                        <li><a data-toggle="tab" href="#grupos">Grupos</a></li>
+                        <li class="active"><a data-toggle="tab" href="#grupos">Grupos</a></li>
                         </c:if>
                     <li class="flutuarADireita"><a data-toggle="tab" href="#buscar">Buscar</a></li>
                 </ul>
 
                 <div class="tab-content">
-                    <div id="filmes" class="tab-pane fade text-center fade in active">
+                    <div id="feed" class="tab-pane fade text-center">
                         <%
-                            String genero = (String) request.getAttribute("generoEscolhido");
-                            List<Filme> filmes = new GerenciadorFilme().buscarFilmesPorGeneros(genero);
-                            if (filmes.isEmpty()) {%>
-                        <br>
-                        <h3>Não há nenhum filme para esta categoria</h3>
-                        <%}%>
-                        <c:forEach items="<%=filmes%>" var="f">
+                            List<Filme> cincoFilmesRecentes = new GerenciadorFilme().buscarCincoFilmesRecentes();
+                        %>
+                        <c:forEach items="<%=cincoFilmesRecentes%>" var="f">
                             <section class="text-center margin-top table-responsive modal-header modal-dialog">
                                 <br>
                                 <h2><a href="#">${f.titulo}</a></h2>
@@ -116,7 +112,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="grupos" class="tab-pane text-center">
+                        <div id="grupos" class="tab-pane text-center fade in active">
                             <br>
                             <c:if test="${sessionScope.grupos == null}">
                                 <h3>Você ainda não faz parte de nenhum grupo!</h3>
@@ -125,13 +121,13 @@
                                 <h3>Seus grupos!</h3>
                             </c:if>
                             <br>
-                            <div class="flutuarADireita modal-dialog text-center">
+                            <div class="modal-dialog text-center">
                                 <a href="#" id="newGroup">Criar novo grupo</a>
                             </div>
                             <c:forEach items="${sessionScope.grupos}" var="g">
                                 <section class="text-center margin-top table-responsive modal-header modal-dialog">
                                     <br>
-                                    <h2><a href="#">${g.titulo}</a></h2>
+                                    <h2><a href="#">${g.nomeDoGrupo}</a></h2>
                                     <button class="botaoPequeno margin-top">Ver Grupo</button>  
                                 </section>
                             </c:forEach>
