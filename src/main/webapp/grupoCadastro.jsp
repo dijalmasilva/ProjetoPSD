@@ -112,7 +112,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="grupos" class="tab-pane text-center fade in active">
+                        <div id="grupos" class="tab-pane text-center">
                             <br>
                             <c:if test="${sessionScope.grupos == null}">
                                 <h3>Você ainda não faz parte de nenhum grupo!</h3>

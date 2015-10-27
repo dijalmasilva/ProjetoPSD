@@ -73,13 +73,10 @@
                                 <c:forEach items="${requestScope.usuariosAchados}" var="userFind">
                                     <br>
                                     <div class="list-inline modal-header table-responsive">
-                                        <form action="ControlePerfilVisitante" method="post">
-                                            <button type="submit" class="botaoDeUsuario" name="idDoUsuario" value="${userFind.id}">
-                                                <img src="${userFind.foto}" alt="${userFind.apelido}" title="${userFind.apelido}" class="img-perfil">
-                                                <a class="text-capitalize active">${userFind.apelido}</a>
-                                            </button>
-                                        </form>
+                                        <img src="${userFind.foto}" alt="${userFind.apelido}" title="${userFind.apelido}" class="img-perfil">
+                                        <a href="ControlePerfilVisitante?idDoUsuario=${userFind.id}" class="text-capitalize active">${userFind.apelido}</a>
                                     </div>
+                                    <br>
                                 </c:forEach>
                             </div>
                         </c:if>
@@ -137,13 +134,13 @@
                                 <h3>Seus grupos!</h3>
                             </c:if>
                             <br>
-                            <div class="flutuarADireita modal-dialog text-center">
+                            <div class="modal-dialog text-center">
                                 <a href="#" id="newGroup">Criar novo grupo</a>
                             </div>
                             <c:forEach items="${sessionScope.grupos}" var="g">
                                 <section class="text-center margin-top table-responsive modal-header modal-dialog">
                                     <br>
-                                    <h2><a href="#">${g.titulo}</a></h2>
+                                    <h2><a href="#">${g.nomeDoGrupo}</a></h2>
                                     <button class="botaoPequeno margin-top">Ver Grupo</button>  
                                 </section>
                             </c:forEach>

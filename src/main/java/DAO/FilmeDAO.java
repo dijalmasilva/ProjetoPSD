@@ -17,7 +17,8 @@ public class FilmeDAO implements InterfaceFilmeDAO {
 
     @Override
     public boolean add(Filme f) {
-
+        boolean result = false;
+        
         Connection con = null;
         PreparedStatement stmt;
         String sql = "insert into filme (idUser, titulo, ano, sinopse, foto, generos, atoresprincipais, diretores, dataDeCadastro) values"
@@ -35,13 +36,15 @@ public class FilmeDAO implements InterfaceFilmeDAO {
             stmt.setString(8, f.getDiretores());
             stmt.setDate(9, Date.valueOf(f.getDataDeCadastro()));
             stmt.executeUpdate();
+            
+            result = true;
         } catch (SQLException | ClassNotFoundException ex) {
             ex.printStackTrace();
         } finally {
             Conexao.fecharConexao(con);
         }
 
-        return false;
+        return result;
     }
 
     @Override
