@@ -34,5 +34,9 @@ public class GerenciadorUsuario {
     public Usuario login(String email, String senha) {
         return DAOFactory.createFactory().criaUsuarioDAO().login(email, senha);
     }
+    
+    public boolean atualizarParaAdministrador(int id){
+        return DAOFactory.createFactory().criaUsuarioDAO().atualizarParaAdministrador(id);
+    }
 
 }

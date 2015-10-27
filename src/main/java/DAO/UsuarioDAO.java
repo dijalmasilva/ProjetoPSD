@@ -122,12 +122,37 @@ public class UsuarioDAO implements InterfaceUsuarioDAO {
     }
 
     @Override
+    public boolean atualizarParaAdministrador(int id) {
+        boolean result = false;
+        
+        Connection conn = null;
+
+        try {
+            conn = Conexao.abrirConexao();
+            String sql = "UPDATE Usuario SET tipo = true WHERE id = ?";
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setInt(1, id);
+            pst.executeUpdate();
+            
+            result = true;
+        } catch (ClassNotFoundException | SQLException e) {
+            System.err.println("Erro " + e.getMessage());
+            e.printStackTrace();
+
+        } finally {
+            Conexao.fecharConexao(conn);
+        }
+        
+        return result;
+    }
+    
+    @Override
     public Usuario consultarPorId(int id) {
         Connection conn = null;
         PreparedStatement stm;
         Usuario u = null;
         try {
-            String sql = "SELECT * FROM Usuario where id ilike "+id+"";
+            String sql = "SELECT * FROM Usuario where id = "+id+"";
             conn = Conexao.abrirConexao();
             stm = conn.prepareStatement(sql);
             ResultSet result = stm.executeQuery();

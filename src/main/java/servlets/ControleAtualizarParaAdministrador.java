@@ -8,26 +8,27 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author dijalma
  */
-@WebServlet(name = "ControlePerfilVisitante", urlPatterns = {"/ControlePerfilVisitante"})
-public class ControlePerfilVisitante extends HttpServlet{
+@WebServlet(name = "ControleAtualizarParaAdministrador", urlPatterns = {"/ControleAtualizarParaAdministrador"})
+public class ControleAtualizarParaAdministrador extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    
+        doPost(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
-        int id = Integer.parseInt(req.getParameter("idDoUsuario"));
-        Usuario visitante = new GerenciadorUsuario().consultarPorId(id);
+        Usuario visitante = (Usuario) req.getSession().getAttribute("userVisitante");
+        visitante.setTipo(true);
+        new GerenciadorUsuario().atualizarParaAdministrador(visitante.getId());
         req.getSession().setAttribute("userVisitante", visitante);
         req.getRequestDispatcher("visualizarPerfilVisitante.jsp").forward(req, resp);
     }
-    
 }

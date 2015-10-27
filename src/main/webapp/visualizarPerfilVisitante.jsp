@@ -29,36 +29,46 @@
                 <ul class="nav nav-tabs navbar-static-top" id="menuNav">
                     <li class="active"><a data-toggle="tab" href="#perfil">Perfil</a></li>
                     <li><a data-toggle="tab" href="#amizade">Amizade</a></li>
+                    <c:if test="${sessionScope.user.tipo == true}">
                     <li><a data-toggle="tab" href="#administrador">Administrador</a></li>
+                    </c:if>
                     <li class="flutuarADireita"><a data-toggle="tab" href="#buscar">Buscar</a></li>
                 </ul>
                 <div class="tab-content">
                     <div id="perfil" class="tab-pane fade text-center fade in active">
                         <br>
-                        <h3>Perfil de ${requestScope.userVisitante.apelido}</h3>
+                        <h3>Perfil de ${sessionScope.userVisitante.apelido}</h3>
                         <div class="form-group">
                             <div class="modal-dialog">
-                                <img src="${requestScope.userVisitante.foto}" alt="${requestScope.userVisitante.apelido}" title="${requestScope.userVisitante.apelido}"><br>
-                                <h4>Cidade: ${requestScope.userVisitante.cidade}</h4>
-                                <h4>Estado: ${requestScope.userVisitante.estado}</h4>
+                                <img src="${sessionScope.userVisitante.foto}" alt="${sessionScope.userVisitante.apelido}" title="${sessionScope.userVisitante.apelido}"><br>
+                                <br>
+                                <h4>Cidade: ${sessionScope.userVisitante.cidade}</h4><br>
+                                <h4>Estado: ${sessionScope.userVisitante.estado}</h4><br>
                             </div>
                         </div>
                     </div>
                     <div id="amizade" class="tab-pane fade text-center">
-                        <h3>Vocês ainda não são amigos!</h3>
+                        <br><br>
+                        <h3>Vocês ainda não são amigos!</h3><br>
                         <p>Envia uma solicatação de amizade.</p>
                         <br><br>
                         <button class="botaoPequeno">Solicitar Amizade</button>
                     </div>
-                    <div id="amizade" class="tab-pane fade text-center">
-                        <c:if test="${requestScope.userVisitante.tipo == true}">
-                            <h3>${requestScope.userVisitante.apelido} já é administrador!</h3>
-                        </c:if>
-                        <c:if test="${requestScope.userVisitante.tipo == false}">
-                            <h3>${sessionScope.userVisitante.apelido} não é administrador!</h3>
-                            <p>Torne-o um administrador agora.</p>
+                    <div id="administrador" class="tab-pane fade text-center">
+                        <c:if test="${sessionScope.userVisitante.tipo == true}">
                             <br><br>
-                            <button class="botaoPequeno">Torná-lo administrador</button>
+                            <h3>${sessionScope.userVisitante.apelido} já é administrador(a)!</h3>
+                        </c:if>
+                        <c:if test="${sessionScope.userVisitante.tipo == false}">
+                            <br><br>
+                            <h3>${sessionScope.userVisitante.apelido} não é administrador(a)!</h3>
+                            <br>
+                            <p>Torne-o um administrador agora.</p>
+                            <br>
+                            <form method="post" action="ControleAtualizarParaAdministrador">
+                                <input> 
+                                <button type="submit" class="botaoPequeno">Torná-lo(a) administrador(a)</button>
+                            </form>
                         </c:if>
                     </div>
                     <div id="buscar" class="tab-pane fade text-center">

@@ -76,7 +76,7 @@
                                             <button type="submit" class="botaoDeUsuario">
                                                 <input type="text" name="idDoUsuario" class="visible-xs" value="${userFind.id}">
                                                 <img src="${userFind.foto}" alt="${userFind.apelido}" title="${userFind.apelido}" class="img-perfil">
-                                                <a href="#" class="text-capitalize active">${userFind.apelido}</a>
+                                                <a class="text-capitalize active">${userFind.apelido}</a>
                                             </button>
                                         </form>
                                     </div>

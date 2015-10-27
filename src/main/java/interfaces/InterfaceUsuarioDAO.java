@@ -19,5 +19,7 @@ public interface InterfaceUsuarioDAO {
         public Usuario consultarPorEmail(String email, int idUsuario);
         
         public Usuario login(String email, String senha);
+        
+        public boolean atualizarParaAdministrador(int id);
 
 }
