@@ -5,10 +5,13 @@
  */
 package servlets;
 
+import entidades.Filme;
 import entidades.Usuario;
+import gerenciador.GerenciadorFilme;
 import gerenciador.GerenciadorGrupo;
 import gerenciador.GerenciadorUsuario;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,6 +40,8 @@ public class ControleLogarUsuario extends HttpServlet {
         if (u == null) {
             req.getRequestDispatcher("loginInvalido.jsp").forward(req, resp);
         } else {
+            List<Filme> dezFilmesRecentes = new GerenciadorFilme().buscarCincoFilmesRecentes();
+            getServletContext().setAttribute("dezFilmesRecentes", dezFilmesRecentes);
             req.getSession().setAttribute("user", u);
             if (!new GerenciadorGrupo().retornaGruposDoUsuario(u.getId()).isEmpty()) {
                 req.getSession().setAttribute("grupos", new GerenciadorGrupo().retornaGruposDoUsuario(u.getId()));

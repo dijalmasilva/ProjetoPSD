@@ -1,5 +1,6 @@
 package factory;
 
+import DAO.AmizadeDAO;
 import DAO.AvaliacaoDAO;
 import DAO.ComentarioTopicoDAO;
 import DAO.FilmeDAO;
@@ -49,5 +50,10 @@ public class DAOFactoryBD implements DAOFactoryPSD {
     @Override
     public ParticipaGrupoDAO criaParticipaGrupoDAO() {
         return new ParticipaGrupoDAO();
+    }
+    
+    @Override
+    public AmizadeDAO criaAmizadeDAO(){
+        return new AmizadeDAO();
     }
 }

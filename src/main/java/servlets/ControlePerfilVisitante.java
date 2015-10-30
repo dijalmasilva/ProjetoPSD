@@ -1,6 +1,7 @@
 package servlets;
 
 import entidades.Usuario;
+import gerenciador.GerenciadorAmizade;
 import gerenciador.GerenciadorUsuario;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -24,8 +25,20 @@ public class ControlePerfilVisitante extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
-        int id = Integer.parseInt(req.getParameter("idDoUsuario"));
-        Usuario visitante = new GerenciadorUsuario().consultarPorId(id);
+        int idVisitante = Integer.parseInt(req.getParameter("idDoUsuario"));
+        int idUsuario = ((Usuario) req.getSession().getAttribute("user")).getId();
+        Usuario visitante = new GerenciadorUsuario().consultarPorId(idVisitante);
+        boolean isFriend = new GerenciadorAmizade().isFriend(idUsuario, idVisitante);
+        if (isFriend){
+            req.setAttribute("status", "amigo");
+        }else{
+            boolean isPendente = new GerenciadorAmizade().isPendente(idUsuario, idUsuario);
+            if (isPendente){
+                req.setAttribute("status", "pendente");
+            }else{
+                req.setAttribute("status", "nada");
+            }
+        }
         req.getSession().setAttribute("userVisitante", visitante);
         req.getRequestDispatcher("visualizarPerfilVisitante.jsp").forward(req, resp);
     }

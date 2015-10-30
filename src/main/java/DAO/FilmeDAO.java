@@ -101,7 +101,7 @@ public class FilmeDAO implements InterfaceFilmeDAO {
     public List<Filme> buscarFilmesPorGeneros(String genero) {
         List<Filme> filmes = new ArrayList<>();
         
-        String sql = "select * from filme where generos ilike '%"+genero+"%' order by ano desc";
+        String sql = "select * from filme where generos like '%"+genero+"%' order by ano desc";
         
         Connection conn = null;
         

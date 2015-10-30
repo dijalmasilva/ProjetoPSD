@@ -1,6 +1,7 @@
 package factory;
 
 
+import DAO.AmizadeDAO;
 import DAO.AvaliacaoDAO;
 import DAO.ComentarioTopicoDAO;
 import DAO.FilmeDAO;
@@ -27,4 +28,6 @@ public interface DAOFactoryPSD {
         public SolicitacoesDAO criaSolicitacaoDAO();
         
         public ParticipaGrupoDAO criaParticipaGrupoDAO();
+        
+        public AmizadeDAO criaAmizadeDAO();
 }

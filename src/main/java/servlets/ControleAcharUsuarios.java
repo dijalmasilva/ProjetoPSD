@@ -34,16 +34,15 @@ public class ControleAcharUsuarios extends HttpServlet {
 
             if (usuarios.isEmpty()) {
                 req.setAttribute("usuariosAchados", u);
-                req.getRequestDispatcher("BuscaDeUsuarios.jsp").forward(req, resp);
             } else {
                 req.setAttribute("usuariosAchados", usuarios);
-                req.getRequestDispatcher("BuscaDeUsuarios.jsp").forward(req, resp);
             }
+        } else {
+            usuarios = new ArrayList<>();
+            usuarios.add(u);
+            req.setAttribute("usuariosAchados", usuarios);
         }
 
-        usuarios = new ArrayList<>();
-        usuarios.add(u);
-        req.setAttribute("usuariosAchados", usuarios);
         req.getRequestDispatcher("BuscaDeUsuarios.jsp").forward(req, resp);
     }
 

@@ -11,9 +11,9 @@
                 <ul class="nav nav-tabs navbar-static-top" id="menuNav">
                     <li class="active"><a data-toggle="tab" href="#perfil">Perfil</a></li>
                     <li><a data-toggle="tab" href="#amizade">Amizade</a></li>
-                        <c:if test="${sessionScope.user.tipo == true}">
-                        <li><a data-toggle="tab" href="#administrador">Administrador</a></li>
-                        </c:if>
+                    <c:if test="${sessionScope.user.tipo == true}">
+                    <li><a data-toggle="tab" href="#administrador">Administrador</a></li>
+                    </c:if>
                     <li class="flutuarADireita"><a data-toggle="tab" href="#buscar">Buscar</a></li>
                 </ul>
                 <div class="tab-content">
@@ -34,17 +34,9 @@
                         <h3>Vocês ainda não são amigos!</h3><br>
                         <p>Envia uma solicatação de amizade.</p>
                         <br><br>
-                        <c:if test="${requestScope.isFriend == 'amigo'}">
-                            <h3>Vocês já são amigos.</h3>
-                        </c:if>
-                        <c:if test="${requestScope.isFriend == 'pendente'}">
-                            <h3>Solicitação de amizade enviada.</h3>
-                        </c:if>
-                        <c:if test="${requestScope.isFriend == 'nada'}">
-                            <form action="ControleSolicitaAmizade" method="post">
-                                <button class="botaoPequeno">Enviar Solicitação</button>
-                            </form>
-                        </c:if>
+                        <form action="ControleSolicitaAmizade">
+                            <button class="botaoPequeno">Solicitar Amizade</button>
+                        </form>
                     </div>
                     <div id="administrador" class="tab-pane fade text-center">
                         <c:if test="${sessionScope.userVisitante.tipo == true}">

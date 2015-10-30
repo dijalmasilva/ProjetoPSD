@@ -9,6 +9,6 @@ package entidades;
  *
  * @author dijalma
  */
-public class Amizades {
+public class Amizade {
     
 }
