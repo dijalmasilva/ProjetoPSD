@@ -38,6 +38,6 @@ public class GerenciadorAmizade {
     }
     
     public boolean isPendente(int idUsuarioE, int idUsuarioR){
-        return DAOFactory.createFactory().criaAmizadeDAO().isPendente(idUsuarioR, idUsuarioR);
+        return DAOFactory.createFactory().criaAmizadeDAO().isPendente(idUsuarioE, idUsuarioR);
     }
 }

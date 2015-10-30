@@ -22,7 +22,6 @@
         <section class="text-center margin-top table-responsive modal-header modal-dialog">
             <br>
             <h2><a href="#">${g.nomeDoGrupo}</a></h2>
-            <button class="botaoPequeno margin-top">Ver Grupo</button>  
         </section>
     </c:forEach>
 </div>

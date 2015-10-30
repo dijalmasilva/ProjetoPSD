@@ -31,18 +31,27 @@
                     </div>
                     <div id="amizade" class="tab-pane fade text-center">
                         <br><br>
-                        <h3>Vocês ainda não são amigos!</h3><br>
-                        <p>Envia uma solicatação de amizade.</p>
-                        <br><br>
-                        <c:if test="${requestScope.isFriend == 'amigo'}">
+                        <c:if test="${requestScope.status == 'amigo'}">
                             <h3>Vocês já são amigos.</h3>
                         </c:if>
-                        <c:if test="${requestScope.isFriend == 'pendente'}">
+                        <c:if test="${requestScope.status == 'pendente'}">
                             <h3>Solicitação de amizade enviada.</h3>
                         </c:if>
-                        <c:if test="${requestScope.isFriend == 'nada'}">
+                        <c:if test="${requestScope.status == 'nada'}">
+                            <h3>Vocês ainda não são amigos!</h3><br>
+                            <p>Envie uma solicatação de amizade.</p>
+                            <br><br>
                             <form action="ControleSolicitaAmizade" method="post">
                                 <button class="botaoPequeno">Enviar Solicitação</button>
+                            </form>
+                        </c:if>
+                        <c:if test="${requestScope.status == 'responder'}">
+                            <h3>Solicitaçao aguardando sua resposta!</h3><br>
+                            <p>Aceite ou recuse.</p>
+                            <br><br>
+                            <form action="ControleAceitaSolicitacaoPeloPerfilVisitante" method="post">
+                                <button class="botaoPequeno" name="resposta" value="true">Aceitar</button>
+                                <button class="botaoPequeno" name="resposta" value="false">Recusar</button>
                             </form>
                         </c:if>
                     </div>

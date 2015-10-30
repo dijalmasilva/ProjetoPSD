@@ -46,7 +46,7 @@ $(document).ready(function () {
     jQuery("#notificacoes").click(function (){
         jQuery("#notifications").fadeIn(100);
         jQuery(".barraLateralDireita").animate({
-            width: "+=15.50%"
+            width: "+=15%"
         },100);
     });
     
@@ -60,7 +60,7 @@ $(document).ready(function () {
     jQuery("#solicitacoes").click(function (){
         jQuery("#requests").fadeIn(100);
         jQuery(".barraLateralDireita").animate({
-            width: "+=15.50%"
+            width: "+=15%"
         },100);
     });
     

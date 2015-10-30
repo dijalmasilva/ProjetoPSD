@@ -116,7 +116,7 @@ public class AmizadeDAO implements InterfaceAmizadeDAO{
     public boolean isFriend(int idUsuario, int idVisitante){
         boolean result = false;
         
-        String sql = "select * from amizade where (idusuarioe = "+idUsuario+" and idusuarior = "+idVisitante+") and aceitou = true";
+        String sql = "select * from amizade where idusuarioe = "+idUsuario+" and idusuarior = "+idVisitante+" and aceitou = true";
         Connection con = null;
         
         try {
@@ -166,14 +166,14 @@ public class AmizadeDAO implements InterfaceAmizadeDAO{
     public boolean aceitaSolicitacao(int idUsuarioR, int idUsuarioE){
         boolean result = false;
         Connection con = null;
-        
-        String sql = "update amizade set aceitou = true where idusuarior = "+idUsuarioR+" and idusuarior = "+idUsuarioE+"";
+        Statement stat;
+        String sql = "update amizade set aceitou = true where idusuarior = "+idUsuarioR+" and idusuarioe = "+idUsuarioE+"";
         
         try{
             con = Conexao.abrirConexao();
-            Statement stat = con.createStatement();
+            stat = con.createStatement();
             stat.executeUpdate(sql);
-            sql = "insert into (idsuarioe, idusuarior, aceitou) values ("+idUsuarioE+", "+idUsuarioR+", true)";
+            sql = "insert into amizade(idusuarioe, idusuarior, aceitou) values ("+idUsuarioR+", "+idUsuarioE+", true)";
             stat.executeUpdate(sql);
             stat.close();
             result = true;
@@ -192,14 +192,16 @@ public class AmizadeDAO implements InterfaceAmizadeDAO{
         
         Connection con = null;
         
-        String sql = "select aceitou from amizade where (idUsuarioE = "+idUsuario+" and idUsuarioR = "+idVisitante+") and aceitou = false";
+        String sql = "select * from amizade where idusuarioe = "+idUsuario+" and idusuarior = "+idVisitante+" and aceitou = false";
         
         try{
             con = Conexao.abrirConexao();
             Statement stat = con.createStatement();
-            stat.executeUpdate(sql);
+            ResultSet rs = stat.executeQuery(sql);
             
-            result = true;
+            if (rs.next()){
+                result = true;
+            }
         }catch (SQLException | ClassNotFoundException ex){
             ex.printStackTrace();
         }finally{

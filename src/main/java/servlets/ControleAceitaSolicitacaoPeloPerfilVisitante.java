@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package servlets;
 
 import entidades.Usuario;
@@ -8,14 +13,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.JOptionPane;
 
 /**
  *
  * @author dijalma
  */
-@WebServlet(name = "ControleSolicitaAmizade", urlPatterns = {"/ControleSolicitaAmizade"})
-public class ControleSolicitaAmizade extends HttpServlet {
+@WebServlet(name = "ControleAceitaSolicitacaoPeloPerfilVisitante", urlPatterns = {"/ControleAceitaSolicitacaoPeloPerfilVisitante"})
+public class ControleAceitaSolicitacaoPeloPerfilVisitante extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -24,22 +28,27 @@ public class ControleSolicitaAmizade extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-        int idUsuarioE = ((Usuario) req.getSession().getAttribute("user")).getId();
-        int idUsuarioR = ((Usuario) req.getSession().getAttribute("userVisitante")).getId();
-
-        new GerenciadorAmizade().solicitaAmizade(idUsuarioE, idUsuarioR);
-        boolean isFriend = new GerenciadorAmizade().isFriend(idUsuarioE, idUsuarioR);
+        
+        String resposta = req.getParameter("resposta");
+        int idUsuario = ((Usuario)req.getSession().getAttribute("user")).getId();
+        int idVisitante  = ((Usuario)req.getSession().getAttribute("userVisitante")).getId();
+        if (resposta.equals("true")){
+            new GerenciadorAmizade().aceitaSolicitacao(idVisitante, idUsuario);
+        }else{
+            new GerenciadorAmizade().cancelaSolicitacao(idVisitante, idUsuario);
+        }
+        
+        boolean isFriend = new GerenciadorAmizade().isFriend(idUsuario, idVisitante);
 
         if (isFriend) {
             req.setAttribute("status", "amigo");
         } else {
-            boolean isPendente = new GerenciadorAmizade().isPendente(idUsuarioE, idUsuarioR);
+            boolean isPendente = new GerenciadorAmizade().isPendente(idUsuario, idVisitante);
 
             if (isPendente) {
                 req.setAttribute("status", "pendente");
             } else {
-                boolean isWait = new GerenciadorAmizade().isPendente(idUsuarioR, idUsuarioE);
+                boolean isWait = new GerenciadorAmizade().isPendente(idVisitante, idUsuario);
                 if (isWait) {
                     req.setAttribute("status", "responder");
                 } else {
@@ -50,5 +59,6 @@ public class ControleSolicitaAmizade extends HttpServlet {
 
         req.getRequestDispatcher("visualizarPerfilVisitante.jsp").forward(req, resp);
     }
-
+    
+    
 }
