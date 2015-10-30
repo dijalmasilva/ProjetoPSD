@@ -14,7 +14,7 @@
                 <br>    
                 <ul class="nav nav-tabs navbar-static-top" id="menuNav">
                     <li><a data-toggle="tab" href="#feed" id="home">Feed</a></li>
-                    <li class="active"><a data-toggle="tab" href="#amigos">Amigos</a></li>
+                    <li class="active"><a data-toggle="tab" href="#amigos">Usuários</a></li>
                     <li><a data-toggle="tab" href="#generos">Gêneros</a></li>
                         <c:if test="${sessionScope.user.tipo == true}">
                         <li><a data-toggle="tab" href="#cadastroFilmes">Cadastrar Filmes</a></li>

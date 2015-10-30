@@ -7,6 +7,7 @@ package servlets;
 
 import entidades.Filme;
 import entidades.Usuario;
+import gerenciador.GerenciadorAmizade;
 import gerenciador.GerenciadorFilme;
 import gerenciador.GerenciadorGrupo;
 import gerenciador.GerenciadorUsuario;
@@ -46,6 +47,13 @@ public class ControleLogarUsuario extends HttpServlet {
             if (!new GerenciadorGrupo().retornaGruposDoUsuario(u.getId()).isEmpty()) {
                 req.getSession().setAttribute("grupos", new GerenciadorGrupo().retornaGruposDoUsuario(u.getId()));
             }
+            List<Integer> ids = new GerenciadorAmizade().retornaIdDeAmigos(u.getId());
+            List<Usuario> amigos = new GerenciadorUsuario().retornaUsuariosPorIds(ids);
+            if (!amigos.isEmpty()){
+                req.getSession().setAttribute("amigos", amigos);
+            }
+            
+            
             req.getRequestDispatcher("logado.jsp").forward(req, resp);
         }
     }

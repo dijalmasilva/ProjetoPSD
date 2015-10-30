@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <script src="javascript/javascriptOutras.js" type="text/javascript"></script>
 <div class="nav navbar-fixed-top nav-perfil" id="menuUser">
@@ -31,13 +32,31 @@
 </div>
 <div class="text-center navbar-fixed-top fundoCompleto" id="notifications">
     <aside class="textoBranco flutuarADireita barraLateralDireita">
+        <img href="#" src="imagens/back.png" alt="voltar" title="voltar" id="sairNotifications" class="flutuarADireita margin-top">
         <h2 class="text-capitalize">Notificações</h2>
     </aside>
-    <aside class="sobraEsquerda" id="sairNotifications"></aside>
 </div>
 <div class="text-center navbar-fixed-top fundoCompleto" id="requests">
     <aside class="textoBranco flutuarADireita barraLateralDireita">
+        <img href="#" src="imagens/back.png" alt="voltar" title="voltar" id="sairSolicitacoes" class="flutuarADireita margin-top">
+        <form action="ControleAcharUsuarios" method="post">
         <h2 class="text-capitalize">Solicitações</h2>
+            <p>Buscar amigo</p>
+            <input class="botaoMedio margin-top" type="text" name="emailOuApelido" placeholder="Digite email ou apelido">
+            <input class="botaoSolicitacoesPequeno margin-top" type="submit" value="Procurar">
+        </form>
+        <c:forEach items="${solicitacoes}" var="s">
+            <br>
+            <div class="list-inline modal-header modal-dialog table-responsive">
+                <img src="${s.foto}" alt="${s.apelido}" title="${s.apelido}" class="img-perfil">
+                <a href="ControlePerfilVisitante?idDoUsuario=${s.id}" class="text-capitalize active">${s.apelido}</a>
+                <form action="ControleAceitaSolicitacaoPeloPerfilVisitante" method="post">
+                    <button class="botaoPequeno" name="resposta" value="true">Aceitar</button>
+                    <button class="botaoPequeno" name="resposta" value="false">Recusar</button>
+                </form>
+            </div>
+            <br>
+        </c:forEach>
     </aside>
     <aside class="sobraEsquerda" id="sairSolicitacoes"</aside>
 </div>

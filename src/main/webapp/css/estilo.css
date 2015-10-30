@@ -61,6 +61,24 @@ form img{
     margin: 10px;
 }
 
+.botaoSolicitacoesPequeno{
+    background: #3399ff;
+    color: white;
+    width: 80px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid white;
+    margin: 10px;
+}
+
+.botaoSolicitacoesMedio{
+    color: black;
+    width: 300px;
+    padding: 10px;
+    border-radius: 5px;
+    border:transparent;
+}
+
 input[type="date"]{
     color: #b8b8b8;
 }

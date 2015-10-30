@@ -4,6 +4,7 @@ import java.util.List;
 
 import entidades.Usuario;
 import factory.DAOFactory;
+import java.util.ArrayList;
 
 public class GerenciadorUsuario {
 
@@ -39,4 +40,13 @@ public class GerenciadorUsuario {
         return DAOFactory.createFactory().criaUsuarioDAO().atualizarParaAdministrador(id);
     }
 
+    public List<Usuario> retornaUsuariosPorIds(List<Integer> idAmigos){
+        List<Usuario> usuarios = new ArrayList<>();
+        
+        for (Integer i: idAmigos){
+            usuarios.add(consultarPorId(i));
+        }
+        
+        return usuarios;
+    }
 }
