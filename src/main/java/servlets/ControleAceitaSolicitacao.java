@@ -47,7 +47,7 @@ public class ControleAceitaSolicitacao extends HttpServlet {
         } else {
             req.getSession().setAttribute("solicitacoes", null);
         }
-        req.getRequestDispatcher("logado.jsp").forward(req, resp);
+        req.getRequestDispatcher("logado2.jsp").forward(req, resp);
     }
 
 }
