@@ -10,6 +10,7 @@ import java.util.List;
 import entidades.Usuario;
 import interfaces.InterfaceUsuarioDAO;
 import conexao.Conexao;
+import java.sql.Statement;
 
 public class UsuarioDAO implements InterfaceUsuarioDAO {
 
@@ -93,7 +94,7 @@ public class UsuarioDAO implements InterfaceUsuarioDAO {
     @Override
     public boolean atualizar(Usuario usuario) {
         boolean result = false;
-        
+
         Connection conn = null;
 
         try {
@@ -108,7 +109,7 @@ public class UsuarioDAO implements InterfaceUsuarioDAO {
             pst.setString(5, usuario.getFoto());
             pst.setInt(6, usuario.getId());
             pst.executeUpdate();
-            
+
             result = true;
         } catch (ClassNotFoundException | SQLException e) {
             System.err.println("Erro " + e.getMessage());
@@ -117,14 +118,14 @@ public class UsuarioDAO implements InterfaceUsuarioDAO {
         } finally {
             Conexao.fecharConexao(conn);
         }
-        
+
         return result;
     }
 
     @Override
     public boolean atualizarParaAdministrador(int id) {
         boolean result = false;
-        
+
         Connection conn = null;
 
         try {
@@ -133,7 +134,7 @@ public class UsuarioDAO implements InterfaceUsuarioDAO {
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setInt(1, id);
             pst.executeUpdate();
-            
+
             result = true;
         } catch (ClassNotFoundException | SQLException e) {
             System.err.println("Erro " + e.getMessage());
@@ -142,17 +143,17 @@ public class UsuarioDAO implements InterfaceUsuarioDAO {
         } finally {
             Conexao.fecharConexao(conn);
         }
-        
+
         return result;
     }
-    
+
     @Override
     public Usuario consultarPorId(int id) {
         Connection conn = null;
         PreparedStatement stm;
         Usuario u = null;
         try {
-            String sql = "SELECT * FROM Usuario where id = "+id+"";
+            String sql = "SELECT * FROM Usuario where id = " + id + "";
             conn = Conexao.abrirConexao();
             stm = conn.prepareStatement(sql);
             ResultSet result = stm.executeQuery();
@@ -182,12 +183,12 @@ public class UsuarioDAO implements InterfaceUsuarioDAO {
     }
 
     @Override
-    public Usuario consultarPorEmail(String email, int idUSuario){
+    public Usuario consultarPorEmail(String email, int idUSuario) {
         Connection conn = null;
         PreparedStatement stm;
         Usuario u = null;
         try {
-            String sql = "select * from usuario where email ilike '"+email+"' and not id = "+idUSuario+"";
+            String sql = "select * from usuario where email ilike '" + email + "' and not id = " + idUSuario + "";
             conn = Conexao.abrirConexao();
             stm = conn.prepareStatement(sql);
             ResultSet result = stm.executeQuery();
@@ -215,15 +216,15 @@ public class UsuarioDAO implements InterfaceUsuarioDAO {
         }
         return u;
     }
-    
+
     @Override
-    public List<Usuario> consultarPorApelido(String apelido, int idUsuario){
-        
+    public List<Usuario> consultarPorApelido(String apelido, int idUsuario) {
+
         Connection conn = null;
         PreparedStatement stm;
         List<Usuario> usuarios = new ArrayList<>();
         try {
-            String sql = "SELECT * FROM Usuario where apelido ilike '%"+apelido+"%' and not id = "+idUsuario+"";
+            String sql = "SELECT * FROM Usuario where apelido ilike '%" + apelido + "%' and not id = " + idUsuario + "";
             conn = Conexao.abrirConexao();
             stm = conn.prepareStatement(sql);
             ResultSet result = stm.executeQuery();
@@ -251,7 +252,7 @@ public class UsuarioDAO implements InterfaceUsuarioDAO {
         }
         return usuarios;
     }
-    
+
     @Override
     public Usuario login(String email, String senha) {
         Connection conn = null;
@@ -288,4 +289,57 @@ public class UsuarioDAO implements InterfaceUsuarioDAO {
         return us;
     }
 
+    @Override
+    public String retornaFotoPeloId(int id) {
+        String foto = "";
+
+        String sql = "select foto from usuario where id = " + id + "";
+        Connection con = null;
+
+        try {
+            con = Conexao.abrirConexao();
+            Statement stat = con.createStatement();
+            ResultSet rs = stat.executeQuery(sql);
+
+            if (rs.next()) {
+                foto = rs.getString("foto");
+            }
+
+            rs.close();
+            stat.close();
+        } catch (SQLException | ClassNotFoundException ex) {
+            ex.printStackTrace();
+        } finally {
+            Conexao.fecharConexao(con);
+        }
+
+        return foto;
+    }
+
+    @Override
+    public String retornaApelidoPeloId(int id) {
+        String apelido = "";
+
+        String sql = "select apelido from usuario where id = " + id + "";
+        Connection con = null;
+
+        try {
+            con = Conexao.abrirConexao();
+            Statement stat = con.createStatement();
+            ResultSet rs = stat.executeQuery(sql);
+
+            if (rs.next()) {
+                apelido = rs.getString("apelido");
+            }
+
+            rs.close();
+            stat.close();
+        } catch (SQLException | ClassNotFoundException ex) {
+            ex.printStackTrace();
+        } finally {
+            Conexao.fecharConexao(con);
+        }
+
+        return apelido;
+    }
 }

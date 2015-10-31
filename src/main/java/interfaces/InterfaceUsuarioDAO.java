@@ -22,4 +22,7 @@ public interface InterfaceUsuarioDAO {
         
         public boolean atualizarParaAdministrador(int id);
 
+        public String retornaFotoPeloId(int id);
+        
+        public String retornaApelidoPeloId(int id);
 }

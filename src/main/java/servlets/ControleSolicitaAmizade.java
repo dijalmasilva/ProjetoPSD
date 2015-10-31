@@ -1,8 +1,10 @@
 package servlets;
 
+import beans.Solicitacao;
 import entidades.Usuario;
 import gerenciador.GerenciadorAmizade;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -46,6 +48,14 @@ public class ControleSolicitaAmizade extends HttpServlet {
                     req.setAttribute("status", "nada");
                 }
             }
+        }
+
+        List<Solicitacao> solicitacoes = new GerenciadorAmizade().retornaSolicitacoes(idUsuarioE);
+
+        if (!solicitacoes.isEmpty()) {
+            req.getSession().setAttribute("solicitacoes", solicitacoes);
+        }else{
+            req.getSession().setAttribute("solicitacoes", null);
         }
 
         req.getRequestDispatcher("visualizarPerfilVisitante.jsp").forward(req, resp);

@@ -1,6 +1,8 @@
 package gerenciador;
 
+import beans.Solicitacao;
 import factory.DAOFactory;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -39,5 +41,19 @@ public class GerenciadorAmizade {
     
     public boolean isPendente(int idUsuarioE, int idUsuarioR){
         return DAOFactory.createFactory().criaAmizadeDAO().isPendente(idUsuarioE, idUsuarioR);
+    }
+    
+    public List<Solicitacao> retornaSolicitacoes(int id){
+        List<Solicitacao> solicitacoes = new ArrayList<>();
+        
+        for (Integer i: retornaIdDeSolicitacoes(id)){
+            Solicitacao s = new Solicitacao();
+            s.setApelido(new GerenciadorUsuario().retornaApelidoPeloId(i));
+            s.setFoto(new GerenciadorUsuario().retornaFotoPeloId(i));
+            s.setId(i);
+            solicitacoes.add(s);
+        }
+        
+        return solicitacoes;
     }
 }

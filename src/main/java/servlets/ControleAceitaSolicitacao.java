@@ -5,11 +5,9 @@
  */
 package servlets;
 
-import beans.Solicitacao;
 import entidades.Usuario;
 import gerenciador.GerenciadorAmizade;
 import java.io.IOException;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,8 +18,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author dijalma
  */
-@WebServlet(name = "ControleAceitaSolicitacaoPeloPerfilVisitante", urlPatterns = {"/ControleAceitaSolicitacaoPeloPerfilVisitante"})
-public class ControleAceitaSolicitacaoPeloPerfilVisitante extends HttpServlet{
+@WebServlet(name = "ControleAceitaSolicitacao", urlPatterns = {"/ControleAceitaSolicitacao"})
+public class ControleAceitaSolicitacao extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -59,13 +57,6 @@ public class ControleAceitaSolicitacaoPeloPerfilVisitante extends HttpServlet{
             }
         }
 
-        List<Solicitacao> solicitacoes = new GerenciadorAmizade().retornaSolicitacoes(idUsuario);
-            
-            if (!solicitacoes.isEmpty()){
-                req.getSession().setAttribute("solicitacoes", solicitacoes);
-            }else{
-                req.getSession().setAttribute("solicitacoes", null);
-            }
         req.getRequestDispatcher("visualizarPerfilVisitante.jsp").forward(req, resp);
     }
     

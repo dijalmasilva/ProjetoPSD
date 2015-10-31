@@ -1,8 +1,13 @@
 $(document).ready(function () {
 
+    var clickSol = 0;
+    var clickNot = 0;
+
     jQuery("#menuabaixo").hide();
     jQuery("#notifications").hide();
     jQuery("#requests").hide();
+    jQuery("#sol").hide();
+    jQuery("#not").hide();
     jQuery("#cadastroGrupo").hide();
 
     window.setInterval(function () {
@@ -43,33 +48,6 @@ $(document).ready(function () {
         jQuery("#menuUser").addClass("nav-perfil");
     });
     
-    jQuery("#notificacoes").click(function (){
-        jQuery("#notifications").fadeIn(100);
-        jQuery(".barraLateralDireita").animate({
-            width: "+=15%"
-        },100);
-    });
-    
-    jQuery("#sairNotifications").click(function (){
-        jQuery("#notifications").fadeOut(300);
-        jQuery(".barraLateralDireita").css({
-           width: '0px' 
-        });
-    });
-    
-    jQuery("#solicitacoes").click(function (){
-        jQuery("#requests").fadeIn(100);
-        jQuery(".barraLateralDireita").animate({
-            width: "+=15%"
-        },100);
-    });
-    
-    jQuery("#sairSolicitacoes").click(function (){
-        jQuery("#requests").fadeOut(300);
-        jQuery(".barraLateralDireita").css({
-           width: '0px' 
-        });
-    });
     
     jQuery("#newGroup").click(function (){
         jQuery("#cadastroGrupo").fadeIn(300);
@@ -78,4 +56,45 @@ $(document).ready(function () {
     jQuery("#closeGroup").click(function (){
         jQuery("#cadastroGrupo").fadeOut(100);
     });
+    
+    jQuery("#solicitacoes").click(function (){
+        if (clickSol === 0){
+            abrirSol();
+            fecharNot();
+            clickSol = 1;
+            clickNot = 0;
+        }else{
+            fecharSol();
+            clickSol = 0;
+        }
+    });
+    
+    jQuery("#notificacoes").click(function (){
+       if (clickNot === 0) {
+            abrirNot();
+            fecharSol();
+            clickNot = 1;
+            clickSol = 0;
+       }else{
+            fecharNot();
+            clickNot = 0;
+       }
+    });
 });
+
+
+function abrirSol(){
+    jQuery("#sol").show();
+}
+
+function fecharSol(){
+    jQuery("#sol").hide();
+}
+
+function abrirNot(){
+    jQuery("#not").show();
+}
+
+function fecharNot(){
+    jQuery("#not").hide();
+}

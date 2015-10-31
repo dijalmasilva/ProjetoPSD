@@ -1,5 +1,6 @@
 package gerenciador;
 
+import beans.Solicitacao;
 import java.util.List;
 
 import entidades.Usuario;
@@ -49,4 +50,14 @@ public class GerenciadorUsuario {
         
         return usuarios;
     }
+    
+    public String retornaFotoPeloId(int id){
+        return DAOFactory.createFactory().criaUsuarioDAO().retornaFotoPeloId(id);
+    }
+    
+    public String retornaApelidoPeloId(int id){
+        return DAOFactory.createFactory().criaUsuarioDAO().retornaApelidoPeloId(id);
+    }
+    
+    
 }

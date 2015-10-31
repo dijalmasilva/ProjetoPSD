@@ -8,10 +8,20 @@
         <div class="flutuarSomenteAdireita">
             <div class="margin-rigth">
                 <a href="#" id="solicitacoes" class="margin-rigth">
-                    <img src="imagens/plus sign1.png" alt="solicitacoes" class="img-perfil" title="Solicitações">
+                    <c:if test="${sessionScope.solicitacoes == null}">
+                        <img src="imagens/plus sign1.png" alt="solicitacoes" class="img-perfil" title="Solicitações">
+                    </c:if>
+                    <c:if test="${sessionScope.solicitacoes != null}">
+                        <img src="imagens/plus sign1Red.png" alt="solicitacoes" class="img-perfil" title="Solicitações">
+                    </c:if>    
                 </a>
                 <a href="#" id="notificacoes" class="margin-rigth">
+                    <c:if test="${sessionScope.notificacoes == null}">
                     <img class="img-perfil" src="imagens/NotificationIcon.png" alt="notificações" title="Notificações">
+                    </c:if>
+                    <c:if test="${sessionScope.notificacoes != null}">
+                        <img class="img-perfil" src="imagens/NotificationIconRed.png" alt="notificações" title="Notificações">
+                    </c:if>
                 </a>
                 <a href="ControleLogout" class="textoBranco">
                     <img src="imagens/logout12.png" alt="sair" class="img-perfil" title="Sair">
@@ -30,33 +40,59 @@
         </div>
     </div> 
 </div>
-<div class="text-center navbar-fixed-top fundoCompleto" id="notifications">
-    <aside class="textoBranco flutuarADireita barraLateralDireita">
-        <img href="#" src="imagens/back.png" alt="voltar" title="voltar" id="sairNotifications" class="flutuarADireita margin-top">
-        <h2 class="text-capitalize">Notificações</h2>
-    </aside>
-</div>
-<div class="text-center navbar-fixed-top fundoCompleto" id="requests">
-    <aside class="textoBranco flutuarADireita barraLateralDireita">
-        <img href="#" src="imagens/back.png" alt="voltar" title="voltar" id="sairSolicitacoes" class="flutuarADireita margin-top">
-        <form action="ControleAcharUsuarios" method="post">
-        <h2 class="text-capitalize">Solicitações</h2>
-            <p>Buscar amigo</p>
-            <input class="botaoMedio margin-top" type="text" name="emailOuApelido" placeholder="Digite email ou apelido">
-            <input class="botaoSolicitacoesPequeno margin-top" type="submit" value="Procurar">
-        </form>
+<div class="text-center barraDeNoticiasSolicitacoes textoBranco" id="sol">
+    <br>
+    <div class="arrow up"></div>
+    <form action="ControleAcharUsuarios" method="post">
+        <p>Buscar amigo</p>
+        <input class="botaoSolicitacoesMedio margin-top" type="text" name="emailOuApelido" placeholder="Digite email ou apelido">
+        <input class="botaoSolicitacoesPequeno margin-top" type="submit" value="Procurar">
+    </form>
+    <div class="table-overflow">
         <c:forEach items="${solicitacoes}" var="s">
             <br>
-            <div class="list-inline modal-header modal-dialog table-responsive">
-                <img src="${s.foto}" alt="${s.apelido}" title="${s.apelido}" class="img-perfil">
-                <a href="ControlePerfilVisitante?idDoUsuario=${s.id}" class="text-capitalize active">${s.apelido}</a>
-                <form action="ControleAceitaSolicitacaoPeloPerfilVisitante" method="post">
-                    <button class="botaoPequeno" name="resposta" value="true">Aceitar</button>
-                    <button class="botaoPequeno" name="resposta" value="false">Recusar</button>
+            <div class="modal-header table-responsive">
+                <form action="ControleAceitaSolicitacao" method="post">
+                    <div class="flutuarSomenteAEsquerda">
+                        <img src="${s.foto}" alt="${s.apelido}" title="${s.apelido}" class="img-solicitacao">
+                    </div>
+                    <div class="flutuarSomenteAdireita ">
+                        <br>
+                        <a href="ControlePerfilVisitante?idDoUsuario=${s.id}" class="text-capitalize active textoBranco">${s.apelido}</a><br>
+                        <button class="botaoSolicitacoesPequeno" name="resposta" value="true">Aceitar</button>
+                        <button class="botaoSolicitacoesPequeno" name="resposta" value="false">Cancelar</button>
+                    </div>
                 </form>
             </div>
             <br>
         </c:forEach>
-    </aside>
-    <aside class="sobraEsquerda" id="sairSolicitacoes"</aside>
+    </div>
+</div>
+<div class="text-center barraDeNoticiasNoticacoes textoBranco" id="not">
+    <br>
+    <div class="arrow up"></div>
+    <form action="ControleAcharUsuarios" method="post">
+        <p>Buscar amigo</p>
+        <input class="botaoSolicitacoesMedio margin-top" type="text" name="emailOuApelido" placeholder="Digite email ou apelido">
+        <input class="botaoSolicitacoesPequeno margin-top" type="submit" value="Procurar">
+    </form>
+    <div class="table-overflow">
+        <c:forEach items="${solicitacoes}" var="s">
+            <br>
+            <div class="modal-header table-responsive">
+                <form action="ControleAceitaSolicitacao" method="post">
+                    <div class="flutuarSomenteAEsquerda">
+                        <img src="${s.foto}" alt="${s.apelido}" title="${s.apelido}" class="img-solicitacao">
+                    </div>
+                    <div class="flutuarSomenteAdireita ">
+                        <br>
+                        <a href="ControlePerfilVisitante?idDoUsuario=${s.id}" class="text-capitalize active textoBranco">${s.apelido}</a><br>
+                        <button class="botaoSolicitacoesPequeno" name="resposta" value="true">Aceitar</button>
+                        <button class="botaoSolicitacoesPequeno" name="resposta" value="false">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+            <br>
+        </c:forEach>
+    </div>
 </div>

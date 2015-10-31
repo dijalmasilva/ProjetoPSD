@@ -5,6 +5,7 @@
  */
 package servlets;
 
+import beans.Solicitacao;
 import entidades.Filme;
 import entidades.Usuario;
 import gerenciador.GerenciadorAmizade;
@@ -53,6 +54,11 @@ public class ControleLogarUsuario extends HttpServlet {
                 req.getSession().setAttribute("amigos", amigos);
             }
             
+            List<Solicitacao> solicitacoes = new GerenciadorAmizade().retornaSolicitacoes(u.getId());
+            
+            if (!solicitacoes.isEmpty()){
+                req.getSession().setAttribute("solicitacoes", solicitacoes);
+            }
             
             req.getRequestDispatcher("logado.jsp").forward(req, resp);
         }
