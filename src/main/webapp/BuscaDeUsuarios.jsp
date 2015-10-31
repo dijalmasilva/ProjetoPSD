@@ -45,7 +45,6 @@
                                         <img src="${userFind.foto}" alt="${userFind.apelido}" title="${userFind.apelido}" class="img-perfil">
                                         <a href="ControlePerfilVisitante?idDoUsuario=${userFind.id}" class="text-capitalize active">${userFind.apelido}</a>
                                     </div>
-                                    <br>
                                 </c:forEach>
                             </div>
                         </c:if>

@@ -37,7 +37,7 @@ public class ControleAceitaSolicitacaoPeloPerfilVisitante extends HttpServlet{
         if (resposta.equals("true")){
             new GerenciadorAmizade().aceitaSolicitacao(idVisitante, idUsuario);
         }else{
-            new GerenciadorAmizade().cancelaSolicitacao(idVisitante, idUsuario);
+            new GerenciadorAmizade().cancelaSolicitacao(idUsuario, idVisitante);
         }
         
         boolean isFriend = new GerenciadorAmizade().isFriend(idUsuario, idVisitante);

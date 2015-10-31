@@ -58,9 +58,10 @@
                     </div>
                     <div class="flutuarSomenteAdireita ">
                         <br>
+                        <input name="idDaSolicitacao" value="${s.id}" class="visible-xs">
                         <a href="ControlePerfilVisitante?idDoUsuario=${s.id}" class="text-capitalize active textoBranco">${s.apelido}</a><br>
-                        <button class="botaoSolicitacoesPequeno" name="resposta" value="true">Aceitar</button>
-                        <button class="botaoSolicitacoesPequeno" name="resposta" value="false">Cancelar</button>
+                        <button type="submit" class="botaoSolicitacoesPequeno" name="resposta" value="true">Aceitar</button>
+                        <button type="submit" class="botaoSolicitacoesPequeno" name="resposta" value="false">Cancelar</button>
                     </div>
                 </form>
             </div>

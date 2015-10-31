@@ -26,7 +26,6 @@
                 <img src="${a.foto}" alt="${a.apelido}" title="${a.apelido}" class="img-perfil">
                 <a href="ControlePerfilVisitante?idDoUsuario=${a.id}" class="text-capitalize active">${a.apelido}</a>
             </div>
-            <br>
         </c:forEach>
     </c:if>
 </div>

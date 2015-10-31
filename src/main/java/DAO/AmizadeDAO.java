@@ -93,9 +93,9 @@ public class AmizadeDAO implements InterfaceAmizadeDAO{
     
     @Override
     public boolean cancelaSolicitacao(int idUsuarioR, int idUsuarioE){
-        boolean result = false;
+            boolean result = false;
         
-        String sql = "delete from amizade where idUsuarioE = "+idUsuarioE+" and idUsuarioR = "+idUsuarioR+"";
+        String sql = "delete from amizade where idusuarioe = "+idUsuarioE+" and idusuarior = "+idUsuarioR+"";
         Connection con = null;
         
         try {
