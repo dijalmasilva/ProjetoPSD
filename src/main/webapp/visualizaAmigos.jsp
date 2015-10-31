@@ -20,12 +20,14 @@
     <c:if test="${sessionScope.amigos != null}">
         <br>
         <h2>Amigos</h2>
-        <c:forEach items="${sessionScope.amigos}" var="a">
-            <br>
-            <div class="list-inline modal-header modal-dialog table-responsive">
-                <img src="${a.foto}" alt="${a.apelido}" title="${a.apelido}" class="img-perfil">
-                <a href="ControlePerfilVisitante?idDoUsuario=${a.id}" class="text-capitalize active">${a.apelido}</a>
-            </div>
-        </c:forEach>
+        <br><br><br><br><br>
+        <div class="row media-list">
+            <c:forEach items="${sessionScope.amigos}" var="a" varStatus="status">
+                <div class="col-sm-3 modal-header">
+                    <img src="${a.foto}" alt="${a.apelido}" title="${a.apelido}" class="img-solicitacao">
+                    <h3><a href="ControlePerfilVisitante?idDoUsuario=${a.id}" class="text-capitalize active">${a.apelido}</a></h3>
+                </div>
+            </c:forEach>
+        </div>
     </c:if>
 </div>

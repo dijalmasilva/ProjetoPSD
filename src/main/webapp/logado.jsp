@@ -24,7 +24,7 @@
                 </ul>
 
                 <div class="tab-content">
-                    <div id="feed" class="tab-pane fade text-center fade in active">
+                    <div id="feed" class="tab-pane fade text-center in active">
                         <c:forEach items="${applicationScope.dezFilmesRecentes}" var="f">
                             <section class="text-center margin-top table-responsive modal-header modal-dialog">
                                 <br>

@@ -38,12 +38,11 @@
                         <c:if test="${requestScope.usuariosAchados != null}">
                             <br>
                             <h3>Usuário(s) encontrado(s)!</h3>
-                            <div class="modal-dialog">
+                            <div class="modal-dialog row">
                                 <c:forEach items="${requestScope.usuariosAchados}" var="userFind">
-                                    <br>
-                                    <div class="list-inline modal-header table-responsive">
-                                        <img src="${userFind.foto}" alt="${userFind.apelido}" title="${userFind.apelido}" class="img-perfil">
-                                        <a href="ControlePerfilVisitante?idDoUsuario=${userFind.id}" class="text-capitalize active">${userFind.apelido}</a>
+                                    <div class="list-inline modal-header table-responsive col-sm-4">
+                                        <img src="${userFind.foto}" alt="${userFind.apelido}" title="${userFind.apelido}" class="img-solicitacao">
+                                        <h3><a href="ControlePerfilVisitante?idDoUsuario=${userFind.id}" class="text-capitalize active">${userFind.apelido}</a></h3>
                                     </div>
                                 </c:forEach>
                             </div>

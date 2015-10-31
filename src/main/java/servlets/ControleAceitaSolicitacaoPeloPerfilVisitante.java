@@ -8,6 +8,7 @@ package servlets;
 import beans.Solicitacao;
 import entidades.Usuario;
 import gerenciador.GerenciadorAmizade;
+import gerenciador.GerenciadorUtilitario;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -21,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author dijalma
  */
 @WebServlet(name = "ControleAceitaSolicitacaoPeloPerfilVisitante", urlPatterns = {"/ControleAceitaSolicitacaoPeloPerfilVisitante"})
-public class ControleAceitaSolicitacaoPeloPerfilVisitante extends HttpServlet{
+public class ControleAceitaSolicitacaoPeloPerfilVisitante extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -30,16 +31,16 @@ public class ControleAceitaSolicitacaoPeloPerfilVisitante extends HttpServlet{
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        
+
         String resposta = req.getParameter("resposta");
-        int idUsuario = ((Usuario)req.getSession().getAttribute("user")).getId();
-        int idVisitante  = ((Usuario)req.getSession().getAttribute("userVisitante")).getId();
-        if (resposta.equals("true")){
+        int idUsuario = ((Usuario) req.getSession().getAttribute("user")).getId();
+        int idVisitante = ((Usuario) req.getSession().getAttribute("userVisitante")).getId();
+        if (resposta.equals("true")) {
             new GerenciadorAmizade().aceitaSolicitacao(idVisitante, idUsuario);
-        }else{
+        } else {
             new GerenciadorAmizade().cancelaSolicitacao(idUsuario, idVisitante);
         }
-        
+
         boolean isFriend = new GerenciadorAmizade().isFriend(idUsuario, idVisitante);
 
         if (isFriend) {
@@ -60,14 +61,20 @@ public class ControleAceitaSolicitacaoPeloPerfilVisitante extends HttpServlet{
         }
 
         List<Solicitacao> solicitacoes = new GerenciadorAmizade().retornaSolicitacoes(idUsuario);
-            
-            if (!solicitacoes.isEmpty()){
-                req.getSession().setAttribute("solicitacoes", solicitacoes);
-            }else{
-                req.getSession().setAttribute("solicitacoes", null);
-            }
+        if (!solicitacoes.isEmpty()) {
+            req.getSession().setAttribute("solicitacoes", solicitacoes);
+        } else {
+            req.getSession().setAttribute("solicitacoes", null);
+        }
+
+        List<Usuario> amigos = new GerenciadorUtilitario().recuperaAmigos(idUsuario);
+        if (!amigos.isEmpty()) {
+            req.getSession().setAttribute("amigos", amigos);
+        } else {
+            req.getSession().setAttribute("amigos", null);
+        }
+
         req.getRequestDispatcher("visualizarPerfilVisitante.jsp").forward(req, resp);
     }
-    
-    
+
 }

@@ -18,10 +18,14 @@
     <div class="modal-dialog text-center">
         <a href="#" id="newGroup">Criar novo grupo</a>
     </div>
-    <c:forEach items="${sessionScope.grupos}" var="g">
-        <section class="text-center margin-top table-responsive modal-header modal-dialog">
-            <br>
-            <h2><a href="#">${g.nomeDoGrupo}</a></h2>
-        </section>
-    </c:forEach>
+    <div class="row media-middle">
+        <c:forEach items="${sessionScope.grupos}" var="g">
+            <div class="col-sm-3">
+                <section class="text-center margin-top table-responsive modal-header modal-dialog">
+                    <br>
+                    <h2><a href="#">${g.nomeDoGrupo}</a></h2>
+                </section>
+            </div>
+        </c:forEach>
+    </div>
 </div>

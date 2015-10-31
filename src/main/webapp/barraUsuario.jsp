@@ -49,7 +49,10 @@
         <input class="botaoSolicitacoesPequeno margin-top" type="submit" value="Procurar">
     </form>
     <div class="table-overflow">
-        <c:forEach items="${solicitacoes}" var="s">
+        <c:if test="${sessionScope.solicitacoes == null}">
+            <h4>Não há solicitações</h4>
+        </c:if>
+        <c:forEach items="${sessionScope.solicitacoes}" var="s">
             <br>
             <div class="modal-header table-responsive">
                 <form action="ControleAceitaSolicitacao" method="post">
@@ -72,13 +75,11 @@
 <div class="text-center barraDeNoticiasNoticacoes textoBranco" id="not">
     <br>
     <div class="arrow up"></div>
-    <form action="ControleAcharUsuarios" method="post">
-        <p>Buscar amigo</p>
-        <input class="botaoSolicitacoesMedio margin-top" type="text" name="emailOuApelido" placeholder="Digite email ou apelido">
-        <input class="botaoSolicitacoesPequeno margin-top" type="submit" value="Procurar">
-    </form>
+    <c:if test="${sessionScope.notificacoes == null}">
+        <h4>Não há notificações</h4>
+    </c:if>
     <div class="table-overflow">
-        <c:forEach items="${solicitacoes}" var="s">
+        <c:forEach items="${sessionScope.notificacoes}" var="s">
             <br>
             <div class="modal-header table-responsive">
                 <form action="ControleAceitaSolicitacao" method="post">

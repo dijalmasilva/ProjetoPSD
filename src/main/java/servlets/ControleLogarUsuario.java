@@ -5,14 +5,18 @@
  */
 package servlets;
 
+import beans.Notificacoes;
 import beans.Solicitacao;
 import entidades.Filme;
+import entidades.Grupo;
 import entidades.Usuario;
 import gerenciador.GerenciadorAmizade;
 import gerenciador.GerenciadorFilme;
 import gerenciador.GerenciadorGrupo;
 import gerenciador.GerenciadorUsuario;
+import gerenciador.GerenciadorUtilitario;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -42,22 +46,33 @@ public class ControleLogarUsuario extends HttpServlet {
         if (u == null) {
             req.getRequestDispatcher("loginInvalido.jsp").forward(req, resp);
         } else {
-            List<Filme> dezFilmesRecentes = new GerenciadorFilme().buscarCincoFilmesRecentes();
-            getServletContext().setAttribute("dezFilmesRecentes", dezFilmesRecentes);
+
             req.getSession().setAttribute("user", u);
-            if (!new GerenciadorGrupo().retornaGruposDoUsuario(u.getId()).isEmpty()) {
-                req.getSession().setAttribute("grupos", new GerenciadorGrupo().retornaGruposDoUsuario(u.getId()));
+            
+
+            List<Filme> dezFilmesRecentes = new GerenciadorFilme().buscarCincoFilmesRecentes();
+            if (!dezFilmesRecentes.isEmpty()) {
+                getServletContext().setAttribute("dezFilmesRecentes", dezFilmesRecentes);
             }
-            List<Integer> ids = new GerenciadorAmizade().retornaIdDeAmigos(u.getId());
-            List<Usuario> amigos = new GerenciadorUsuario().retornaUsuariosPorIds(ids);
-            if (!amigos.isEmpty()){
+
+            List<Grupo> grupos = new GerenciadorGrupo().retornaGruposDoUsuario(u.getId());
+            if (!grupos.isEmpty()) {
+                req.getSession().setAttribute("grupos", grupos);
+            }
+
+            List<Usuario> amigos = new GerenciadorUtilitario().recuperaAmigos(u.getId());
+            if (!amigos.isEmpty()) {
                 req.getSession().setAttribute("amigos", amigos);
             }
-            
+
             List<Solicitacao> solicitacoes = new GerenciadorAmizade().retornaSolicitacoes(u.getId());
-            
-            if (!solicitacoes.isEmpty()){
+            if (!solicitacoes.isEmpty()) {
                 req.getSession().setAttribute("solicitacoes", solicitacoes);
+            }
+
+            List<Notificacoes> notificacoes = new ArrayList<>();
+            if (!notificacoes.isEmpty()){
+                req.getSession().setAttribute("notificacoes", notificacoes);
             }
             
             req.getRequestDispatcher("logado.jsp").forward(req, resp);

@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <script src="javascript/javascriptOutras.js"></script>
-<div class="fundoCompletoEscuro text-center" id="cadastroGrupo">
+<div class="modal-backdrop text-center" id="cadastroGrupo">
     <div class="flutuarSomenteAdireita text-center">
         <h2><a class="textoBranco" href="#" id="closeGroup">X</a></h2>
     </div>

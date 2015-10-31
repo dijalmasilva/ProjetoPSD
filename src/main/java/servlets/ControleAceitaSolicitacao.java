@@ -8,6 +8,7 @@ package servlets;
 import beans.Solicitacao;
 import entidades.Usuario;
 import gerenciador.GerenciadorAmizade;
+import gerenciador.GerenciadorUtilitario;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -39,15 +40,22 @@ public class ControleAceitaSolicitacao extends HttpServlet {
         } else {
             new GerenciadorAmizade().cancelaSolicitacao(idUsuario, idVisitante);
         }
-        
-        List<Solicitacao> solicitacoes = new GerenciadorAmizade().retornaSolicitacoes(idUsuario);
 
+        List<Solicitacao> solicitacoes = new GerenciadorAmizade().retornaSolicitacoes(idUsuario);
         if (!solicitacoes.isEmpty()) {
             req.getSession().setAttribute("solicitacoes", solicitacoes);
         } else {
             req.getSession().setAttribute("solicitacoes", null);
         }
-        req.getRequestDispatcher("logado2.jsp").forward(req, resp);
+
+        List<Usuario> amigos = new GerenciadorUtilitario().recuperaAmigos(idUsuario);
+        if (!amigos.isEmpty()) {
+            req.getSession().setAttribute("amigos", amigos);
+        } else {
+            req.getSession().setAttribute("amigos", null);
+        }
+
+        req.getRequestDispatcher("logado.jsp").forward(req, resp);
     }
 
 }
