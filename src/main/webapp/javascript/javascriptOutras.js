@@ -25,7 +25,7 @@ $(document).ready(function () {
             }
 
         } else {
-            
+
             for (i = 1; i <= 6; i++) {
                 jQuery("#a" + i + "").removeClass(".menu");
             }
@@ -48,113 +48,114 @@ $(document).ready(function () {
         jQuery("#menuUser").removeClass("nav-perfil-maior");
         jQuery("#menuUser").addClass("nav-perfil");
     });
-    
-    
-    jQuery("#newGroup").click(function (){
+
+
+    jQuery("#newGroup").click(function () {
         jQuery("#cadastroGrupo").fadeIn(300);
     });
-    
-    jQuery("#closeGroup").click(function (){
+
+    jQuery("#closeGroup").click(function () {
         jQuery("#cadastroGrupo").fadeOut(100);
     });
-    
-    jQuery("#solicitacoes").click(function (){
-        if (clickSol === 0){
+
+    jQuery("#solicitacoes").click(function () {
+        if (clickSol === 0) {
             abrirSol();
             fecharNot();
             clickSol = 1;
             clickNot = 0;
-        }else{
+        } else {
             fecharSol();
             clickSol = 0;
         }
     });
-    
-    jQuery("#notificacoes").click(function (){
-       if (clickNot === 0) {
+
+    jQuery("#notificacoes").click(function () {
+        if (clickNot === 0) {
             abrirNot();
             fecharSol();
             clickNot = 1;
             clickSol = 0;
-       }else{
+        } else {
             fecharNot();
             clickNot = 0;
-       }
+        }
     });
-    
-    jQuery("#star1").mouseenter(function (){
-        
+
+    jQuery("#star1").mouseenter(function () {
+
         preencherEstrela(1);
-        
-        for(i = 2; i < 6; i++){
+
+        for (i = 2; i < 6; i++) {
             esvaziarEstrela(i);
         }
         
-        star = 1;
+        jQuery("#rating").attr("value", 1);
     });
-    
-    jQuery("#star2").mouseenter(function (){
-        for (i = 1; i < 3; i++){
+
+    jQuery("#star2").mouseenter(function () {
+        for (i = 1; i < 3; i++) {
             preencherEstrela(i);
         }
-        for(i = 3; i < 6; i++){
+        for (i = 3; i < 6; i++) {
             esvaziarEstrela(i);
         }
-        
-        star = 2;
+
+        jQuery("#rating").attr("value", 2);
     });
-    
-    jQuery("#star3").mouseenter(function (){
-        for (i = 1; i < 4; i++){
+
+    jQuery("#star3").mouseenter(function () {
+        for (i = 1; i < 4; i++) {
             preencherEstrela(i);
         }
-        for(i = 4; i < 6; i++){
+        for (i = 4; i < 6; i++) {
             esvaziarEstrela(i);
         }
-        
-        star = 3;
+
+        jQuery("#rating").attr("value", 3);
     });
-    
-    jQuery("#star4").mouseenter(function (){
-        for (i = 1; i < 5; i++){
+
+    jQuery("#star4").mouseenter(function () {
+        for (i = 1; i < 5; i++) {
             preencherEstrela(i);
         }
-        for(i = 5; i < 6; i++){
+        for (i = 5; i < 6; i++) {
             esvaziarEstrela(i);
         }
-        star = 4;
+        jQuery("#rating").attr("value", 4);
     });
-    
-    jQuery("#star5").mouseenter(function (){
-        for (i = 1; i < 6; i++){
+
+    jQuery("#star5").mouseenter(function () {
+        for (i = 1; i < 6; i++) {
             preencherEstrela(i);
         }
-        
-        star = 5;
+
+        jQuery("#rating").attr("value", 5);
     });
+
 });
 
 
-function abrirSol(){
+function abrirSol() {
     jQuery("#sol").show();
 }
 
-function fecharSol(){
+function fecharSol() {
     jQuery("#sol").hide();
 }
 
-function abrirNot(){
+function abrirNot() {
     jQuery("#not").show();
 }
 
-function fecharNot(){
+function fecharNot() {
     jQuery("#not").hide();
 }
 
-function preencherEstrela(i){
-    jQuery("#star"+i+"").attr("src", "imagens/starP.png");
+function preencherEstrela(i) {
+    jQuery("#star" + i + "").attr("src", "imagens/starP.png");
 }
 
-function esvaziarEstrela(i){
-    jQuery("#star"+i+"").attr("src", "imagens/starV.png");
+function esvaziarEstrela(i) {
+    jQuery("#star" + i + "").attr("src", "imagens/starV.png");
 }

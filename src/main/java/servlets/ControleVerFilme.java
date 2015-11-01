@@ -30,8 +30,8 @@ public class ControleVerFilme extends HttpServlet{
         Filme filmeSelecionado = new GerenciadorFilme().buscarFilmePorId(idFilme);
         String usuarioDeCadastro = new GerenciadorUsuario().retornaApelidoPeloId(filmeSelecionado.getIdUser());
         
-        req.setAttribute("filmeSelecionado", filmeSelecionado);
-        req.setAttribute("usuarioDeCadastro", usuarioDeCadastro);
+        req.getSession().setAttribute("filmeSelecionado", filmeSelecionado);
+        req.getSession().setAttribute("usuarioDeCadastro", usuarioDeCadastro);
         
         req.getRequestDispatcher("verFilme.jsp").forward(req, resp);
     }

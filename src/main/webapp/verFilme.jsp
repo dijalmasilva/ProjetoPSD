@@ -77,10 +77,13 @@
                                     <img src="imagens/starV.png" alt="rating" id="star5" title="rating">
                                 </div>
                                 <br><br>
-                                <form action="#" method="post">
-                                    <textarea class="textArea botaoMedioEspecial" placeholder="Comentário"></textarea> 
-                                    <input type="submit" value="Avaliar" class="botaoPequeno">
+                                <h4 id="avaliado">${retorno}</h4>
+                                <form action="ControleAvaliacao" method="post">
+                                    <input class="visible-xs" name="rating" value="" id="rating">
+                                    <textarea class="textArea botaoMedioEspecial" placeholder="Comentário" id="comentario"></textarea> 
+                                    <button type="submit" value="Avaliar" class="botaoPequeno" id="enviaAvaliacao">Avaliar</button>
                                 </form>
+                                <br>
                             </div>
                             <div class="table-overflow-comentarios">
                                 <c:if test="${avaliacoes == null}"><h4>Sem comentários posteriores</h4></c:if>
