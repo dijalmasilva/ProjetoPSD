@@ -25,7 +25,7 @@ public class ControleAtualizarPerfil extends HttpServlet{
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
         Usuario user = (Usuario) req.getSession().getAttribute("user");
-        
+      
         user.setApelido(req.getParameter("apelido"));
         user.setNome(req.getParameter("nomeCompleto"));
         user.setCidade(req.getParameter("cidade"));

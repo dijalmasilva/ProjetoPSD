@@ -1,7 +1,8 @@
 $(document).ready(function () {
 
-    var clickSol = 0;
-    var clickNot = 0;
+    clickSol = 0;
+    clickNot = 0;
+    star = 1;
 
     jQuery("#menuabaixo").hide();
     jQuery("#notifications").hide();
@@ -80,6 +81,57 @@ $(document).ready(function () {
             clickNot = 0;
        }
     });
+    
+    jQuery("#star1").mouseenter(function (){
+        
+        preencherEstrela(1);
+        
+        for(i = 2; i < 6; i++){
+            esvaziarEstrela(i);
+        }
+        
+        star = 1;
+    });
+    
+    jQuery("#star2").mouseenter(function (){
+        for (i = 1; i < 3; i++){
+            preencherEstrela(i);
+        }
+        for(i = 3; i < 6; i++){
+            esvaziarEstrela(i);
+        }
+        
+        star = 2;
+    });
+    
+    jQuery("#star3").mouseenter(function (){
+        for (i = 1; i < 4; i++){
+            preencherEstrela(i);
+        }
+        for(i = 4; i < 6; i++){
+            esvaziarEstrela(i);
+        }
+        
+        star = 3;
+    });
+    
+    jQuery("#star4").mouseenter(function (){
+        for (i = 1; i < 5; i++){
+            preencherEstrela(i);
+        }
+        for(i = 5; i < 6; i++){
+            esvaziarEstrela(i);
+        }
+        star = 4;
+    });
+    
+    jQuery("#star5").mouseenter(function (){
+        for (i = 1; i < 6; i++){
+            preencherEstrela(i);
+        }
+        
+        star = 5;
+    });
 });
 
 
@@ -97,4 +149,12 @@ function abrirNot(){
 
 function fecharNot(){
     jQuery("#not").hide();
+}
+
+function preencherEstrela(i){
+    jQuery("#star"+i+"").attr("src", "imagens/starP.png");
+}
+
+function esvaziarEstrela(i){
+    jQuery("#star"+i+"").attr("src", "imagens/starV.png");
 }

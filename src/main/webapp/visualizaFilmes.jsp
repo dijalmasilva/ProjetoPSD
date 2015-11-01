@@ -11,10 +11,13 @@
     <c:forEach items="${applicationScope.dezFilmesRecentes}" var="f">
         <section class="text-center margin-top table-responsive modal-header modal-dialog">
             <br>
-            <h2><a href="#">${f.titulo}</a></h2>
+            <h2><a href="ControleVerFilme?idFilmeSelecionado=${f.id}">${f.titulo}</a></h2>
             <img src="${f.foto}" alt="${f.titulo}" width="300" height="230" title="${f.titulo}">
             <h5>${f.sinopse}</h5>
-            <button class="botaoPequeno margin-top">Ver Filme</button>  
+            <form action="ControleVerFilme">
+                <button class="visible-xs" value="${f.id}" name="idFilmeSelecionado"></button>
+                <button type="submit" class="botaoPequeno margin-top">Ver Filme</button>  
+            </form>
         </section>
     </c:forEach>
 </div>

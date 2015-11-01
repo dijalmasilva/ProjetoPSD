@@ -35,4 +35,7 @@ public class GerenciadorFilme {
         DAOFactory.createFactory().criaFilmeDAO().update();
     }
 
+    public Filme buscarFilmePorId(int id){
+        return DAOFactory.createFactory().criaFilmeDAO().buscarFilmePorId(id);
+    }
 }
