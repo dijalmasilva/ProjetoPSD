@@ -1,9 +1,11 @@
 package servlets;
 
+import entidades.Comentarios;
 import entidades.Avaliacao;
 import entidades.Filme;
 import entidades.Usuario;
 import gerenciador.GerenciadorAvaliacao;
+import gerenciador.GerenciadorDeComentarios;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -38,11 +40,11 @@ public class ControleAvaliacao extends HttpServlet{
             retorno = "Você já avaliou esse filme!";
         }
         
-        List<Avaliacao> avaliacoes = new GerenciadorAvaliacao().consultarPorIdDoFilme(idFilme);
+        List<Avaliacao> a = new GerenciadorAvaliacao().consultarPorIdDoFilme(idFilme);
+        List<Comentarios> avaliacoes = new GerenciadorDeComentarios().retornaComentariosDeAvaliacao(a);
         req.setAttribute("avaliacoes", avaliacoes);        
-        req.setAttribute("rating", rating);
         req.setAttribute("retorno", retorno);
-        req.getRequestDispatcher("verFilme.jsp").forward(req, resp);
+        req.getRequestDispatcher("filmeAvaliado.jsp").forward(req, resp);
     }
     
     

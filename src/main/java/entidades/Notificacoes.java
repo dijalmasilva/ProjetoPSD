@@ -1,4 +1,4 @@
-package beans;
+package entidades;
 
 /**
  *
@@ -6,19 +6,12 @@ package beans;
  */
 public class Notificacoes {
     
-    private String foto;
+    private int idUsuario;
     private int idAmigo;
-    private String mensagem;
     private int idFilme;
-    private String nomeFilme;
-
-    public String getFoto() {
-        return foto;
-    }
-
-    public void setFoto(String foto) {
-        this.foto = foto;
-    }
+    private String foto;
+    private String mensagem;
+    
 
     public int getIdAmigo() {
         return idAmigo;
@@ -44,13 +37,20 @@ public class Notificacoes {
         this.idFilme = idFilme;
     }
 
-    public String getNomeFilme() {
-        return nomeFilme;
+    public int getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setNomeFilme(String nomeFilme) {
-        this.nomeFilme = nomeFilme;
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }    
+
+    public String getFoto() {
+        return foto;
     }
-    
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
     
 }

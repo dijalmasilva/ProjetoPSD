@@ -1,6 +1,6 @@
 package gerenciador;
 
-import beans.Solicitacao;
+import entidades.Solicitacao;
 import factory.DAOFactory;
 import java.util.ArrayList;
 import java.util.List;

@@ -13,18 +13,18 @@
                 <a href="logado.jsp"><h1 class="text-center textoPreto">Social Movies</h1></a>
                 <br>    
                 <ul class="nav nav-tabs navbar-static-top" id="menuNav">
-                    <li class="active"><a data-toggle="tab" href="#feed" id="home">Filme</a></li>
+                    <li><a data-toggle="tab" href="#feed" id="home">Filme</a></li>
                     <li><a data-toggle="tab" href="#atores">Atores</a></li>
                     <li><a data-toggle="tab" href="#diretores">Diretores</a></li>
                         <c:if test="${sessionScope.user != null}">
-                        <li><a data-toggle="tab" href="#avaliar">Avaliar</a></li>
+                        <li class="active"><a data-toggle="tab" href="#avaliar">Avaliar</a></li>
                         <li><a data-toggle="tab" href="#recomendar">Recomendar</a></li>
                         </c:if>
                     <li class="flutuarADireita"><a data-toggle="tab" href="#buscar">Buscar</a></li>
                 </ul>
 
                 <div class="tab-content">
-                    <div id="feed" class="tab-pane fade text-center in active">
+                    <div id="feed" class="tab-pane fade text-center">
                         <section class="text-center margin-top table-responsive modal-header modal-dialog">
                             <br>
                             <h1><a>${filmeSelecionado.titulo}</a></h1>
@@ -63,7 +63,7 @@
                             <h4>${filmeSelecionado.diretores}</h4>
                         </div>
                     </div>
-                    <div id="avaliar" class="tab-pane fade text-center">
+                    <div id="avaliar" class="tab-pane fade text-center in active">
                         <div class="text-center margin-top table-responsive modal-header modal-dialog">
                             <h2><a>Avalie agora o filme</a></h2>
                             <br>

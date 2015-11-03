@@ -1,6 +1,6 @@
 package gerenciador;
 
-import beans.Solicitacao;
+import entidades.Solicitacao;
 import java.util.List;
 
 import entidades.Usuario;

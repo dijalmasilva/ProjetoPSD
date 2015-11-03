@@ -1,6 +1,6 @@
 package servlets;
 
-import beans.Solicitacao;
+import entidades.Solicitacao;
 import entidades.Usuario;
 import gerenciador.GerenciadorAmizade;
 import java.io.IOException;

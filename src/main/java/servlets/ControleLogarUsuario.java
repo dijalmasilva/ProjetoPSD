@@ -5,8 +5,8 @@
  */
 package servlets;
 
-import beans.Notificacoes;
-import beans.Solicitacao;
+import entidades.Notificacoes;
+import entidades.Solicitacao;
 import entidades.Filme;
 import entidades.Grupo;
 import entidades.Usuario;
