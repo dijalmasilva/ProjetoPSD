@@ -31,7 +31,7 @@
         <br><br><br>
         <div id="menuabaixo">
             <a href="editarPerfil.jsp">Editar Perfil</a><br>
-            <a href="#">Cofigurações de Segurança</a>
+            <a href="configuracoesDeSeguranca.jsp">Cofigurações de Segurança</a>
             <div class="flutuarSomenteAdireita">
                 <a href="#" class="textoBranco" id="voltar">
                     <img src="imagens/back.png" alt="voltar" title="Voltar">

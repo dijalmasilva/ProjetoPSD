@@ -10,18 +10,18 @@
                 <a href="logado.jsp"><h1 class="text-center textoPreto">Social Movies</h1></a>
                 <br>    
                 <ul class="nav nav-tabs navbar-static-top" id="menuNav">
-                    <li><a data-toggle="tab" href="#feed" id="home">Filme</a></li>
+                    <li class="active"><a data-toggle="tab" href="#feed" id="home">Grupo</a></li>
                     <li><a data-toggle="tab" href="#atores">Atores</a></li>
                     <li><a data-toggle="tab" href="#diretores">Diretores</a></li>
                         <c:if test="${sessionScope.user != null}">
-                        <li class="active"><a data-toggle="tab" href="#avaliar">Avaliar</a></li>
+                        <li><a data-toggle="tab" href="#avaliar">Avaliar</a></li>
                         <li><a data-toggle="tab" href="#recomendar">Recomendar</a></li>
                         </c:if>
                     <li class="flutuarADireita"><a data-toggle="tab" href="#buscar">Buscar</a></li>
                 </ul>
 
                 <div class="tab-content">
-                    <div id="feed" class="tab-pane fade text-center">
+                    <div id="feed" class="tab-pane fade text-center in active">
                         <section class="text-center margin-top table-responsive modal-header modal-dialog">
                             <br>
                             <h1><a>${filmeSelecionado.titulo}</a></h1>
@@ -60,7 +60,7 @@
                             <h4>${filmeSelecionado.diretores}</h4>
                         </div>
                     </div>
-                    <div id="avaliar" class="tab-pane fade text-center in active">
+                    <div id="avaliar" class="tab-pane fade text-center">
                         <div class="text-center margin-top table-responsive modal-header modal-dialog">
                             <h2><a>Avalie agora o filme</a></h2>
                             <br>
@@ -74,9 +74,8 @@
                                     <img src="imagens/starV.png" alt="rating" id="star5" title="rating">
                                 </div>
                                 <br><br>
-                                <h4 id="avaliado">${retorno}</h4>
                                 <form action="ControleAvaliacao" method="post">
-                                    <input class="visible-xs" name="rating" value="" id="rating">
+                                    <input class="invisible" name="rating" value="" id="rating">
                                     <textarea class="textArea botaoMedioEspecial" placeholder="Comentário" id="comentario" name="comentario"></textarea> 
                                     <button type="submit" value="Avaliar" class="botaoPequeno" id="enviaAvaliacao">Avaliar</button>
                                 </form>

@@ -1,6 +1,3 @@
-<%@page import="java.util.List"%>
-<%@page import="gerenciador.GerenciadorFilme"%>
-<%@page import="entidades.Filme"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="pt-br">
