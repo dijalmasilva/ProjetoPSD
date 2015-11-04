@@ -38,7 +38,7 @@ public class ControleVerFilme extends HttpServlet{
         List<Avaliacao> a = new GerenciadorAvaliacao().consultarPorIdDoFilme(idFilme);
         List<Comentarios> avaliacoes = new GerenciadorDeComentarios().retornaComentariosDeAvaliacao(a);
         
-        req.setAttribute("avaliacoes", avaliacoes);        
+        req.getSession().setAttribute("avaliacoes", avaliacoes);        
         req.getSession().setAttribute("filmeSelecionado", filmeSelecionado);
         req.getSession().setAttribute("usuarioDeCadastro", usuarioDeCadastro);
         

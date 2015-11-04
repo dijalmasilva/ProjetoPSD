@@ -89,7 +89,7 @@ $(document).ready(function () {
         for (i = 2; i < 6; i++) {
             esvaziarEstrela(i);
         }
-        
+
         jQuery("#rating").attr("value", 1);
     });
 

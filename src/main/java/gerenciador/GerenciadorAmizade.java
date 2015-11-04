@@ -1,6 +1,7 @@
 package gerenciador;
 
 import entidades.Solicitacao;
+import entidades.Usuario;
 import factory.DAOFactory;
 import java.util.ArrayList;
 import java.util.List;
@@ -55,5 +56,27 @@ public class GerenciadorAmizade {
         }
         
         return solicitacoes;
+    }
+    
+    public Usuario buscarEmAmigosPorApelido(List<Usuario> amigos, String apelido){
+        
+        for (Usuario u: amigos){
+            if (u.getApelido().equals(apelido))
+                return u;
+        }
+        
+        return null;
+    }
+    
+    
+    public Usuario buscarEmAmigosPorEmail(List<Usuario> amigos, String email){
+        Usuario amigosEncontrado = new Usuario();
+        
+        for (Usuario u: amigos){
+            if (u.getEmail().equals(email))
+                return amigosEncontrado;
+        }
+        
+        return null;
     }
 }

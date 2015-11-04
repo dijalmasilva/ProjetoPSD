@@ -104,7 +104,7 @@
                         <br>
                         <h3>Recomende esse filme a algum amigo.</h3>
                         <div class="text-center margin-top table-responsive modal-header modal-dialog">
-                            <form action="ControleAcharUsuarios" method="post">
+                            <form action="ControleAchaUsuario" method="post">
                                 <input class="botaoMedio margin-top" type="text" name="emailOuApelido" placeholder="Digite email ou apelido">
                                 <input class="botaoPequeno margin-top" type="submit" value="Procurar">
                             </form>

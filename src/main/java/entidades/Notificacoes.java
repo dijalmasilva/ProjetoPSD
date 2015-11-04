@@ -4,6 +4,7 @@ package entidades;
  *
  * @author dijalma
  */
+
 public class Notificacoes {
     
     private int idUsuario;
@@ -11,7 +12,7 @@ public class Notificacoes {
     private int idFilme;
     private String foto;
     private String mensagem;
-    
+    private String apelidoAmigo;
 
     public int getIdAmigo() {
         return idAmigo;
@@ -52,5 +53,14 @@ public class Notificacoes {
     public void setFoto(String foto) {
         this.foto = foto;
     }
+
+    public String getApelidoAmigo() {
+        return apelidoAmigo;
+    }
+
+    public void setApelidoAmigo(String apelidoAmigo) {
+        this.apelidoAmigo = apelidoAmigo;
+    }
+
     
 }

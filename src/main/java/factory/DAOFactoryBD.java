@@ -5,6 +5,7 @@ import DAO.AvaliacaoDAO;
 import DAO.ComentarioTopicoDAO;
 import DAO.FilmeDAO;
 import DAO.GrupoDAO;
+import DAO.NotificacaoDAO;
 import DAO.ParticipaGrupoDAO;
 import DAO.SolicitacoesDAO;
 import DAO.TopicoDAO;
@@ -56,4 +57,11 @@ public class DAOFactoryBD implements DAOFactoryPSD {
     public AmizadeDAO criaAmizadeDAO(){
         return new AmizadeDAO();
     }
+
+    @Override
+    public NotificacaoDAO criaNotificacaoDAO() {
+        return new NotificacaoDAO();
+    }
+    
+    
 }

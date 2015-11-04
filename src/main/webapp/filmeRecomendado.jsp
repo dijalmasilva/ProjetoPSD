@@ -13,18 +13,18 @@
                 <a href="logado.jsp"><h1 class="text-center textoPreto">Social Movies</h1></a>
                 <br>    
                 <ul class="nav nav-tabs navbar-static-top" id="menuNav">
-                    <li class="active"><a data-toggle="tab" href="#feed" id="home">Filme</a></li>
+                    <li><a data-toggle="tab" href="#feed" id="home">Filme</a></li>
                     <li><a data-toggle="tab" href="#atores">Atores</a></li>
                     <li><a data-toggle="tab" href="#diretores">Diretores</a></li>
                         <c:if test="${sessionScope.user != null}">
                         <li><a data-toggle="tab" href="#avaliar">Avaliar</a></li>
-                        <li><a data-toggle="tab" href="#recomendar">Recomendar</a></li>
+                        <li  class="active"><a data-toggle="tab" href="#recomendar">Recomendar</a></li>
                         </c:if>
                     <li class="flutuarADireita"><a data-toggle="tab" href="#buscar">Buscar</a></li>
                 </ul>
 
                 <div class="tab-content">
-                    <div id="feed" class="tab-pane fade text-center in active">
+                    <div id="feed" class="tab-pane fade text-center">
                         <section class="text-center margin-top table-responsive modal-header modal-dialog">
                             <br>
                             <h1><a>${filmeSelecionado.titulo}</a></h1>
@@ -77,8 +77,9 @@
                                     <img src="imagens/starV.png" alt="rating" id="star5" title="rating">
                                 </div>
                                 <br><br>
+                                <h4 id="avaliado">${retorno}</h4>
                                 <form action="ControleAvaliacao" method="post">
-                                    <input class="invisible" name="rating" value="" id="rating">
+                                    <input class="visible-xs" name="rating" value="" id="rating">
                                     <textarea class="textArea botaoMedioEspecial" placeholder="Comentário" id="comentario" name="comentario"></textarea> 
                                     <button type="submit" value="Avaliar" class="botaoPequeno" id="enviaAvaliacao">Avaliar</button>
                                 </form>
@@ -99,7 +100,7 @@
                             </div>
                         </div>
                     </div>
-                    <div id="recomendar" class="tab-pane fade text-center">
+                    <div id="recomendar" class="tab-pane fade text-center in active">
                         <br>
                         <h3>Recomende esse filme a algum amigo.</h3>
                         <div class="text-center margin-top table-responsive modal-header modal-dialog">
@@ -107,6 +108,20 @@
                                 <input class="botaoMedio margin-top" type="text" name="emailOuApelido" placeholder="Digite email ou apelido">
                                 <input class="botaoPequeno margin-top" type="submit" value="Procurar">
                             </form>
+                        </div>
+                        <div class="modal-dialog" id="amigoARecomendar">
+                            <c:if test="${amigoEncontrado != null}">
+                                <div class="modal-body">
+                                    <img src="${amigoEncontrado.foto}" alt="${amigoEncontrado.apelido}" title="${amigoEncontrado.apelido}" class="img-perfil">
+                                    <a href="ControlePerfilVisitante?idDoUsuario=${amigoEncontrado.id} ">${amigoEncontrado.apelido}</a>
+                                </div>
+                                <button class="margin-top botaoMedio">
+                                    <a class="textoPreto" href="ControleRecomendaFilme?idUsuario=${amigoEncontrado.id}">Recomendar</a>
+                                </button>
+                            </c:if>
+                            <c:if test="${recomendou == true}">
+                                <h4>Filme recomendado com sucesso!</h4>
+                            </c:if>
                         </div>
                     </div>
                     <%@include file="search.jsp" %>

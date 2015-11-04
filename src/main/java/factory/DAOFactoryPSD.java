@@ -6,6 +6,7 @@ import DAO.AvaliacaoDAO;
 import DAO.ComentarioTopicoDAO;
 import DAO.FilmeDAO;
 import DAO.GrupoDAO;
+import DAO.NotificacaoDAO;
 import DAO.ParticipaGrupoDAO;
 import DAO.SolicitacoesDAO;
 import DAO.TopicoDAO;
@@ -30,4 +31,6 @@ public interface DAOFactoryPSD {
         public ParticipaGrupoDAO criaParticipaGrupoDAO();
         
         public AmizadeDAO criaAmizadeDAO();
+        
+        public NotificacaoDAO criaNotificacaoDAO();
 }
