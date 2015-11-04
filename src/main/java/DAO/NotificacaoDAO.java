@@ -70,7 +70,7 @@ public class NotificacaoDAO implements InterfaceNotificacoesDAO{
         List<Notificacoes> notificacoes = new ArrayList<>();
         
         Connection con = null;
-        String sql = "select * from notificacoes where idusuario = "+idUsuario+" order by id desc";
+        String sql = "select * from notificacoes where idamigo = "+idUsuario+" order by id desc";
         try{
             con = Conexao.abrirConexao();
             Statement stat = con.createStatement();

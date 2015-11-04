@@ -21,4 +21,6 @@ public interface InterfaceFilmeDAO {
         public List<Filme> buscarFilmesPorDiretores(String diretor);
         
         public Filme buscarFilmePorId(int id);
+        
+        public String buscarTituloDoFilmePorId(int id);
 }

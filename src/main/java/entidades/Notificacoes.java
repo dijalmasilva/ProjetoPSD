@@ -10,9 +10,10 @@ public class Notificacoes {
     private int idUsuario;
     private int idAmigo;
     private int idFilme;
+    private String nomeFilme;
     private String foto;
     private String mensagem;
-    private String apelidoAmigo;
+    private String apelidoUsuario;
 
     public int getIdAmigo() {
         return idAmigo;
@@ -54,13 +55,20 @@ public class Notificacoes {
         this.foto = foto;
     }
 
-    public String getApelidoAmigo() {
-        return apelidoAmigo;
+    public String getApelidoUsuario() {
+        return apelidoUsuario;
     }
 
-    public void setApelidoAmigo(String apelidoAmigo) {
-        this.apelidoAmigo = apelidoAmigo;
+    public void setApelidoUsuario(String apelidoUsuario) {
+        this.apelidoUsuario = apelidoUsuario;
     }
 
-    
+    public String getNomeFilme() {
+        return nomeFilme;
+    }
+
+    public void setNomeFilme(String nomeFilme) {
+        this.nomeFilme = nomeFilme;
+    }
+
 }

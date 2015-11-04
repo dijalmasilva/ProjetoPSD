@@ -18,12 +18,15 @@ public class GerenciadorNotificacao {
         return DAOFactory.createFactory().criaNotificacaoDAO().adicionarSolicitacaoAceita(n);
     }
     
-    public List<Notificacoes> recuperar20NotificacoesRecentes(){
-        List<Notificacoes> notificacoes = new GerenciadorNotificacao().recuperar20NotificacoesRecentes();
+    public List<Notificacoes> recuperar20NotificacoesRecentes(int idUsuario){
+        List<Notificacoes> notificacoes = DAOFactory.createFactory().criaNotificacaoDAO().recuperar20NotificacoesRecentes(idUsuario);
         
         for(Notificacoes n: notificacoes){
-            n.setFoto(new GerenciadorUsuario().retornaFotoPeloId(n.getIdAmigo()));
-            n.setApelidoAmigo(new GerenciadorUsuario().retornaApelidoPeloId(n.getIdAmigo()));
+            if (n.getIdFilme() != 0){
+                n.setNomeFilme(new GerenciadorFilme().buscarTituloDoFilmePorId(n.getIdFilme()));
+            }
+            n.setFoto(new GerenciadorUsuario().retornaFotoPeloId(n.getIdUsuario()));
+            n.setApelidoUsuario(new GerenciadorUsuario().retornaApelidoPeloId(n.getIdUsuario()));
         }
         
         return notificacoes;

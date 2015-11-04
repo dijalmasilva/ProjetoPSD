@@ -248,4 +248,31 @@ public class FilmeDAO implements InterfaceFilmeDAO {
         return filme;
     }
 
+    
+    @Override
+    public String buscarTituloDoFilmePorId(int id) {
+        String titulo = "";
+
+        String sql = "select titulo from filme where id = " + id + "";
+
+        Connection conn = null;
+
+        try {
+            
+            conn = Conexao.abrirConexao();
+            Statement stat = conn.createStatement();
+            ResultSet rs = stat.executeQuery(sql);
+
+            if (rs.next()) {
+                titulo = rs.getString("titulo");
+            }
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            Conexao.fecharConexao(conn);
+        }
+
+        return titulo;
+    }
 }

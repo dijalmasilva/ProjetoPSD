@@ -13,6 +13,7 @@ import entidades.Usuario;
 import gerenciador.GerenciadorAmizade;
 import gerenciador.GerenciadorFilme;
 import gerenciador.GerenciadorGrupo;
+import gerenciador.GerenciadorNotificacao;
 import gerenciador.GerenciadorUsuario;
 import gerenciador.GerenciadorUtilitario;
 import java.io.IOException;
@@ -70,7 +71,7 @@ public class ControleLogarUsuario extends HttpServlet {
                 req.getSession().setAttribute("solicitacoes", solicitacoes);
             }
 
-            List<Notificacoes> notificacoes = new ArrayList<>();
+            List<Notificacoes> notificacoes = new GerenciadorNotificacao().recuperar20NotificacoesRecentes(u.getId());
             if (!notificacoes.isEmpty()){
                 req.getSession().setAttribute("notificacoes", notificacoes);
             }

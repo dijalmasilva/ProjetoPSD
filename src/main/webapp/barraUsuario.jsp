@@ -17,7 +17,7 @@
                 </a>
                 <a href="#" id="notificacoes" class="margin-rigth">
                     <c:if test="${sessionScope.notificacoes == null}">
-                    <img class="img-perfil" src="imagens/NotificationIcon.png" alt="notificações" title="Notificações">
+                        <img class="img-perfil" src="imagens/NotificationIcon.png" alt="notificações" title="Notificações">
                     </c:if>
                     <c:if test="${sessionScope.notificacoes != null}">
                         <img class="img-perfil" src="imagens/NotificationIconRed.png" alt="notificações" title="Notificações">
@@ -79,22 +79,24 @@
         <h4>Não há notificações</h4>
     </c:if>
     <div class="table-overflow">
-        <c:forEach items="${sessionScope.notificacoes}" var="s">
+        <c:forEach items="${sessionScope.notificacoes}" var="n">
             <br>
             <div class="modal-header table-responsive">
-                <form action="ControleAceitaSolicitacao" method="post">
-                    <div class="flutuarSomenteAEsquerda">
-                        <img src="${s.foto}" alt="${s.apelido}" title="${s.apelido}" class="img-solicitacao">
-                    </div>
-                    <div class="flutuarSomenteAdireita ">
-                        <br>
-                        <a href="ControlePerfilVisitante?idDoUsuario=${s.id}" class="text-capitalize active textoBranco">${s.apelido}</a><br>
-                        <button class="botaoSolicitacoesPequeno" name="resposta" value="true">Aceitar</button>
-                        <button class="botaoSolicitacoesPequeno" name="resposta" value="false">Cancelar</button>
-                    </div>
-                </form>
+
+                <div class="flutuarSomenteAEsquerda">
+                    <img src="${n.foto}" alt="${n.apelidoUsuario}" title="${n.apelidoUsuario}" class="img-solicitacao">
+                </div>
+                <br>
+                <h4>   
+                    <a href="ControlePerfilVisitante?idDoUsuario=${n.idUsuario}" class="text-capitalize active">${n.apelidoUsuario}</a>
+                    ${n.mensagem} 
+                    <c:if test="${n.idFilme != 0}">
+                        <a href="ControleVerFilme?idFilmeSelecionado=${n.idFilme}" class="text-capitalize active textoBranco">${n.nomeFilme}</a>
+                    </c:if>
+
+                </h4>
             </div>
-            <br>
+
         </c:forEach>
     </div>
 </div>
