@@ -10,7 +10,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -36,13 +35,13 @@ public class ControleCadastroGrupo extends HttpServlet {
 
         g.adicionar(new Grupo(IdUsuario, nomeDoGrupo, descricao));
         g.adicionaRelacaoAdmin(IdUsuario, g.retornaMaximo());
-        List<Grupo> grupos = g.retornaGruposDoUsuario(IdUsuario);
-        if (grupos == null) {
-            JOptionPane.showMessageDialog(null, "Grupos vazio");
-        } else {
-            req.getSession().setAttribute("grupos", grupos);
-        }
 
+        List<Grupo> grupos = new GerenciadorGrupo().retornaGruposDoUsuario(IdUsuario);
+        if (!grupos.isEmpty()) {
+            req.getSession().setAttribute("grupos", grupos);
+        }else{
+            req.getSession().setAttribute("grupos", null);
+        }
 
         req.getRequestDispatcher("grupoCadastro.jsp").forward(req, resp);
     }

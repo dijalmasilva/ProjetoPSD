@@ -5,9 +5,11 @@
  */
 package servlets;
 
+import entidades.Notificacoes;
 import entidades.Solicitacao;
 import entidades.Usuario;
 import gerenciador.GerenciadorAmizade;
+import gerenciador.GerenciadorNotificacao;
 import gerenciador.GerenciadorUtilitario;
 import java.io.IOException;
 import java.util.List;
@@ -73,6 +75,13 @@ public class ControleAceitaSolicitacaoPeloPerfilVisitante extends HttpServlet {
         } else {
             req.getSession().setAttribute("amigos", null);
         }
+        
+        Notificacoes n = new Notificacoes();
+        n.setIdAmigo(idVisitante);
+        n.setIdUsuario(idUsuario);
+        n.setMensagem("aceitou a sua solicitação de amizade.");
+        
+        new GerenciadorNotificacao().adicionarSolicitacaoAceita(n);
 
         req.getRequestDispatcher("visualizarPerfilVisitante.jsp").forward(req, resp);
     }

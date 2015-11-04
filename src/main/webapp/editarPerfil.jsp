@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="pt-br">
+    <script src="javascript/javascriptOutras.js"></script>
     <%@include file="head.jsp" %>
     <body  id="fundo" class="textoPreto white-background">
         <%@include file="barraUsuario.jsp"%>
@@ -28,15 +29,7 @@
                             </form>
                         </div>
                     </div>
-                    <div id="buscar" class="tab-pane fade text-center">
-                        <br>
-                        <h3>Buscar</h3>
-                        <p>Digite sua busca.</p><br><br><br>
-                        <div>
-                            <input class="botaoMedio" type="text" name="busca" placeholder="Buscar">
-                            <input class="botaoPequeno" type="submit" value="Search">
-                        </div>
-                    </div>
+                    <%@include file="search.jsp" %>
                 </div>
             </div>
         </div>
