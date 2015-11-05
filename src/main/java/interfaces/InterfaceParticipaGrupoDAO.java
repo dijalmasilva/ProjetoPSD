@@ -22,4 +22,5 @@ public interface InterfaceParticipaGrupoDAO{
     
     public boolean isParticipa(int idUsuario, int idGrupo);
     
+    public List<Integer> retornaUsuariosDeUmGrupo(int idGrupo);
 }

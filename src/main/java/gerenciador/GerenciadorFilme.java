@@ -14,8 +14,8 @@ public class GerenciadorFilme {
         return DAOFactory.createFactory().criaFilmeDAO().delete(null);
     }
 
-    public List<Filme> buscarCincoFilmesRecentes() {
-        return DAOFactory.createFactory().criaFilmeDAO().buscarCincoFilmesRecentes();
+    public List<Filme> buscarDezFilmesRecentes() {
+        return DAOFactory.createFactory().criaFilmeDAO().buscarDezFilmesRecentes();
 
     }
 
@@ -41,5 +41,9 @@ public class GerenciadorFilme {
     
     public String buscarTituloDoFilmePorId(int id){
         return DAOFactory.createFactory().criaFilmeDAO().buscarTituloDoFilmePorId(id);
+    }
+    
+    public List<String> retornaTodosOsFilmes(){
+        return DAOFactory.createFactory().criaFilmeDAO().retornaTodosOsFilmes();
     }
 }

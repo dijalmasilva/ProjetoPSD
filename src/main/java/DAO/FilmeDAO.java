@@ -60,7 +60,7 @@ public class FilmeDAO implements InterfaceFilmeDAO {
     }
 
     @Override
-    public List<Filme> buscarCincoFilmesRecentes() {
+    public List<Filme> buscarDezFilmesRecentes() {
         List<Filme> filmes = new ArrayList<>();
 
         String sql = "select * from filme order by dataDeCadastro desc limit 10";
@@ -274,5 +274,31 @@ public class FilmeDAO implements InterfaceFilmeDAO {
         }
 
         return titulo;
+    }
+    
+    @Override
+    public List<String> retornaTodosOsFilmes(){
+        List<String> nomeDosFilmes = new ArrayList<>();
+
+        String sql = "select titulo from filme";
+
+        Connection conn = null;
+
+        try {
+            conn = Conexao.abrirConexao();
+            Statement stat = conn.createStatement();
+            ResultSet rs = stat.executeQuery(sql);
+
+            while (rs.next()) {
+                nomeDosFilmes.add(rs.getString("titulo"));
+            }
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            Conexao.fecharConexao(conn);
+        }
+
+        return nomeDosFilmes;
     }
 }

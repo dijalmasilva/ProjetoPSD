@@ -13,8 +13,11 @@
                     <li class="active"><a data-toggle="tab" href="#topicos">Grupo</a></li>
                     <li><a data-toggle="tab" href="#participantes">Usuarios</a></li>
                     <li><a data-toggle="tab" href="#criar">Criar tópico</a></li>
-                        <c:if test="${participa == true}">
+                        <c:if test="${participa == false}">
                         <li><a data-toggle="tab" href="#participar">Participar</a></li>
+                        </c:if>
+                        <c:if test="${grupoSelecionado.idUsuario == user.id}">
+                        <li><a data-toggle="tab" href="#remover">Remover</a></li>
                         </c:if>
                     <li class="flutuarADireita"><a data-toggle="tab" href="#buscar">Buscar</a></li>
                 </ul>
@@ -27,18 +30,25 @@
                             <br>
                             <div class="table-overflow-comentarios">
                                 <c:forEach items="${topicos}">
-                                    
+
                                 </c:forEach>
                             </div>
                         </section>
                     </div>
                     <div id="participantes" class="tab-pane fade text-center">
-                        <div class="text-center margin-top table-responsive modal-header modal-dialog">
+                        <div class="margin-top table-responsive modal-header">
+                            <h3>Usuários do grupo</h3>
+                            <br><br><br>
                             <div class="row">
-                                <c:forEach items="${usuariosDoGrupo}">
-                                    <div class="col-sm-4">
-                                        <img src="" alt="" title="" class="img-solicitacao">
-                                        <h4>Nome</h4>
+                                <c:forEach items="${usuariosDoGrupo}" var="us">
+                                    <div class="col-sm-2">
+                                        <img src="${us.foto}" alt="${us.apelido}" title="${us.apelido}" class="img-solicitacao">
+                                        <c:if test="${us.id != user.id}"> 
+                                        <h4 class="text-capitalize"><a href="ControlePerfilVisitante?idDoUsuario=${us.id}">${us.apelido}</a></h4>
+                                        </c:if>
+                                        <c:if test="${us.id == user.id}"> 
+                                        <h4 class="text-capitalize"><a href="editarPerfil.jsp">Você</a></h4>
+                                        </c:if>
                                     </div>
                                 </c:forEach>
                             </div>
@@ -52,14 +62,19 @@
                             <div class="form-group">
                                 <form action="ControleCriarTopico" method="post">
                                     <input class="botaoMedio margin-top" name="nomeDoTopico" type="text" placeholder="Nome do tópico">
-                                    <input class="botaoMedio margin-top" name="nomeDoFilme" type="text" placeholder="Nome do Filme">
+                                    <input class="botaoMedio margin-top" name="nomeDoFilme" type="text" placeholder="Nome do Filme" list="listaDeFilmes">
+                                    <datalist id="listaDeFilmes">
+                                        <c:forEach items="${nomeDosFilmes}" var="a">
+                                            <option value="${a}"></option>
+                                        </c:forEach>
+                                    </datalist>
                                     <input class="botaoPequeno margin-top" type="submit" value="Criar">
                                 </form>
                             </div>
                         </div>
                     </div>
-                    <c:if test="${participa == true}">
-                        <div id="participar" class="text-center fade">
+                    <c:if test="${participa == false}">
+                        <div id="participar" class="tab-pane text-center fade">
                             <br>
                             <h3>Deseja participar deste grupo?</h3>
                             <div class="form-group modal-header modal-dialog">
@@ -68,7 +83,18 @@
                                 </form>
                             </div>
                         </div>
-                    </c:if>        
+                    </c:if>
+                    <c:if test="${grupoSelecionado.idUsuario == user.id}">
+                        <div id="remover" class="tabe-pane text-center fade">
+                            <br>
+                            <h3>Deseja realmente remover esse grupo?</h3>
+                            <div class="form-group modal-header modal-dialog">
+                                <form action="ControleRemoverGrupo" method="post">
+                                    <input class="botaoPequeno margin-top" type="submit" value="Remover">  
+                                </form>
+                            </div>
+                        </div>
+                    </c:if>
                     <%@include file="search.jsp" %>
                 </div>
             </div>

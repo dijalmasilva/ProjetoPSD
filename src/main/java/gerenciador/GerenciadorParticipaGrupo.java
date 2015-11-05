@@ -5,7 +5,9 @@
  */
 package gerenciador;
 
+import entidades.Usuario;
 import factory.DAOFactory;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,5 +31,15 @@ public class GerenciadorParticipaGrupo {
     
     public boolean isParticipa(int idUsuario, int idGrupo){
         return DAOFactory.createFactory().criaParticipaGrupoDAO().isParticipa(idUsuario, idGrupo);
+    }
+    
+    public List<Usuario> retornaUsuariosDeUmGrupo(int idGrupo){
+        List<Usuario> usuarios = new ArrayList<>();
+        
+        for(Integer i: DAOFactory.createFactory().criaParticipaGrupoDAO().retornaUsuariosDeUmGrupo(idGrupo)){
+            usuarios.add(new GerenciadorUsuario().consultarPorId(i));
+        }
+        
+        return usuarios;
     }
 }

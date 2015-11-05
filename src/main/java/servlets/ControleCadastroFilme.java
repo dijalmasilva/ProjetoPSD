@@ -44,7 +44,7 @@ public class ControleCadastroFilme extends HttpServlet {
 
         boolean cadastro = new GerenciadorFilme().adicionar(new Filme(idUser, titulo, ano, sinopse, foto, generos, atores, diretores, dataDeCadastro));
 
-        List<Filme> dezFilmesRecentes = new GerenciadorFilme().buscarCincoFilmesRecentes();
+        List<Filme> dezFilmesRecentes = new GerenciadorFilme().buscarDezFilmesRecentes();
         if (!dezFilmesRecentes.isEmpty()) {
             getServletContext().setAttribute("dezFilmesRecentes", dezFilmesRecentes);
         }

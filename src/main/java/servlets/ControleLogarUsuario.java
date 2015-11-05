@@ -50,7 +50,7 @@ public class ControleLogarUsuario extends HttpServlet {
             req.getSession().setAttribute("user", u);
             
 
-            List<Filme> dezFilmesRecentes = new GerenciadorFilme().buscarCincoFilmesRecentes();
+            List<Filme> dezFilmesRecentes = new GerenciadorFilme().buscarDezFilmesRecentes();
             if (!dezFilmesRecentes.isEmpty()) {
                 getServletContext().setAttribute("dezFilmesRecentes", dezFilmesRecentes);
             }

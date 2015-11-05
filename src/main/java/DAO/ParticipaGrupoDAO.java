@@ -121,4 +121,30 @@ public class ParticipaGrupoDAO implements InterfaceParticipaGrupoDAO{
         
         return result;
     }
+    
+    @Override
+    public List<Integer> retornaUsuariosDeUmGrupo(int idGrupo){
+        List<Integer> idDeUsuarios = new ArrayList<>();
+        
+        Connection con = null;
+        
+        try{
+            con = Conexao.abrirConexao();
+            String sql = "select idUsuario from participaGrupo where idGrupo = "+idGrupo+"";
+            Statement stat = con.createStatement();
+            ResultSet rs = stat.executeQuery(sql);
+            
+            while (rs.next()){
+                idDeUsuarios.add(rs.getInt("idUsuario"));
+            }
+            
+        }catch (ClassNotFoundException | SQLException ex){
+            ex.printStackTrace();
+        }finally{
+            Conexao.fecharConexao(con);
+        }
+        
+        
+        return idDeUsuarios;
+    }
 }
