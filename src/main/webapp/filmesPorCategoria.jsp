@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="pt-br">
     <%@include file="head.jsp" %>
@@ -22,14 +21,10 @@
 
                 <div class="tab-content">
                     <div id="filmes" class="tab-pane fade text-center fade in active">
-                        <%
-                            String genero = (String) request.getAttribute("generoEscolhido");
-                            List<Filme> filmes = new GerenciadorFilme().buscarFilmesPorGeneros(genero);
-                            if (filmes.isEmpty()) {%>
                         <br>
                         <h3>Não há nenhum filme para esta categoria</h3>
                         <%}%>
-                        <c:forEach items="<%=filmes%>" var="f">
+                        <c:forEach items="${filmeDeCategoria}" var="f">
                             <section class="text-center margin-top table-responsive modal-header modal-dialog">
                                 <br>
                                 <h2><a href="#">${f.titulo}</a></h2>

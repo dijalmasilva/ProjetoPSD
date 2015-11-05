@@ -8,7 +8,7 @@ public interface InterfaceUsuarioDAO {
 
 	public boolean adicionar(Usuario usuario);//throws PersistenciaException;
 
-	public boolean remover(String s);
+	public boolean remover(int id);
 
 	public boolean atualizar(Usuario usuario);
 

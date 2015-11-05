@@ -96,4 +96,29 @@ public class ParticipaGrupoDAO implements InterfaceParticipaGrupoDAO{
         
         return idGrupos;
     }
+    
+    @Override
+    public boolean isParticipa(int idUsuario, int idGrupo){
+        boolean result = false;
+        
+        Connection con = null;
+        
+        try{
+            con = Conexao.abrirConexao();
+            String sql = "select * from participaGrupo where idUsuario = "+idUsuario+" and idGrupo = "+idGrupo+"";
+            Statement stat = con.createStatement();
+            ResultSet rs = stat.executeQuery(sql);
+            
+            if (rs.next()){
+                result = true;
+            }
+        }catch (ClassNotFoundException | SQLException ex){
+            ex.printStackTrace();
+        }finally{
+            Conexao.fecharConexao(con);
+        }
+        
+        
+        return result;
+    }
 }

@@ -17,14 +17,17 @@ public class GerenciadorGrupo {
 
     public List<Grupo> retornaGruposDoUsuario(int idUser) {
         List<Grupo> grupos = new ArrayList<>();
-        
-        for (Integer id : DAOFactory.createFactory().criaParticipaGrupoDAO().retornaGrupos(idUser)) {
+        for (Integer id : new GerenciadorParticipaGrupo().retornaGrupos(idUser)) {
             grupos.add(DAOFactory.createFactory().criaGrupoDAO().consultarPorId(id));
         }
         
         return grupos;
     }
 
+    public Grupo consultarPorId(int idGrupo){
+        return DAOFactory.createFactory().criaGrupoDAO().consultarPorId(idGrupo);
+    }
+    
     public void alterar(Grupo grupo) {
         DAOFactory.createFactory().criaGrupoDAO().atualizar(grupo);
     }
@@ -40,4 +43,5 @@ public class GerenciadorGrupo {
     public int retornaMaximo(){
         return DAOFactory.createFactory().criaGrupoDAO().retornaMaximo();
     }
+
 }

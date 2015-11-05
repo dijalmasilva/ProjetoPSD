@@ -37,7 +37,7 @@
                         <p>Depois disso não poderá voltar com sua conta antiga.</p>
                         <br>
                         <div class="form-group">
-                            <form class="container" action="ControleExcluirConta" method="post">
+                            <form class="container" action="ControleRemoverConta" method="post">
                                 <button class="botaoPequeno margin-top" value="true" name="excluirConta">Excluir</button><br>
                             </form>
                         </div>

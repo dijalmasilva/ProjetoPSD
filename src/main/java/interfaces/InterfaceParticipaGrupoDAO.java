@@ -20,5 +20,6 @@ public interface InterfaceParticipaGrupoDAO{
     
     public List<Integer> retornaGrupos(int idUser);
     
+    public boolean isParticipa(int idUsuario, int idGrupo);
     
 }

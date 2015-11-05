@@ -50,15 +50,15 @@ public class UsuarioDAO implements InterfaceUsuarioDAO {
     }
 
     @Override
-    public boolean remover(String s) {
+    public boolean remover(int id) {
 
         boolean result = false;
         Connection conn = null;
         try {
             conn = Conexao.abrirConexao();
-            String sql = "DELETE FROM Usuario WHERE nome = ?";
+            String sql = "DELETE FROM Usuario WHERE id = ?";
             PreparedStatement stm = conn.prepareStatement(sql);
-            stm.setString(1, s);
+            stm.setInt(1, id);
             stm.executeUpdate();
 
             result = true;

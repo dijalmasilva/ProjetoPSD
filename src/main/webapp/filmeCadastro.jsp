@@ -15,8 +15,8 @@
                     <li><a data-toggle="tab" href="#generos">Gêneros</a></li>
                         <c:if test="${sessionScope.user.tipo == true}">
                         <li class="active"><a data-toggle="tab" href="#cadastroFilmes">Cadastrar Filmes</a></li>
-                        <li><a data-toggle="tab" href="#grupos">Grupos</a></li>
                         </c:if>
+                    <li><a data-toggle="tab" href="#grupos">Grupos</a></li>
                     <li class="flutuarADireita"><a data-toggle="tab" href="#buscar">Buscar</a></li>
                 </ul>
 

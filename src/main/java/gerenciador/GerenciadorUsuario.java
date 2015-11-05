@@ -1,6 +1,5 @@
 package gerenciador;
 
-import entidades.Solicitacao;
 import java.util.List;
 
 import entidades.Usuario;
@@ -13,8 +12,8 @@ public class GerenciadorUsuario {
         return DAOFactory.createFactory().criaUsuarioDAO().adicionar(u);
     }
 
-    public boolean remover(String s) {
-        return DAOFactory.createFactory().criaUsuarioDAO().remover(s);
+    public boolean remover(int id) {
+        return DAOFactory.createFactory().criaUsuarioDAO().remover(id);
     }
 
     public List<Usuario> consultarPorApelido(String apelido, int idUsuario) {

@@ -100,15 +100,7 @@
                             </form>
                         </div>
                     </div>
-                    <div id="buscar" class="tab-pane fade text-center">
-                        <br>
-                        <h3>Buscar</h3>
-                        <p>Digite sua busca.</p><br><br><br>
-                        <div>
-                            <input class="botaoMedio" type="text" name="busca" placeholder="Buscar">
-                            <input class="botaoPequeno" type="submit" value="Search">
-                        </div>
-                    </div>
+                    <%@include file="search.jsp" %>
                 </div>
             </div>
 

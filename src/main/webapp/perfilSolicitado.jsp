@@ -11,9 +11,9 @@
                 <ul class="nav nav-tabs navbar-static-top" id="menuNav">
                     <li class="active"><a data-toggle="tab" href="#perfil">Perfil</a></li>
                     <li><a data-toggle="tab" href="#amizade">Amizade</a></li>
-                    <c:if test="${sessionScope.user.tipo == true}">
-                    <li><a data-toggle="tab" href="#administrador">Administrador</a></li>
-                    </c:if>
+                        <c:if test="${sessionScope.user.tipo == true}">
+                        <li><a data-toggle="tab" href="#administrador">Administrador</a></li>
+                        </c:if>
                     <li class="flutuarADireita"><a data-toggle="tab" href="#buscar">Buscar</a></li>
                 </ul>
                 <div class="tab-content">
@@ -54,15 +54,7 @@
                             </form>
                         </c:if>
                     </div>
-                    <div id="buscar" class="tab-pane fade text-center">
-                        <br>
-                        <h3>Buscar</h3>
-                        <p>Digite sua busca.</p><br><br><br>
-                        <div>
-                            <input class="botaoMedio" type="text" name="busca" placeholder="Buscar">
-                            <input class="botaoPequeno" type="submit" value="Search">
-                        </div>
-                    </div>
+                    <%@include file="search.jsp" %>
                 </div>
             </div>
         </div>
