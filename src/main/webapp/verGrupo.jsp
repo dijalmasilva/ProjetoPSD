@@ -11,7 +11,7 @@
                 <br>    
                 <ul class="nav nav-tabs navbar-static-top" id="menuNav">
                     <li class="active"><a data-toggle="tab" href="#topicos">Grupo</a></li>
-                    <li><a data-toggle="tab" href="#participantes">Usuarios</a></li>
+                    <li><a data-toggle="tab" href="#participantes">Usuários</a></li>
                     <li><a data-toggle="tab" href="#criar">Criar tópico</a></li>
                         <c:if test="${participa == false}">
                         <li><a data-toggle="tab" href="#participar">Participar</a></li>
@@ -28,12 +28,16 @@
                             <h2><a>${grupoSelecionado.nomeDoGrupo}</a></h2>
                             <p>${grupoSelecionado.descricao}</p>
                             <br>
-                            <div class="table-overflow-comentarios">
-                                <c:forEach items="${topicos}">
-
-                                </c:forEach>
-                            </div>
                         </section>
+                        <c:if test="${topicos != null}"><h3>Tópicos</h3></c:if>
+                        <br><br>
+                            <div class="row modal-header">
+                            <c:forEach items="${topicos}" var="t">
+                                <div class="media-left col-sm-3">
+                                    <h4><a href="ControleVerTopico?idTopico=${t.id}">${t.nomeDoTopico}</a></h4>
+                                </div>
+                            </c:forEach>
+                        </div>
                     </div>
                     <div id="participantes" class="tab-pane fade text-center">
                         <div class="margin-top table-responsive modal-header">
@@ -44,10 +48,10 @@
                                     <div class="col-sm-2">
                                         <img src="${us.foto}" alt="${us.apelido}" title="${us.apelido}" class="img-solicitacao">
                                         <c:if test="${us.id != user.id}"> 
-                                        <h4 class="text-capitalize"><a href="ControlePerfilVisitante?idDoUsuario=${us.id}">${us.apelido}</a></h4>
-                                        </c:if>
-                                        <c:if test="${us.id == user.id}"> 
-                                        <h4 class="text-capitalize"><a href="editarPerfil.jsp">Você</a></h4>
+                                            <h4 class="text-capitalize"><a href="ControlePerfilVisitante?idDoUsuario=${us.id}">${us.apelido}</a></h4>
+                                            </c:if>
+                                            <c:if test="${us.id == user.id}"> 
+                                            <h4 class="text-capitalize"><a href="editarPerfil.jsp">Você</a></h4>
                                         </c:if>
                                     </div>
                                 </c:forEach>

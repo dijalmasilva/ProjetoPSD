@@ -1,10 +1,12 @@
 package servlets;
 
 import entidades.Grupo;
+import entidades.Topico;
 import entidades.Usuario;
 import gerenciador.GerenciadorFilme;
 import gerenciador.GerenciadorGrupo;
 import gerenciador.GerenciadorParticipaGrupo;
+import gerenciador.GerenciadorTopico;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -33,6 +35,10 @@ public class ControleVerGrupo extends HttpServlet{
         Grupo g = new GerenciadorGrupo().consultarPorId(idGrupo);
         int idUsuario = ((Usuario) req.getSession().getAttribute("user")).getId();
         
+        List<Topico> topicos = new GerenciadorTopico().consultarPorIdDoGrupo(idGrupo);
+        if (!topicos.isEmpty()){
+            req.getSession().setAttribute("topicos", topicos);
+        }
         List<Usuario> usuariosDoGrupo = new GerenciadorParticipaGrupo().retornaUsuariosDeUmGrupo(idGrupo);
         List<String> nomeDosFilmes = new GerenciadorFilme().retornaTodosOsFilmes();
         

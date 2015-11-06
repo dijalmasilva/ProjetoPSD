@@ -220,7 +220,7 @@ public class FilmeDAO implements InterfaceFilmeDAO {
         Connection conn = null;
 
         try {
-            
+
             conn = Conexao.abrirConexao();
             Statement stat = conn.createStatement();
             ResultSet rs = stat.executeQuery(sql);
@@ -248,7 +248,6 @@ public class FilmeDAO implements InterfaceFilmeDAO {
         return filme;
     }
 
-    
     @Override
     public String buscarTituloDoFilmePorId(int id) {
         String titulo = "";
@@ -258,7 +257,7 @@ public class FilmeDAO implements InterfaceFilmeDAO {
         Connection conn = null;
 
         try {
-            
+
             conn = Conexao.abrirConexao();
             Statement stat = conn.createStatement();
             ResultSet rs = stat.executeQuery(sql);
@@ -275,9 +274,9 @@ public class FilmeDAO implements InterfaceFilmeDAO {
 
         return titulo;
     }
-    
+
     @Override
-    public List<String> retornaTodosOsFilmes(){
+    public List<String> retornaTodosOsFilmes() {
         List<String> nomeDosFilmes = new ArrayList<>();
 
         String sql = "select titulo from filme";
@@ -300,5 +299,30 @@ public class FilmeDAO implements InterfaceFilmeDAO {
         }
 
         return nomeDosFilmes;
+    }
+
+    @Override
+    public int retornaIdDoFilmePeloNome(String nomeDoFilme) {
+        int idFilme = 0;
+
+        Connection con = null;
+
+        try {
+            con = Conexao.abrirConexao();
+            String sql = "select id from filme where titulo = '"+nomeDoFilme+"'";
+            Statement stat = con.createStatement();
+            ResultSet rs = stat.executeQuery(sql);
+            
+            if (rs.next()){
+                idFilme = rs.getInt("id");
+            }
+            
+        } catch (ClassNotFoundException | SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            Conexao.fecharConexao(con);
+        }
+        
+        return idFilme;
     }
 }

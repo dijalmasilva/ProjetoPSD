@@ -46,4 +46,8 @@ public class GerenciadorFilme {
     public List<String> retornaTodosOsFilmes(){
         return DAOFactory.createFactory().criaFilmeDAO().retornaTodosOsFilmes();
     }
+    
+    public int retornaIdDoFilmePeloNome(String nomeDoFilme){
+        return DAOFactory.createFactory().criaFilmeDAO().retornaIdDoFilmePeloNome(nomeDoFilme);
+    }
 }

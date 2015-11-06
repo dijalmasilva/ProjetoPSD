@@ -5,7 +5,10 @@ import entidades.Topico;
 import interfaces.InterfaceTopicoDAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 public class TopicoDAO implements InterfaceTopicoDAO{
@@ -50,9 +53,36 @@ public class TopicoDAO implements InterfaceTopicoDAO{
 
     @Override
     public List<Topico> consultarPorIdDoGrupo(int idDoGrupo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Topico> topicos = new ArrayList<>();
+        
+        Connection con = null;
+        
+        String sql = "select * from topico where idgrupo = "+idDoGrupo+"";
+        
+        try{
+            con = Conexao.abrirConexao();
+            Statement stat = con.createStatement();
+            ResultSet rs = stat.executeQuery(sql);
+            
+            while(rs.next()){
+                Topico t = new Topico();
+                t.setId(rs.getInt("id"));
+                t.setIdFilme(rs.getInt("idFilme"));
+                t.setIdGrupo(rs.getInt("idGrupo"));
+                t.setIdUsuario(rs.getInt("idUsuario"));
+                t.setNomeDoTopico(rs.getString("nomedotopico"));
+                
+                topicos.add(t);
+            }
+            
+        } catch (ClassNotFoundException | SQLException ex){
+            ex.printStackTrace();
+        }finally{
+            Conexao.fecharConexao(con);
+        }
+        
+        return topicos;
     }
 
-    
     
 }
