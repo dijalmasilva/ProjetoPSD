@@ -368,7 +368,9 @@ input[type="date"]{
     border: none !important;
 }
 
-
+.invisivel{
+    display: none;
+}
 
 @media(max-width: 575px){
     .botaoPequeno{

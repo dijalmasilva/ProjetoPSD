@@ -16,7 +16,7 @@ public interface InterfaceNotificacoesDAO {
     
     public boolean adicionarRecomendacao(Notificacoes n);
     
-    public boolean adicionarSolicitacaoAceita(Notificacoes n);
+    public boolean adicionarGeral(Notificacoes n);
     
     public List<Notificacoes> recuperar20NotificacoesRecentes(int idUsuario);
 }

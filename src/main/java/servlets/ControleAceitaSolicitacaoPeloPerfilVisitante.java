@@ -81,7 +81,7 @@ public class ControleAceitaSolicitacaoPeloPerfilVisitante extends HttpServlet {
         n.setIdUsuario(idUsuario);
         n.setMensagem("aceitou a sua solicitação de amizade.");
         
-        new GerenciadorNotificacao().adicionarSolicitacaoAceita(n);
+        new GerenciadorNotificacao().adicionarGeral(n);
 
         req.getRequestDispatcher("visualizarPerfilVisitante.jsp").forward(req, resp);
     }

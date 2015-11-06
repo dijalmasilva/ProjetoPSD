@@ -1,6 +1,8 @@
 package servlets;
 
+import entidades.Notificacoes;
 import entidades.Usuario;
+import gerenciador.GerenciadorNotificacao;
 import gerenciador.GerenciadorUsuario;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -28,6 +30,13 @@ public class ControleAtualizarParaAdministrador extends HttpServlet{
         visitante.setTipo(true);
         new GerenciadorUsuario().atualizarParaAdministrador(visitante.getId());
         req.getSession().setAttribute("userVisitante", visitante);
+        
+        Notificacoes n = new Notificacoes();
+        n.setIdAmigo(visitante.getId());
+        n.setIdUsuario(((Usuario)req.getSession().getAttribute("user")).getId());
+        n.setMensagem("tornou você um administrador!");
+        new GerenciadorNotificacao().adicionarGeral(n);
+        
         req.getRequestDispatcher("visualizarPerfilVisitante.jsp").forward(req, resp);
     }
 }

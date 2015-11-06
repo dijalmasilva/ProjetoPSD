@@ -14,8 +14,8 @@ public class GerenciadorNotificacao {
         return DAOFactory.createFactory().criaNotificacaoDAO().adicionarRecomendacao(n);
     }
     
-    public boolean adicionarSolicitacaoAceita(Notificacoes n){
-        return DAOFactory.createFactory().criaNotificacaoDAO().adicionarSolicitacaoAceita(n);
+    public boolean adicionarGeral(Notificacoes n){
+        return DAOFactory.createFactory().criaNotificacaoDAO().adicionarGeral(n);
     }
     
     public List<Notificacoes> recuperar20NotificacoesRecentes(int idUsuario){

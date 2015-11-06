@@ -59,13 +59,13 @@
                     <div class="flutuarSomenteAEsquerda">
                         <img src="${s.foto}" alt="${s.apelido}" title="${s.apelido}" class="img-solicitacao">
                     </div>
-                    <div class="flutuarSomenteAdireita ">
+                    <div class="media-middle">
                         <br>
-                        <input name="idDaSolicitacao" value="${s.id}" class="invisible">
                         <a href="ControlePerfilVisitante?idDoUsuario=${s.id}" class="text-capitalize active textoBranco">${s.apelido}</a><br>
                         <button type="submit" class="botaoSolicitacoesPequeno" name="resposta" value="true">Aceitar</button>
                         <button type="submit" class="botaoSolicitacoesPequeno" name="resposta" value="false">Cancelar</button>
                     </div>
+                        <input name="idDaSolicitacao" value="${s.id}" class="invisible">
                 </form>
             </div>
             <br>

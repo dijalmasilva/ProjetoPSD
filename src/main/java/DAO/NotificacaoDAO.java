@@ -42,7 +42,7 @@ public class NotificacaoDAO implements InterfaceNotificacoesDAO{
     }
 
     @Override
-    public boolean adicionarSolicitacaoAceita(Notificacoes n) {
+    public boolean adicionarGeral(Notificacoes n) {
         boolean result = false;
         
         Connection con = null;

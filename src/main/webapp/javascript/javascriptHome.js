@@ -2,7 +2,7 @@ $(document).ready(function () {
 
     var controle = Math.floor(Math.random() * 6);
 
-    var videos = ['wuV4BCYv-YY', 'K6FFF8txIqY', 'UgBWSPD6MUU', 'KmYNkasYthg', 'EKawDPkcYdY', 'Ky4sXEz520Y'];
+    var videos = ['BXxnWyGE484', 'K6FFF8txIqY', 'ma3Rvl5SDuI', 'VWu0wF-xuzs', 'wyrOeSAF5NA', 'tCAgtzMUCaA'];
 
     var options = {videoId: videos[controle],
         start: 0,

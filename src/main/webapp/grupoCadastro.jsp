@@ -16,7 +16,7 @@
                         <c:if test="${sessionScope.user.tipo == true}">
                         <li><a data-toggle="tab" href="#cadastroFilmes">Cadastrar Filmes</a></li>
                         </c:if>
-                        <li class="active"><a data-toggle="tab" href="#grupos">Grupos</a></li>
+                    <li class="active"><a data-toggle="tab" href="#grupos">Grupos</a></li>
                     <li class="flutuarADireita"><a data-toggle="tab" href="#buscar">Buscar</a></li>
                 </ul>
 
@@ -39,13 +39,11 @@
                         <div class="modal-dialog text-center">
                             <a href="#" id="newGroup">Criar novo grupo</a>
                         </div>
-                        <div class="row media-middle">
+                        <div class="row">
                             <c:forEach items="${sessionScope.grupos}" var="g">
-                                <div class="col-sm-3">
-                                    <section class="text-center margin-top table-responsive modal-header modal-dialog">
-                                        <br>
-                                        <h2><a href="#">${g.nomeDoGrupo}</a></h2>
-                                    </section>
+                                <div class="col-sm-3 modal-header">
+                                    <br>
+                                    <h2><a href="ControleVerGrupo?idGrupo=${g.id}">${g.nomeDoGrupo}</a></h2>
                                 </div>
                             </c:forEach>
                         </div>
