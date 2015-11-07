@@ -8,6 +8,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GrupoDAO implements InterfaceGrupoDAO {
 
@@ -115,4 +117,32 @@ public class GrupoDAO implements InterfaceGrupoDAO {
         return i;
     }
 
+    @Override
+    public List<Grupo> buscaGruposPeloNome(String busca){
+        List<Grupo> grupos = new ArrayList<>();
+        
+        Connection con = null;
+        
+        try{
+            con = Conexao.abrirConexao();
+            String sql = "select * from grupo where nome ilike '%"+busca+"%'";
+            Statement stat = con.createStatement();
+            ResultSet rs = stat.executeQuery(sql);
+            
+            while(rs.next()){
+                Grupo g = new Grupo();
+                g.setId(rs.getInt("id"));
+                g.setIdUsuario(rs.getInt("idusuario"));
+                g.setNomeDoGrupo(rs.getString("nome"));
+                g.setDescricao(rs.getString("descricao"));
+            }
+            
+        }catch (ClassNotFoundException | SQLException ex){
+            ex.printStackTrace();
+        } finally {
+            Conexao.fecharConexao(con);
+        }
+        
+        return grupos;
+    }
 }

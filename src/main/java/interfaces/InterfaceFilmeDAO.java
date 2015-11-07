@@ -27,4 +27,6 @@ public interface InterfaceFilmeDAO {
         public List<String> retornaTodosOsFilmes();
         
         public int retornaIdDoFilmePeloNome(String nomeDoFilme);
+        
+        public List<Filme> buscarFilmesPeloTitulo(String titulo);
 }

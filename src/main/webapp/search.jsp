@@ -10,8 +10,10 @@
     <br>
     <h3>Buscar</h3>
     <p>Digite sua busca.</p><br><br><br>
-    <div>
-        <input class="botaoMedio" type="text" name="busca" placeholder="Buscar">
-        <input class="botaoPequeno" type="submit" value="Search">
+    <div class="form-group">
+        <form action="ControleBuscar" method="post">
+            <input class="botaoMedio" type="text" name="busca" placeholder="Buscar">
+            <input class="botaoPequeno" type="submit" value="Search">
+        </form>
     </div>
 </div>

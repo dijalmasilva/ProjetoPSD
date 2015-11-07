@@ -1,6 +1,7 @@
 package interfaces;
 
 import entidades.Grupo;
+import java.util.List;
 
 public interface InterfaceGrupoDAO {
 
@@ -14,4 +15,5 @@ public interface InterfaceGrupoDAO {
         
         public int retornaMaximo();
 
+        public List<Grupo> buscaGruposPeloNome(String busca);
 }

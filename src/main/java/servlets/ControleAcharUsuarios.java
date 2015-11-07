@@ -27,10 +27,12 @@ public class ControleAcharUsuarios extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Usuario> usuarios = null;
 
-        Usuario u = new GerenciadorUsuario().consultarPorEmail(req.getParameter("emailOuApelido"), ((Usuario) req.getSession().getAttribute("user")).getId());
+        Usuario user = ((Usuario) req.getSession().getAttribute("user"));
+        
+        Usuario u = new GerenciadorUsuario().consultarPorEmail(req.getParameter("emailOuApelido"), user.getId());
 
         if (u == null) {
-            usuarios = new GerenciadorUsuario().consultarPorApelido(req.getParameter("emailOuApelido"), ((Usuario) req.getSession().getAttribute("user")).getId());
+            usuarios = new GerenciadorUsuario().consultarPorApelido(req.getParameter("emailOuApelido"), user.getId());
 
             if (usuarios.isEmpty()) {
                 req.setAttribute("usuariosAchados", u);

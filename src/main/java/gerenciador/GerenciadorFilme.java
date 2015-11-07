@@ -4,6 +4,7 @@ import entidades.Avaliacao;
 import java.util.List;
 import entidades.Filme;
 import factory.DAOFactory;
+import java.util.ArrayList;
 
 public class GerenciadorFilme {
 
@@ -70,5 +71,49 @@ public class GerenciadorFilme {
         }
 
         return media;
+    }
+
+    public List<Filme> buscarFilmesPeloTitulo(String titulo) {
+        return DAOFactory.createFactory().criaFilmeDAO().buscarFilmesPeloTitulo(titulo);
+    }
+
+    public List<Filme> buscaCompletaDeFilme(String busca) {
+        List<Filme> filmesResult = buscarFilmesPeloTitulo(busca);
+
+        filmesResult = comparaListaDeFilmesEAdiciona(filmesResult, buscarFilmesPorGeneros(busca));
+        filmesResult = comparaListaDeFilmesEAdiciona(filmesResult, buscarFilmesPorAtoresPrincipais(busca));
+        filmesResult = comparaListaDeFilmesEAdiciona(filmesResult, buscarFilmesPorDiretores(busca));
+
+        return filmesResult;
+    }
+    
+    private List<Filme> comparaListaDeFilmesEAdiciona(List<Filme> filmesResult, List<Filme> filmesCompara){
+        List<Filme> filmes = filmesResult;
+        
+        int cont;
+        
+        for(Filme f: filmesCompara){
+            
+            cont = 0;
+            
+            for(Filme fs: filmesResult){
+                if (fs.equals(f)){
+                    break;
+                }else{
+                    cont++;
+                }
+            }
+            
+            if (cont == filmesResult.size()){
+                filmes.add(f);
+            }
+        }
+        
+        return filmes;
+    }
+    
+    public List<Filme> ordenaFilmesPorGenero(List<Filme> filmes){
+        
+        return null;
     }
 }

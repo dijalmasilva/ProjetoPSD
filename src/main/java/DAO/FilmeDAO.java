@@ -325,4 +325,41 @@ public class FilmeDAO implements InterfaceFilmeDAO {
         
         return idFilme;
     }
+    
+    @Override
+    public List<Filme> buscarFilmesPeloTitulo(String titulo){
+        List<Filme> filmes = new ArrayList<>();
+        
+        Connection con = null;
+        
+        try{
+            con = Conexao.abrirConexao();
+            String sql = "select * from filme where titulo ilike '%"+titulo+"%' order by titulo";
+            Statement stat = con.createStatement();
+            ResultSet rs = stat.executeQuery(sql);
+            
+            while(rs.next()){
+                Filme filme = new Filme();
+                filme.setId(rs.getInt("id"));
+                filme.setIdUser(rs.getInt("iduser"));
+                filme.setTitulo(rs.getString("titulo"));
+                filme.setAno(rs.getInt("ano"));
+                filme.setSinopse(rs.getString("sinopse"));
+                filme.setFoto(rs.getString("foto"));
+                filme.setGeneros(rs.getString("generos"));
+                filme.setAtoresPrincipais(rs.getString("atoresprincipais"));
+                filme.setDiretores(rs.getString("diretores"));
+                filme.setDataDeCadastro(rs.getDate("dataDeCadastro").toLocalDate());
+                
+                filmes.add(filme);
+            }
+            
+        }catch (ClassNotFoundException | SQLException ex){
+            ex.printStackTrace();
+        } finally {
+            Conexao.fecharConexao(con);
+        }
+        
+        return filmes;
+    }
 }

@@ -44,4 +44,8 @@ public class GerenciadorGrupo {
         return DAOFactory.createFactory().criaGrupoDAO().retornaMaximo();
     }
 
+    
+    public List<Grupo> retornaGruposPorNome(String busca){
+        return DAOFactory.createFactory().criaGrupoDAO().buscaGruposPeloNome(busca);
+    }
 }
