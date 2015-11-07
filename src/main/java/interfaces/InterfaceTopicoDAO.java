@@ -14,4 +14,5 @@ public interface InterfaceTopicoDAO {
 
 	public List<Topico> consultarPorIdDoGrupo(int idDoGrupo);
 
+        public Topico consultarPorId(int idTopico);
 }

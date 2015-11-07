@@ -3,6 +3,7 @@ package entidades;
 public class ComentarioTopico {
 
     private int id;
+    private int idUsuario;
     private int idTopico;
     private String comentario;
     
@@ -10,8 +11,9 @@ public class ComentarioTopico {
         
     }
 
-    public ComentarioTopico(int idTopico, String comentario) {
+    public ComentarioTopico(int idTopico, String comentario, int idUsuario  ) {
         this.idTopico = idTopico;
+        this.idUsuario = idUsuario;
         this.comentario = comentario;
     }
 
@@ -37,6 +39,14 @@ public class ComentarioTopico {
 
     public void setComentario(String comentario) {
         this.comentario = comentario;
+    }
+
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
     
     

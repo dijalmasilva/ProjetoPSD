@@ -2,7 +2,7 @@ package gerenciador;
 
 import entidades.Comentarios;
 import entidades.Avaliacao;
-import entidades.Topico;
+import entidades.ComentarioTopico;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,18 +25,21 @@ public class GerenciadorDeComentarios {
             comentarios.add(c);
         }
         
-        if(comentarios.isEmpty()){
-            return null;
-        }
-        
         return comentarios;
     }
     
-    public List<Comentarios> retornaComentariosDeTopico(List<Topico> topicos){
+    public List<Comentarios> retornaComentariosDeTopico(List<ComentarioTopico> ct){
         List<Comentarios> comentarios = new ArrayList<>();
         
-        if(comentarios.isEmpty())
-            return null;
+        for(ComentarioTopico c: ct){
+            Comentarios coment = new Comentarios();
+            coment.setApelido(new GerenciadorUsuario().retornaApelidoPeloId(c.getIdUsuario()));
+            coment.setComentario(c.getComentario());
+            coment.setIdUsuario(c.getIdUsuario());
+            coment.setFoto(new GerenciadorUsuario().retornaFotoPeloId(c.getIdUsuario()));
+            
+            comentarios.add(coment);
+        }
         
         return comentarios;
     }

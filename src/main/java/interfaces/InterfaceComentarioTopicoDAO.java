@@ -12,6 +12,6 @@ public interface InterfaceComentarioTopicoDAO {
 
 	public boolean atualizar(ComentarioTopico c);
 
-	public List<ComentarioTopico> consultar();
+	public List<ComentarioTopico> consultarPorIdTopico(int idTopico);
 
 }

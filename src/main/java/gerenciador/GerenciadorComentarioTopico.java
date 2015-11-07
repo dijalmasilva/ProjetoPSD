@@ -15,8 +15,8 @@ public class GerenciadorComentarioTopico {
         return DAOFactory.createFactory().criaComentarioTopicoDAO().remover(id);
     }
 
-    public List<ComentarioTopico> pesquisar() {
-        return DAOFactory.createFactory().criaComentarioTopicoDAO().consultar();
+    public List<ComentarioTopico> consultarPorIdTopico(int idTopico) {
+        return DAOFactory.createFactory().criaComentarioTopicoDAO().consultarPorIdTopico(idTopico);
     }
 
     public boolean alterar(ComentarioTopico c) {

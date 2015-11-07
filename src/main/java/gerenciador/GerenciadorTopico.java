@@ -22,4 +22,8 @@ public class GerenciadorTopico {
     public List<Topico> consultarPorIdDoGrupo(int idDoGrupo){
         return DAOFactory.createFactory().criaTopicoDAO().consultarPorIdDoGrupo(idDoGrupo);
     }
+    
+    public Topico consultarPorId(int idTopico){
+        return DAOFactory.createFactory().criaTopicoDAO().consultarPorId(idTopico);
+    }
 }
