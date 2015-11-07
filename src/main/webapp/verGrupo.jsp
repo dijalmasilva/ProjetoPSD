@@ -93,7 +93,7 @@
                             <br>
                             <h3>Deseja realmente remover esse grupo?</h3>
                             <div class="form-group modal-header modal-dialog">
-                                <form action="ControleRemoverGrupo" method="post">
+                                <form action="ControleRemoveGrupo" method="post">
                                     <input class="botaoPequeno margin-top" type="submit" value="Remover">  
                                 </form>
                             </div>

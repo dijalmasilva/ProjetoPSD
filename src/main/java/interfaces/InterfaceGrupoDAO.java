@@ -6,7 +6,7 @@ public interface InterfaceGrupoDAO {
 
 	public boolean adicionar(Grupo grupo);// throws PersistenciaException;
 
-	public boolean remover(String s);
+	public boolean remover(int idGrupo);
 
 	public boolean atualizar(Grupo grupo);
 

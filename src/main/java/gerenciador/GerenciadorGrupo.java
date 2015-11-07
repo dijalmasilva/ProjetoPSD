@@ -11,8 +11,8 @@ public class GerenciadorGrupo {
         return DAOFactory.createFactory().criaGrupoDAO().adicionar(grupo);
     }
 
-    public boolean remover(String s) {
-        return DAOFactory.createFactory().criaGrupoDAO().remover(s);
+    public boolean remover(int idGrupo) {
+        return DAOFactory.createFactory().criaGrupoDAO().remover(idGrupo);
     }
 
     public List<Grupo> retornaGruposDoUsuario(int idUser) {
