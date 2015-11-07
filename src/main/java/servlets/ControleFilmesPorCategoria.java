@@ -1,7 +1,10 @@
 
 package servlets;
 
+import entidades.Filme;
+import gerenciador.GerenciadorFilme;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,7 +26,16 @@ public class ControleFilmesPorCategoria extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
-        req.setAttribute("generoEscolhido", req.getParameter("genero"));
+        
+        String genero = req.getParameter("genero");
+        
+        List<Filme> filmesDeCategoria = new GerenciadorFilme().buscarFilmesPorGeneros(genero);
+        
+        if(!filmesDeCategoria.isEmpty())
+            req.setAttribute("filmesDeCategoria", filmesDeCategoria);
+        else
+            req.setAttribute("filmesDeCategoria", null);
+        
         req.getRequestDispatcher("filmesPorCategoria.jsp").forward(req, resp);
     }
     

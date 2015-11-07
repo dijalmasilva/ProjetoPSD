@@ -22,15 +22,19 @@
                 <div class="tab-content">
                     <div id="filmes" class="tab-pane fade text-center fade in active">
                         <br>
-                        <h3>Não há nenhum filme para esta categoria</h3>
-                        <%}%>
-                        <c:forEach items="${filmeDeCategoria}" var="f">
+                        <c:if test="${filmesDeCategoria == null}">
+                            <h3>Não há nenhum filme para esta categoria</h3>
+                        </c:if>
+                        <c:forEach items="${filmesDeCategoria}" var="f">
                             <section class="text-center margin-top table-responsive modal-header modal-dialog">
                                 <br>
-                                <h2><a href="#">${f.titulo}</a></h2>
+                                <h2><a href="ControleVerFilme?idFilmeSelecionado=${f.id}">${f.titulo}</a></h2>
                                 <img src="${f.foto}" alt="${f.titulo}" width="300" height="230" title="${f.titulo}">
                                 <h5>${f.sinopse}</h5>
-                                <button class="botaoPequeno margin-top">Ver Filme</button>  
+                                <form action="ControleVerFilme" method="post">
+                                    <input type="submit" class="botaoPequeno margin-top" value="Ver Filme"><br>  
+                                    <input class="invisible" value="${f.id}" name="idFilmeSelecionado">
+                                </form>
                             </section>
                         </c:forEach>
                     </div>

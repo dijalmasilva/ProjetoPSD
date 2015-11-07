@@ -28,9 +28,9 @@
                                 <h2><a href="ControleVerFilme?idFilmeSelecionado=${f.id}">${f.titulo}</a></h2>
                                 <img src="${f.foto}" alt="${f.titulo}" width="300" height="230" title="${f.titulo}">
                                 <h5>${f.sinopse}</h5>
-                                <form action="ControleVerFilme">
-                                    <button class="visible-xs" value="${f.id}" name="idFilmeSelecionado"></button>
-                                    <button type="submit" class="botaoPequeno margin-top">Ver Filme</button>  
+                                <form action="ControleVerFilme" method="post">
+                                    <input type="submit" class="botaoPequeno margin-top" value="Ver Filme"><br>  
+                                    <input class="invisible" value="${f.id}" name="idFilmeSelecionado">
                                 </form>
                             </section>
                         </c:forEach>

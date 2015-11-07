@@ -12,19 +12,21 @@
     <p>Selecione a categoria do filme.</p>
     <br><br>
     <div class="generosTexto brancoOpaco">
-        <ul class="menuNavegacao">
-            <li><a href="ControlesFilmesPorCategoria?genero=Ação">Ação</a></li>
-            <li><a href="ControlesFilmesPorCategoria?genero=Aventura">Aventura</a></li>
-            <li><a href="ControlesFilmesPorCategoria?genero=Animação">Animação</a></li>
-            <li><a href="ControlesFilmesPorCategoria?genero=Comédia">Comédia</a></li>
-            <li><a href="ControlesFilmesPorCategoria?genero=Documentário">Documentário</a></li>
-            <li><a href="ControlesFilmesPorCategoria?genero=Drama">Drama</a></li>
-            <li><a href="ControlesFilmesPorCategoria?genero=Ficção Científica">Ficção Científica</a></li>
-            <li><a href="ControlesFilmesPorCategoria?genero=Musical">Musical</a></li>
-            <li><a href="ControlesFilmesPorCategoria?genero=Nacional">Nacional</a></li>
-            <li><a href="ControlesFilmesPorCategoria?genero=Romance">Romance</a></li>
-            <li><a href="ControlesFilmesPorCategoria?genero=Terror">Terror</a></li>
-            <li><a href="ControlesFilmesPorCategoria?genero=Suspense">Suspense</a></li>
-        </ul>
+        <form action="ControleFilmesPorCategoria" method="post">
+            <ul class="menuNavegacao">
+                <li><a><button name="genero" type="submit" class="botaoTransparente" value="Ação">Ação                           </button></a></li>
+                <li><a><button name="genero" type="submit" class="botaoTransparente" value="Aventura">Aventura                   </button></a></li>
+                <li><a><button name="genero" type="submit" class="botaoTransparente" value="Animação">Animação                   </button></a></li>
+                <li><a><button name="genero" type="submit" class="botaoTransparente" value="Comédia">Comédia                     </button></a></li>
+                <li><a><button name="genero" type="submit" class="botaoTransparente" value="Documentário">Documentário           </button></a></li>
+                <li><a><button name="genero" type="submit" class="botaoTransparente" value="Drama">Drama                         </button></a></li>
+                <li><a><button name="genero" type="submit" class="botaoTransparente" value="Ficção Científica">Ficção Científica </button></a></li>
+                <li><a><button name="genero" type="submit" class="botaoTransparente" value="Musical">Musical                     </button></a></li>
+                <li><a><button name="genero" type="submit" class="botaoTransparente" value="Nacional">Nacional                   </button></a></li>
+                <li><a><button name="genero" type="submit" class="botaoTransparente" value="Romance">Romance                     </button></a></li>
+                <li><a><button name="genero" type="submit" class="botaoTransparente" value="Terror">Terror                       </button></a></li>
+                <li><a><button name="genero" type="submit" class="botaoTransparente" value="Suspense">Suspense                   </button></a></li>
+            </ul>
+        </form>
     </div>
 </div>

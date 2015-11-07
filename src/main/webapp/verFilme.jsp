@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="pt-br">
     <%@include file="head.jsp" %>
@@ -31,11 +32,50 @@
                             <br>
                             <img src="${filmeSelecionado.foto}" alt="${filmeSelecionado.titulo}" width="300" height="230" title="${filmeSelecionado.titulo}">
                             <br><br>
-                            <img src="imagens/starP.png" alt="rating" title="rating">
-                            <img src="imagens/starP.png" alt="rating" title="rating">
-                            <img src="imagens/starV.png" alt="rating" title="rating">
-                            <img src="imagens/starV.png" alt="rating" title="rating">
-                            <img src="imagens/starV.png" alt="rating" title="rating">
+                            <c:choose>
+                                <c:when test="${rating == 1}">
+                                    <img src="imagens/starP.png" alt="rating" title="rating">
+                                    <img src="imagens/starV.png" alt="rating" title="rating">
+                                    <img src="imagens/starV.png" alt="rating" title="rating">
+                                    <img src="imagens/starV.png" alt="rating" title="rating">
+                                    <img src="imagens/starV.png" alt="rating" title="rating">
+                                </c:when>
+                                <c:when test="${rating == 2}">
+                                    <img src="imagens/starP.png" alt="rating" title="rating">
+                                    <img src="imagens/starP.png" alt="rating" title="rating">
+                                    <img src="imagens/starV.png" alt="rating" title="rating">
+                                    <img src="imagens/starV.png" alt="rating" title="rating">
+                                    <img src="imagens/starV.png" alt="rating" title="rating">
+                                </c:when>
+                                <c:when test="${rating == 3}">
+                                    <img src="imagens/starP.png" alt="rating" title="rating">
+                                    <img src="imagens/starP.png" alt="rating" title="rating">
+                                    <img src="imagens/starP.png" alt="rating" title="rating">
+                                    <img src="imagens/starV.png" alt="rating" title="rating">
+                                    <img src="imagens/starV.png" alt="rating" title="rating">
+                                </c:when>
+                                <c:when test="${rating == 4}">
+                                    <img src="imagens/starP.png" alt="rating" title="rating">
+                                    <img src="imagens/starP.png" alt="rating" title="rating">
+                                    <img src="imagens/starP.png" alt="rating" title="rating">
+                                    <img src="imagens/starP.png" alt="rating" title="rating">
+                                    <img src="imagens/starV.png" alt="rating" title="rating">
+                                </c:when>
+                                <c:when test="${rating == 5}">
+                                    <img src="imagens/starP.png" alt="rating" title="rating">
+                                    <img src="imagens/starP.png" alt="rating" title="rating">
+                                    <img src="imagens/starP.png" alt="rating" title="rating">
+                                    <img src="imagens/starP.png" alt="rating" title="rating">
+                                    <img src="imagens/starP.png" alt="rating" title="rating">
+                                </c:when>
+                                <c:otherwise>
+                                    <img src="imagens/starV.png" alt="rating" title="rating">
+                                    <img src="imagens/starV.png" alt="rating" title="rating">
+                                    <img src="imagens/starV.png" alt="rating" title="rating">
+                                    <img src="imagens/starV.png" alt="rating" title="rating">
+                                    <img src="imagens/starV.png" alt="rating" title="rating">
+                                </c:otherwise>
+                            </c:choose>
                             <br><br><br>
                             <h3>Sinopse</h3>
                             <h4>${filmeSelecionado.sinopse}</h4>

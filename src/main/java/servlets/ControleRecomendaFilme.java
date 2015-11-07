@@ -8,6 +8,7 @@ package servlets;
 import entidades.Filme;
 import entidades.Notificacoes;
 import entidades.Usuario;
+import gerenciador.GerenciadorFilme;
 import gerenciador.GerenciadorNotificacao;
 import gerenciador.GerenciadorUsuario;
 import java.io.IOException;
@@ -37,12 +38,15 @@ public class ControleRecomendaFilme extends HttpServlet{
         int idFilme = ((Filme)req.getSession().getAttribute("filmeSelecionado")).getId();
         
         Notificacoes n = new Notificacoes();
-        n.setFoto(new GerenciadorUsuario().retornaFotoPeloId(idAmigo));
         n.setIdAmigo(idAmigo);
         n.setIdFilme(idFilme);
         n.setIdUsuario(idUsuario);
         
         boolean recomendou = new GerenciadorNotificacao().adicionarRecomendacao(n);
+        
+        double rating = new GerenciadorFilme().retornaMediaRating(idFilme);
+        
+        req.getSession().setAttribute("rating", rating);
         
         req.setAttribute("recomendou", recomendou);
         req.getRequestDispatcher("filmeRecomendado.jsp").forward(req, resp);
