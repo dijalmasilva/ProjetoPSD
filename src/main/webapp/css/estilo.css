@@ -382,6 +382,26 @@ input[type="date"]{
     display: none;
 }
 
+modal-imagem:hover{
+    background-image: url(../imagens/upload.png);
+    
+}
+
+.title {
+    text-align: center;
+}
+
+.drag-target {
+    border: 5px solid green;
+}
+
+.image-preview {
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    margin: 5px;
+}
+
 @media(max-width: 575px){
     .botaoPequeno{
         margin-top: 20px;
@@ -418,3 +438,7 @@ input[type="date"]{
     }
 }
 
+
+.modal-imagem {
+
+}
