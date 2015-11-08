@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
@@ -75,20 +74,14 @@
                     </div>
                     <div id="login" class="tab-pane fade text-center fade in active">
                         <br>
-                        <c:if test="${requestScope.cadastrou == true}">
-                            <h3>Cadastro realizado com sucesso!</h3>
-                            <p>Faça seu login!</p>
-                            <div class="form-group">
-                                <form class="container" action="ControleLogarUsuario" method="post">
-                                    <input class="botaoMedio margin-top" type="email" name="emailLogin" placeholder="Email" value="${requestScope.emailCadastro}"><br>
-                                    <input class="botaoMedio margin-top" type="password" name="senhaLogin" placeholder="Senha"><br><br><br>
-                                    <input class="botaoPequeno" type="submit" value="Logar">
-                                </form>
-                            </div>
-                        </c:if>
-                        <c:if test="${requestScope.cadastrou == false}">
-                            <h3 class="textVermelho">Erro ao cadastrar</h2>
-                            </c:if>
+                        <h3>Faça seu login</h3>
+                        <div class="form-group">
+                            <form class="container" action="ControleLogarUsuario" method="post">
+                                <input class="botaoMedio margin-top" type="email" name="emailLogin" placeholder="Email"><br>
+                                <input class="botaoMedio margin-top" type="password" name="senhaLogin" placeholder="Senha"><br><br><br>
+                                <input class="botaoPequeno" type="submit" value="Logar">
+                            </form>
+                        </div>
                     </div>
                     <div id="cadastro" class="tab-pane fade text-center">
                         <br>
@@ -96,7 +89,7 @@
                         <p>Informe seus dados.</p>
                         <div class="form-group">
                             <form class="container" action="ControleCadastroUsuario" method="post">
-                                <img src="imagens/user.png" alt="fotoDoPerfil"><br>
+                                <img class="img-circle" src="imagens/user.png" alt="fotoDoPerfil"><br>
                                 <input class="botaoMedio margin-top" type="text" name="nomeCompleto" placeholder="Nome Completo"> <br>
                                 <input class="botaoMedio margin-top" type="email" name="emailCadastro" placeholder="Email"> <br>
                                 <input class="botaoMedio margin-top" type="password" name="senhaCadastro" placeholder="Senha"><br>

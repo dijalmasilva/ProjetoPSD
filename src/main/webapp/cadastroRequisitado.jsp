@@ -34,8 +34,8 @@
                 <ul class="nav nav-tabs navbar-static-top" id="menuNav">
                     <li><a data-toggle="tab" href="#inicio" id="home">Início</a></li>
                     <li><a data-toggle="tab" href="#generos">Gêneros</a></li>
-                    <li class="active"><a data-toggle="tab" href="#login">Login</a></li>
-                    <li><a data-toggle="tab" href="#cadastro">Cadastre-se</a></li>
+                    <li><a data-toggle="tab" href="#login">Login</a></li>
+                    <li class="active"><a data-toggle="tab" href="#cadastro">Cadastre-se</a></li>
                     <li class="flutuarADireita"><a data-toggle="tab" href="#buscar">Buscar</a></li>
                 </ul>
 
@@ -73,7 +73,7 @@
                             </form>
                         </div>
                     </div>
-                    <div id="login" class="tab-pane fade text-center fade in active">
+                    <div id="login" class="tab-pane fade text-center">
                         <br>
                         <c:if test="${requestScope.cadastrou == true}">
                             <h3>Cadastro realizado com sucesso!</h3>
@@ -90,7 +90,7 @@
                             <h3 class="textVermelho">Erro ao cadastrar</h2>
                             </c:if>
                     </div>
-                    <div id="cadastro" class="tab-pane fade text-center">
+                    <div id="cadastro" class="tab-pane fade text-center fade in active">
                         <br>
                         <h3>Cadastro</h3>
                         <p>Informe seus dados.</p>
