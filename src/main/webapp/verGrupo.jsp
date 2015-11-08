@@ -12,7 +12,9 @@
                 <ul class="nav nav-tabs navbar-static-top" id="menuNav">
                     <li class="active"><a data-toggle="tab" href="#topicos">Grupo</a></li>
                     <li><a data-toggle="tab" href="#participantes">Usuários</a></li>
-                    <li><a data-toggle="tab" href="#criar">Criar tópico</a></li>
+                    <c:if test="${participa == true}">
+                        <li><a data-toggle="tab" href="#criar">Criar tópico</a></li>
+                    </c:if>
                         <c:if test="${participa == false}">
                         <li><a data-toggle="tab" href="#participar">Participar</a></li>
                         </c:if>
@@ -31,6 +33,7 @@
                         </section>
                         <c:if test="${topicos != null}"><h3>Tópicos</h3></c:if>
                         <br><br>
+                        <c:if test="${participa == true}">
                             <div class="row modal-header">
                             <c:forEach items="${topicos}" var="t">
                                 <div class="media-left col-sm-3">
@@ -38,6 +41,11 @@
                                 </div>
                             </c:forEach>
                         </div>
+                        </c:if>
+                        <c:if test="${participa == false}">
+                            <h4>Só para usuarios que participam do grupo</h4>
+                            <h5><a data-toggle="tab" href="#participar">Clique aqui</a> e venha participar</h5>
+                        </c:if>
                     </div>
                     <div id="participantes" class="tab-pane fade text-center">
                         <div class="margin-top table-responsive modal-header">
@@ -80,7 +88,7 @@
                     <c:if test="${participa == false}">
                         <div id="participar" class="tab-pane text-center fade">
                             <br>
-                            <h3>Deseja participar deste grupo?</h3>
+                            <h3>Clique em participar e faça parte deste grupo!</h3>
                             <div class="form-group modal-header modal-dialog">
                                 <form action="ControleParticiparGrupo" method="post">
                                     <input type="submit" value="Participar" class="botaoPequeno margin-top">

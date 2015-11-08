@@ -1,12 +1,8 @@
 package servlets;
 
 import entidades.Grupo;
-import entidades.Topico;
 import entidades.Usuario;
-import gerenciador.GerenciadorFilme;
-import gerenciador.GerenciadorGrupo;
 import gerenciador.GerenciadorParticipaGrupo;
-import gerenciador.GerenciadorTopico;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -19,36 +15,27 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author dijalma
  */
-@WebServlet(name = "ControleVerGrupo", urlPatterns = {"/ControleVerGrupo"})
-public class ControleVerGrupo extends HttpServlet{
+@WebServlet(name = "ControleParticiparGrupo", urlPatterns = {"/ControleParticiparGrupo"})
+public class ControleParticiparGrupo extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        doPost(req, resp);  
+        doPost(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        
-        int idGrupo = Integer.parseInt(req.getParameter("idGrupo"));
-        
-        Grupo g = new GerenciadorGrupo().consultarPorId(idGrupo);
+
+        int idGrupo = ((Grupo) req.getSession().getAttribute("grupoSelecionado")).getId();
         int idUsuario = ((Usuario) req.getSession().getAttribute("user")).getId();
-        
-        List<Topico> topicos = new GerenciadorTopico().consultarPorIdDoGrupo(idGrupo);
-        if (!topicos.isEmpty()){
-            req.getSession().setAttribute("topicos", topicos);
-        }
+
+        req.getSession().setAttribute("participa", new GerenciadorParticipaGrupo().adicionaRelacao(idUsuario, idGrupo));
         
         List<Usuario> usuariosDoGrupo = new GerenciadorParticipaGrupo().retornaUsuariosDeUmGrupo(idGrupo);
-        List<String> nomeDosFilmes = new GerenciadorFilme().retornaTodosOsFilmes();
-        
-        req.getSession().setAttribute("grupoSelecionado", g);
-        req.setAttribute("nomeDosFilmes", nomeDosFilmes);
+
         req.getSession().setAttribute("usuariosDoGrupo", usuariosDoGrupo);
-        req.getSession().setAttribute("participa", new GerenciadorParticipaGrupo().isParticipa(idUsuario, idGrupo));
+
         req.getRequestDispatcher("verGrupo.jsp").forward(req, resp);
     }
-    
-    
+
 }

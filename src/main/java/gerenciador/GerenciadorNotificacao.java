@@ -41,7 +41,7 @@ public class GerenciadorNotificacao {
             if (idUsuario != u.getId()) {
                 n.setIdAmigo(u.getId());
                 n.setIdUsuario(idUsuario);
-                n.setMensagem("exclui o grupo "+nomeDoGrupo+"");
+                n.setMensagem("removou o grupo "+nomeDoGrupo+"");
 
                 adicionarGeral(n);
             }
