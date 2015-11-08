@@ -54,20 +54,22 @@
                         <p>Selecione a categoria do filme.</p>
                         <br><br>
                         <div class="generosTexto brancoOpaco">
-                            <ul class="menuNavegacao">
-                                <li><a href="#">Ação</a></li>
-                                <li><a href="#">Aventura</a></li>
-                                <li><a href="#">Animação</a></li>
-                                <li><a href="#">Comédia</a></li>
-                                <li><a href="#">Clássico</a></li>
-                                <li><a href="#">Documentário</a></li>
-                                <li><a href="#">Drama</a></li>
-                                <li><a href="#">Ficção Científica</a></li>
-                                <li><a href="#">Musical</a></li>
-                                <li><a href="#">Romance</a></li>
-                                <li><a href="#">Terror</a></li>
-                                <li><a href="#">Suspense</a></li>
-                            </ul>
+                            <form action="ControleFilmesPorCategoriaNaoLogado" method="post">
+                                <ul class="menuNavegacao">
+                                    <li><a><button name="genero" type="submit" class="botaoTransparente" value="Ação">Ação                           </button></a></li>
+                                    <li><a><button name="genero" type="submit" class="botaoTransparente" value="Aventura">Aventura                   </button></a></li>
+                                    <li><a><button name="genero" type="submit" class="botaoTransparente" value="Animação">Animação                   </button></a></li>
+                                    <li><a><button name="genero" type="submit" class="botaoTransparente" value="Comédia">Comédia                     </button></a></li>
+                                    <li><a><button name="genero" type="submit" class="botaoTransparente" value="Documentário">Documentário           </button></a></li>
+                                    <li><a><button name="genero" type="submit" class="botaoTransparente" value="Drama">Drama                         </button></a></li>
+                                    <li><a><button name="genero" type="submit" class="botaoTransparente" value="Ficção Científica">Ficção Científica </button></a></li>
+                                    <li><a><button name="genero" type="submit" class="botaoTransparente" value="Musical">Musical                     </button></a></li>
+                                    <li><a><button name="genero" type="submit" class="botaoTransparente" value="Nacional">Nacional                   </button></a></li>
+                                    <li><a><button name="genero" type="submit" class="botaoTransparente" value="Romance">Romance                     </button></a></li>
+                                    <li><a><button name="genero" type="submit" class="botaoTransparente" value="Terror">Terror                       </button></a></li>
+                                    <li><a><button name="genero" type="submit" class="botaoTransparente" value="Suspense">Suspense                   </button></a></li>
+                                </ul>
+                            </form>
                         </div>
                     </div>
                     <div id="login" class="tab-pane fade text-center">
@@ -104,9 +106,11 @@
                         <br>
                         <h3>Buscar</h3>
                         <p>Digite sua busca.</p><br><br><br>
-                        <div>
-                            <input class="botaoMedio" type="text" name="busca" placeholder="Buscar">
-                            <input class="botaoPequeno" type="submit" value="Search">
+                        <div class="form-group">
+                            <form action="ControleBuscarNaoLogado" method="post">
+                                <input class="botaoMedio margin-top" type="text" name="busca" placeholder="Buscar">
+                                <input class="botaoPequeno margin-top" type="submit" value="Search">
+                            </form>
                         </div>
                     </div>
                 </div>

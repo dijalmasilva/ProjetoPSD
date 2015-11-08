@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-?<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
     <head>
         <title>Social Movies</title>
@@ -110,9 +110,11 @@
                         <br>
                         <h3>Buscar</h3>
                         <p>Digite sua busca.</p><br><br><br>
-                        <div>
-                            <input class="botaoMedio" type="text" name="busca" placeholder="Buscar">
-                            <input class="botaoPequeno" type="submit" value="Search">
+                        <div class="form-group">
+                            <form action="ControleBuscarNaoLogado" method="post">
+                                <input class="botaoMedio margin-top" type="text" name="busca" placeholder="Buscar">
+                                <input class="botaoPequeno margin-top" type="submit" value="Search">
+                            </form>
                         </div>
                     </div>
                 </div>
