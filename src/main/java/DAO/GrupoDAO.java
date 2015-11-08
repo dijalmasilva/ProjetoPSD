@@ -125,7 +125,7 @@ public class GrupoDAO implements InterfaceGrupoDAO {
         
         try{
             con = Conexao.abrirConexao();
-            String sql = "select * from grupo where nome ilike '%"+busca+"%'";
+            String sql = "select * from grupo where nome ilike '%"+busca+"%' order by nome";
             Statement stat = con.createStatement();
             ResultSet rs = stat.executeQuery(sql);
             
@@ -135,6 +135,8 @@ public class GrupoDAO implements InterfaceGrupoDAO {
                 g.setIdUsuario(rs.getInt("idusuario"));
                 g.setNomeDoGrupo(rs.getString("nome"));
                 g.setDescricao(rs.getString("descricao"));
+                
+                grupos.add(g);
             }
             
         }catch (ClassNotFoundException | SQLException ex){

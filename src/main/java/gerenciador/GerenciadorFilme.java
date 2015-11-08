@@ -97,7 +97,7 @@ public class GerenciadorFilme {
             cont = 0;
             
             for(Filme fs: filmesResult){
-                if (fs.equals(f)){
+                if (fs.getId() == f.getId()){
                     break;
                 }else{
                     cont++;
