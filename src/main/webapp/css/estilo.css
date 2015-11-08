@@ -387,21 +387,6 @@ modal-imagem:hover{
     
 }
 
-.title {
-    text-align: center;
-}
-
-.drag-target {
-    border: 5px solid green;
-}
-
-.image-preview {
-    width: 100px;
-    height: 100px;
-    display: inline-block;
-    margin: 5px;
-}
-
 @media(max-width: 575px){
     .botaoPequeno{
         margin-top: 20px;
