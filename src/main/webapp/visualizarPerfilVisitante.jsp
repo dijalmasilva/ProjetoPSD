@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
     <%@include file="head.jsp" %>
+    <script src="javascript/javascriptImagem.js"></script>
     <body  id="fundo" class="textoPreto white-background">
         <%@include file="barraUsuario.jsp"%>
         <div class="margin-top-body">
@@ -22,7 +23,7 @@
                         <h3>Perfil de ${sessionScope.userVisitante.apelido}</h3>
                         <div class="form-group">
                             <div class="modal-dialog">
-                                <img src="${sessionScope.userVisitante.foto}" alt="${sessionScope.userVisitante.apelido}" title="${sessionScope.userVisitante.apelido}"><br>
+                                <img src="${sessionScope.userVisitante.foto}" alt="${sessionScope.userVisitante.apelido}" title="${sessionScope.userVisitante.apelido}" class="img-circle"><br>
                                 <br>
                                 <h4>Cidade: ${sessionScope.userVisitante.cidade}</h4><br>
                                 <h4>Estado: ${sessionScope.userVisitante.estado}</h4><br>

@@ -54,20 +54,22 @@
                         <p>Selecione a categoria do filme.</p>
                         <br><br>
                         <div class="generosTexto brancoOpaco">
-                            <ul class="menuNavegacao">
-                                <li><a href="#action">Ação</a></li>
-                                <li><a href="#action">Aventura</a></li>
-                                <li><a href="#action">Animação</a></li>
-                                <li><a href="#action">Comédia</a></li>
-                                <li><a href="#action">Clássico</a></li>
-                                <li><a href="#action">Documentário</a></li>
-                                <li><a href="#action">Drama</a></li>
-                                <li><a href="#action">Ficção Científica</a></li>
-                                <li><a href="#action">Musical</a></li>
-                                <li><a href="#action">Romance</a></li>
-                                <li><a href="#action">Terror</a></li>
-                                <li><a href="#action">Suspense</a></li>
-                            </ul>
+                            <form action="ControleFilmesPorCategoriaNaoLogado" method="post">
+                                <ul class="menuNavegacao">
+                                    <li><a><button name="genero" type="submit" class="botaoTransparente" value="Ação">Ação                           </button></a></li>
+                                    <li><a><button name="genero" type="submit" class="botaoTransparente" value="Aventura">Aventura                   </button></a></li>
+                                    <li><a><button name="genero" type="submit" class="botaoTransparente" value="Animação">Animação                   </button></a></li>
+                                    <li><a><button name="genero" type="submit" class="botaoTransparente" value="Comédia">Comédia                     </button></a></li>
+                                    <li><a><button name="genero" type="submit" class="botaoTransparente" value="Documentário">Documentário           </button></a></li>
+                                    <li><a><button name="genero" type="submit" class="botaoTransparente" value="Drama">Drama                         </button></a></li>
+                                    <li><a><button name="genero" type="submit" class="botaoTransparente" value="Ficção Científica">Ficção Científica </button></a></li>
+                                    <li><a><button name="genero" type="submit" class="botaoTransparente" value="Musical">Musical                     </button></a></li>
+                                    <li><a><button name="genero" type="submit" class="botaoTransparente" value="Nacional">Nacional                   </button></a></li>
+                                    <li><a><button name="genero" type="submit" class="botaoTransparente" value="Romance">Romance                     </button></a></li>
+                                    <li><a><button name="genero" type="submit" class="botaoTransparente" value="Terror">Terror                       </button></a></li>
+                                    <li><a><button name="genero" type="submit" class="botaoTransparente" value="Suspense">Suspense                   </button></a></li>
+                                </ul>
+                            </form>
                         </div>
                     </div>
                     <div id="login" class="tab-pane fade text-center fade in active">
@@ -87,16 +89,18 @@
                         <h3>Cadastro</h3>
                         <p>Informe seus dados.</p>
                         <div class="form-group">
-                            <form class="container" action="ControleCadastroUsuario" method="post">
-                                <img class="img-circle" src="imagens/user.png" alt="fotoDoPerfil"><br>
-                                <input class="botaoMedio margin-top" type="text" name="nomeCompleto" placeholder="Nome Completo"> <br>
-                                <input class="botaoMedio margin-top" type="email" name="emailCadastro" placeholder="Email"> <br>
-                                <input class="botaoMedio margin-top" type="password" name="senhaCadastro" placeholder="Senha"><br>
-                                <input class="botaoMedio margin-top" type="text" name="apelido" placeholder="Apelido"> <br>
-                                <input class="botaoMedio margin-top" type="text" name="estado" placeholder="Estado"> <br>
-                                <input class="botaoMedio margin-top" type="text" name="cidade" placeholder="Cidade"> <br>
-                                <input class="botaoMedio margin-top" type="date" name="dataDeNascimento"> <br><br><br>
+                            <form class="container" action="ControleCadastroUsuario" method="post" enctype="multipart/form-data">
+                                <br><br><br>
+                                <a id="arq" class="botaoMedio btn btn-default btn-file">Upload da Imagem</a><br>
+                                <input required="" class="botaoMedio margin-top" type="text" name="nomeCompleto" placeholder="Nome Completo"> <br>
+                                <input required="" class="botaoMedio margin-top" type="email" name="emailCadastro" placeholder="Email"> <br>
+                                <input required="" class="botaoMedio margin-top" type="password" name="senhaCadastro" placeholder="Senha"><br>
+                                <input required="" class="botaoMedio margin-top" type="text" name="apelido" placeholder="Apelido"> <br>
+                                <input required="" class="botaoMedio margin-top" type="text" name="estado" placeholder="Estado"> <br>
+                                <input required="" class="botaoMedio margin-top" type="text" name="cidade" placeholder="Cidade"> <br>
+                                <input required="" class="botaoMedio margin-top" type="date" name="dataDeNascimento"> <br><br>
                                 <input class="botaoPequeno" type="submit" value="Cadastrar">
+                                <input type="file" id="upload" class="invisible" name="fotoDePerfil">
                             </form>
                         </div>
                     </div>

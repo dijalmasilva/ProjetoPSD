@@ -32,7 +32,7 @@
                                 <br><br>
                             <c:forEach items="${comentariosTopicos}" var="a">
                                 <div class="text-left modal-header">
-                                    <img src="${a.foto}" alt="${a.idUsuario}" title="${a.idUsuario}" class="img-perfil">
+                                    <img src="${a.foto}" alt="${a.idUsuario}" title="${a.idUsuario}" class="img-perfil img-circle">
                                     <c:if test="${a.idUsuario == sessionScope.user.id}"><a href="editarPerfil.jsp" class="text-capitalize active">Você: </a></c:if>
                                     <c:if test="${a.idUsuario != sessionScope.user.id}"><a href="ControlePerfilVisitante?idDoUsuario=${a.idUsuario}" class="text-capitalize active">${a.apelido}: </a></c:if>
                                     <label>${a.comentario}</label><br>

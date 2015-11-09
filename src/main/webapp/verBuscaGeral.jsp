@@ -25,7 +25,7 @@
                         <div class="row modal-dialog">
                             <c:forEach items="${usuariosBuscados}" var="u">
                                 <div class="modal-header col-sm-4">
-                                    <img src="${u.foto}" alt="${u.apelido}" title="${u.apelido}" class="img-perfil">
+                                    <img src="${u.foto}" alt="${u.apelido}" title="${u.apelido}" class="img-perfil img-circle">
                                     <a href="ControlePerfilVisitante?idDoUsuario=${u.id}" class="text-capitalize">${u.apelido}</a>
                                 </div>
                             </c:forEach>

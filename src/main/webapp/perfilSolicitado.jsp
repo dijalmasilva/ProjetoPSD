@@ -22,7 +22,7 @@
                         <h3>Perfil de ${sessionScope.userVisitante.apelido}</h3>
                         <div class="form-group">
                             <div class="modal-dialog">
-                                <img src="${sessionScope.userVisitante.foto}" alt="${sessionScope.userVisitante.apelido}" title="${sessionScope.userVisitante.apelido}"><br>
+                                <img src="${sessionScope.userVisitante.foto}" alt="${sessionScope.userVisitante.apelido}" title="${sessionScope.userVisitante.apelido}" class="img-circle"><br>
                                 <br>
                                 <h4>Cidade: ${sessionScope.userVisitante.cidade}</h4><br>
                                 <h4>Estado: ${sessionScope.userVisitante.estado}</h4><br>

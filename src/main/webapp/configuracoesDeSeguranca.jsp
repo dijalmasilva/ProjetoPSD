@@ -21,9 +21,9 @@
                         <h3>Alterar senha</h3>
                         <div class="form-group">
                             <form class="container" action="ControleAlterarSenha" method="post">
-                                <input class="botaoMedio margin-top" type="password" name="senhaAntiga" placeholder="Senha atual" required="on"><br>
-                                <input class="botaoMedio margin-top" type="password" name="senhaNova" placeholder="Nova senha" required="on"><br>
-                                <input class="botaoMedio margin-top" type="password" placeholder="Confirmar senha nova" required="on"><br>
+                                <input class="botaoMedio margin-top" type="password" name="senhaAntiga" placeholder="Senha atual" required=""><br>
+                                <input id = "senhaNova" class="botaoMedio margin-top" type="password" name="senhaNova" placeholder="Nova senha" required=""><br>
+                                <input id = "senhaCompara" class="botaoMedio margin-top" type="password" placeholder="Confirmar senha nova" required=""><br>
                                 <input class="botaoPequeno margin-top" type="submit" value="Alterar senha">
                             </form>
                             <div>
@@ -46,5 +46,25 @@
                 </div>
             </div>
         </div>
+        <script>
+            $("#senhaCompara").keyup(function () {
+                var senhaNova = $("#senhaNova").val();
+                var Compara = $("#senhaCompara").val();
+
+                if (Compara === '') {
+                    $("#senhaCompara").removeClass('botaoVerde');
+                    $("#senhaCompara").removeClass('botaoVermelho');
+                } else {
+                    if (senhaNova === Compara) {
+                        
+                        $("#senhaCompara").removeClass('botaoVermelho');
+                        $("#senhaCompara").addClass('botaoVerde');
+                    } else {
+                        $("#senhaCompara").removeClass('botaoVerde');
+                        $("#senhaCompara").addClass('botaoVermelho');
+                    }
+                }
+            });
+        </script>
     </body>
 </html>

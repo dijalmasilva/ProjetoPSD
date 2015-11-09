@@ -54,7 +54,7 @@
                             <div class="row">
                                 <c:forEach items="${usuariosDoGrupo}" var="us">
                                     <div class="col-sm-2">
-                                        <img src="${us.foto}" alt="${us.apelido}" title="${us.apelido}" class="img-solicitacao">
+                                        <img src="${us.foto}" alt="${us.apelido}" title="${us.apelido}" class="img-solicitacao img-circle">
                                         <c:if test="${us.id != user.id}"> 
                                             <h4 class="text-capitalize"><a href="ControlePerfilVisitante?idDoUsuario=${us.id}">${us.apelido}</a></h4>
                                             </c:if>

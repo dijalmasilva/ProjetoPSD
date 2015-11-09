@@ -39,7 +39,7 @@
                             <div class="row">
                                 <c:forEach items="${requestScope.usuariosAchados}" var="userFind">
                                     <div class="modal-header col-sm-4">
-                                        <img src="${userFind.foto}" alt="${userFind.apelido}" title="${userFind.apelido}" class="img-solicitacao">
+                                        <img src="${userFind.foto}" alt="${userFind.apelido}" title="${userFind.apelido}" class="img-solicitacao img-circle">
                                         <h3><a href="ControlePerfilVisitante?idDoUsuario=${userFind.id}" class="text-capitalize active">${userFind.apelido}</a></h3>
                                     </div>
                                 </c:forEach>

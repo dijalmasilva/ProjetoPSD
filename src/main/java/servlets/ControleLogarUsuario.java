@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package servlets;
 
 import entidades.Notificacoes;
@@ -53,26 +48,36 @@ public class ControleLogarUsuario extends HttpServlet {
             List<Filme> dezFilmesRecentes = new GerenciadorFilme().buscarDezFilmesRecentes();
             if (!dezFilmesRecentes.isEmpty()) {
                 getServletContext().setAttribute("dezFilmesRecentes", dezFilmesRecentes);
+            }else{
+                getServletContext().setAttribute("dezFilmesRecentes", null);
             }
 
             List<Grupo> grupos = new GerenciadorGrupo().retornaGruposDoUsuario(u.getId());
             if (!grupos.isEmpty()) {
                 req.getSession().setAttribute("grupos", grupos);
+            }else{
+                req.getSession().setAttribute("grupos", null);
             }
 
             List<Usuario> amigos = new GerenciadorUtilitario().recuperaAmigos(u.getId());
             if (!amigos.isEmpty()) {
                 req.getSession().setAttribute("amigos", amigos);
+            }else{
+                req.getSession().setAttribute("amigos", null);
             }
 
             List<Solicitacao> solicitacoes = new GerenciadorAmizade().retornaSolicitacoes(u.getId());
             if (!solicitacoes.isEmpty()) {
                 req.getSession().setAttribute("solicitacoes", solicitacoes);
+            }else{
+                req.getSession().setAttribute("solicitacoes", null);
             }
 
             List<Notificacoes> notificacoes = new GerenciadorNotificacao().recuperar20NotificacoesRecentes(u.getId());
             if (!notificacoes.isEmpty()){
                 req.getSession().setAttribute("notificacoes", notificacoes);
+            }else{
+                req.getSession().setAttribute("notificacoes", null);
             }
             
             req.getRequestDispatcher("logado.jsp").forward(req, resp);

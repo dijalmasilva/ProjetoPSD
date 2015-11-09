@@ -148,7 +148,7 @@
                         <div class="modal-dialog" id="amigoARecomendar">
                             <c:if test="${amigoEncontrado != null}">
                                 <div class="modal-body">
-                                    <img src="${amigoEncontrado.foto}" alt="${amigoEncontrado.apelido}" title="${amigoEncontrado.apelido}" class="img-perfil">
+                                    <img src="${amigoEncontrado.foto}" alt="${amigoEncontrado.apelido}" title="${amigoEncontrado.apelido}" class="img-perfil img-circle">
                                     <a href="ControlePerfilVisitante?idDoUsuario=${amigoEncontrado.id} ">${amigoEncontrado.apelido}</a>
                                 </div>
                                 <button class="margin-top botaoMedio">

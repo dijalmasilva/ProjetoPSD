@@ -7,8 +7,8 @@
     <div class="modal-dialog modalMetade centro modalGrupo">
         <div class="form-group">
             <form action="ControleCadastroGrupo" method="post">
-                <input class="botaoMedioEspecial margin-top" type="text" placeholder="Nome do grupo" name="nomeDoGrupo" required="on"><br>
-                <textarea class="botaoMedioEspecial margin-top textArea" name="descricao" placeholder="Descriçao" required="on"></textarea><br><br>
+                <input class="botaoMedioEspecial margin-top" type="text" placeholder="Nome do grupo" name="nomeDoGrupo" required=""><br>
+                <textarea class="botaoMedioEspecial margin-top textArea" name="descricao" placeholder="Descriçao" required=""></textarea><br><br>
                 <input class="botaoPequeno" type="submit" value="Criar">
             </form>
         </div>

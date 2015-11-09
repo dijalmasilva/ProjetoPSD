@@ -46,21 +46,13 @@ $(document).ready(function () {
 
     }, 400);
 
+    $('#arq').click(function (){
+       $('#upload').trigger('click');
+    });
 
-    $("#selecionaImagem").click(function () {
-        $("#botaoUpload").trigger('click');
-
-        cont = 0;
-
-        $(window).focus(function () {
-            if (cont === 0) {
-                var caminhoImagem = $("#botaoUpload").val();
-                alert(caminhoImagem);
-                $("#fotoDoPerfil").attr('src', caminhoImagem);
-                
-                cont = 1;
-            }
-        });
+    $('input[type=file]').change(function () {
+        var arq = $('#upload').val().replace(/^.*\\/, "");
+        $('#arq').text(arq);
     });
 
 });

@@ -57,7 +57,7 @@
             <div class="modal-header table-responsive">
                 <form action="ControleAceitaSolicitacao" method="post">
                     <div class="flutuarSomenteAEsquerda">
-                        <img src="${s.foto}" alt="${s.apelido}" title="${s.apelido}" class="img-solicitacao">
+                        <img src="${s.foto}" alt="${s.apelido}" title="${s.apelido}" class="img-solicitacao img-circle">
                     </div>
                     <div class="media-middle">
                         <br>
@@ -84,7 +84,7 @@
             <div class="modal-header table-responsive">
 
                 <div class="flutuarSomenteAEsquerda">
-                    <img src="${n.foto}" alt="${n.apelidoUsuario}" title="${n.apelidoUsuario}" class="img-solicitacao">
+                    <img src="${n.foto}" alt="${n.apelidoUsuario}" title="${n.apelidoUsuario}" class="img-solicitacao img-circle">
                 </div>
                 <br>
                 <h4>   

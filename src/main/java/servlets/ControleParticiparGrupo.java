@@ -2,6 +2,7 @@ package servlets;
 
 import entidades.Grupo;
 import entidades.Usuario;
+import gerenciador.GerenciadorGrupo;
 import gerenciador.GerenciadorParticipaGrupo;
 import java.io.IOException;
 import java.util.List;
@@ -30,10 +31,20 @@ public class ControleParticiparGrupo extends HttpServlet {
         int idUsuario = ((Usuario) req.getSession().getAttribute("user")).getId();
 
         req.getSession().setAttribute("participa", new GerenciadorParticipaGrupo().adicionaRelacao(idUsuario, idGrupo));
-        
-        List<Usuario> usuariosDoGrupo = new GerenciadorParticipaGrupo().retornaUsuariosDeUmGrupo(idGrupo);
 
-        req.getSession().setAttribute("usuariosDoGrupo", usuariosDoGrupo);
+        List<Usuario> usuariosDoGrupo = new GerenciadorParticipaGrupo().retornaUsuariosDeUmGrupo(idGrupo);
+        if (!usuariosDoGrupo.isEmpty()) {
+            req.getSession().setAttribute("usuariosDoGrupo", usuariosDoGrupo);
+        } else {
+            req.getSession().setAttribute("usuariosDoGrupo", null);
+        }
+
+        List<Grupo> grupos = new GerenciadorGrupo().retornaGruposDoUsuario(idUsuario);
+        if (!grupos.isEmpty()) {
+            req.getSession().setAttribute("grupos", grupos);
+        } else {
+            req.getSession().setAttribute("grupos", null);
+        }
 
         req.getRequestDispatcher("verGrupo.jsp").forward(req, resp);
     }

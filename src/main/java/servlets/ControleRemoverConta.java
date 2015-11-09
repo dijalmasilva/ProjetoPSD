@@ -1,8 +1,11 @@
 package servlets;
 
+import entidades.Filme;
 import entidades.Usuario;
+import gerenciador.GerenciadorFilme;
 import gerenciador.GerenciadorUsuario;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,6 +30,13 @@ public class ControleRemoverConta extends HttpServlet{
         Usuario u = ((Usuario) req.getSession().getAttribute("user"));
         
         boolean excluiu = new GerenciadorUsuario().remover(u.getId());
+        
+        List<Filme> dezFilmesRecentes = new GerenciadorFilme().buscarDezFilmesRecentes();
+            if (!dezFilmesRecentes.isEmpty()) {
+                getServletContext().setAttribute("dezFilmesRecentes", dezFilmesRecentes);
+            }else{
+                getServletContext().setAttribute("dezFilmesRecentes", null);
+            }
         
         if (excluiu){
             req.getSession().invalidate();
