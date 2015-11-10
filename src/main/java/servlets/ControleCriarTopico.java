@@ -43,7 +43,8 @@ public class ControleCriarTopico extends HttpServlet{
             req.getSession().setAttribute("topicos", null);
         }
         
-        
+        List<String> nomeDosFilmes = new GerenciadorFilme().retornaTodosOsFilmes();
+        req.setAttribute("nomeDosFilmes", nomeDosFilmes);
         req.getRequestDispatcher("verGrupo.jsp").forward(req, resp);
     }
     

@@ -22,10 +22,11 @@
         <h2>Amigos</h2>
         <br><br><br><br><br>
         <div class="row media-list">
-            <c:forEach items="${sessionScope.amigos}" var="a" varStatus="status">
+            <c:forEach items="${sessionScope.amigos}" var="a">
                 <div class="col-sm-3 modal-header">
                     <img src="${a.foto}" alt="${a.apelido}" title="${a.apelido}" class="img-solicitacao img-circle">
                     <h3><a href="ControlePerfilVisitante?idDoUsuario=${a.id}" class="text-capitalize active">${a.apelido}</a></h3>
+                    <hr>
                 </div>
             </c:forEach>
         </div>

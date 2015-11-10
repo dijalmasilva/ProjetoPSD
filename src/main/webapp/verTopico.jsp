@@ -43,8 +43,8 @@
                     </div>
                     <div id="criado" class="tab-pane fade text-center">
                         <br>
-                        <h3>Tópico criado por <c:if test="${topico.idUsuario == user.id}"><a href="editarPerfil.jsp">você</a></c:if>
-                            <c:if test="${topico.idUsuario != user.id}"><a href="ControlePerfilVisitante?idDoUsuario=${topicoSelecionado.idUsuario}">${nomeUsuario}</a></c:if>
+                        <h3>Tópico criado por <c:if test="${topicoSelecionado.idUsuario == user.id}"><a href="editarPerfil.jsp">você</a></c:if>
+                            <c:if test="${topicoSelecionado.idUsuario != user.id}"><a href="ControlePerfilVisitante?idDoUsuario=${topicoSelecionado.idUsuario}">${nomeUsuario}</a></c:if>
                             </h3>   
                         </div>
                     <%@include file="search.jsp" %>

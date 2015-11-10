@@ -75,20 +75,15 @@
                     </div>
                     <div id="login" class="tab-pane fade text-center">
                         <br>
-                        <c:if test="${requestScope.cadastrou == true}">
-                            <h3>Cadastro realizado com sucesso!</h3>
-                            <p>Faça seu login!</p>
-                            <div class="form-group">
-                                <form class="container" action="ControleLogarUsuario" method="post">
-                                    <input class="botaoMedio margin-top" type="email" name="emailLogin" placeholder="Email" value="${requestScope.emailCadastro}"><br>
-                                    <input class="botaoMedio margin-top" type="password" name="senhaLogin" placeholder="Senha"><br><br><br>
-                                    <input class="botaoPequeno" type="submit" value="Logar">
-                                </form>
-                            </div>
-                        </c:if>
-                        <c:if test="${requestScope.cadastrou == false}">
-                            <h3 class="textVermelho">Erro ao cadastrar</h2>
-                            </c:if>
+                        <h3>Faça seu login</h3>
+                        <p>Preencha com seus dados</p>
+                        <div class="form-group">
+                            <form class="container" action="ControleLogarUsuario" method="post">
+                                <input class="botaoMedio margin-top" type="email" name="emailLogin" placeholder="Email"><br>
+                                <input class="botaoMedio margin-top" type="password" name="senhaLogin" placeholder="Senha"><br><br><br>
+                                <input class="botaoPequeno" type="submit" value="Logar">
+                            </form>
+                        </div>
                     </div>
                     <div id="cadastro" class="tab-pane fade text-center in active">
                         <br>

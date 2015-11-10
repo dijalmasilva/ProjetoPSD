@@ -44,13 +44,13 @@ public class ControleAtualizarPerfil extends HttpServlet {
                 itens = (ArrayList<FileItem>) upload.parseRequest(req);
 
                 //Nome Completo
-                user.setNome(itens.get(0).getString("UTF-8"));
+                user.setNome(itens.get(0).getString());
                 //Apelido
-                user.setApelido(itens.get(1).getString("UTF-8"));
+                user.setApelido(itens.get(1).getString());
                 //Estado
-                user.setEstado(itens.get(2).getString("UTF-8"));
+                user.setEstado(itens.get(2).getString());
                 //Cidade
-                user.setCidade(itens.get(3).getString("UTF-8"));
+                user.setCidade(itens.get(3).getString());
 
                 //FotoDePerfil
                 String realPath = getServletContext().getRealPath("/imagensPerfil");

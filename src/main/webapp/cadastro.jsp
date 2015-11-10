@@ -87,7 +87,7 @@
                             </div>
                         </c:if>
                         <c:if test="${requestScope.cadastrou == false}">
-                            <h3 class="textVermelho">Erro ao cadastrar</h2>
+                            <h3 class="textVermelho">Email já utilizado</h2>
                             </c:if>
                     </div>
                     <div id="cadastro" class="tab-pane fade text-center">
@@ -95,16 +95,18 @@
                         <h3>Cadastro</h3>
                         <p>Informe seus dados.</p>
                         <div class="form-group">
-                            <form class="container" action="ControleCadastroUsuario" method="post">
-                                <img src="imagens/user.png" alt="fotoDoPerfil"><br>
-                                <input class="botaoMedio margin-top" type="text" name="nomeCompleto" placeholder="Nome Completo"> <br>
-                                <input class="botaoMedio margin-top" type="email" name="emailCadastro" placeholder="Email"> <br>
-                                <input class="botaoMedio margin-top" type="password" name="senhaCadastro" placeholder="Senha"><br>
-                                <input class="botaoMedio margin-top" type="text" name="apelido" placeholder="Apelido"> <br>
-                                <input class="botaoMedio margin-top" type="text" name="estado" placeholder="Estado"> <br>
-                                <input class="botaoMedio margin-top" type="text" name="cidade" placeholder="Cidade"> <br>
-                                <input class="botaoMedio margin-top" type="date" name="dataDeNascimento"> <br><br><br>
+                            <form class="container" action="ControleCadastroUsuario" accept-charset="UTF-8" method="post" enctype="multipart/form-data">
+                                <br><br><br>
+                                <a id="arq" class="botaoMedio btn btn-default btn-file">Upload da Imagem</a><br>
+                                <input required="" class="botaoMedio margin-top" type="text" name="nomeCompleto" placeholder="Nome Completo"> <br>
+                                <input required="" class="botaoMedio margin-top" type="email" name="emailCadastro" placeholder="Email"> <br>
+                                <input required="" class="botaoMedio margin-top" type="password" name="senhaCadastro" placeholder="Senha"><br>
+                                <input required="" class="botaoMedio margin-top" type="text" name="apelido" placeholder="Apelido"> <br>
+                                <input required="" class="botaoMedio margin-top" type="text" name="estado" placeholder="Estado"> <br>
+                                <input required="" class="botaoMedio margin-top" type="text" name="cidade" placeholder="Cidade"> <br>
+                                <input required="" class="botaoMedio margin-top" type="date" name="dataDeNascimento"> <br><br>
                                 <input class="botaoPequeno" type="submit" value="Cadastrar">
+                                <input type="file" id="upload" class="invisible" name="fotoDePerfil">
                             </form>
                         </div>
                     </div>

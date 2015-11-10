@@ -2,6 +2,7 @@ package servlets;
 
 import entidades.Grupo;
 import entidades.Usuario;
+import gerenciador.GerenciadorFilme;
 import gerenciador.GerenciadorGrupo;
 import gerenciador.GerenciadorParticipaGrupo;
 import java.io.IOException;
@@ -46,6 +47,9 @@ public class ControleParticiparGrupo extends HttpServlet {
             req.getSession().setAttribute("grupos", null);
         }
 
+        List<String> nomeDosFilmes = new GerenciadorFilme().retornaTodosOsFilmes();
+        req.setAttribute("nomeDosFilmes", nomeDosFilmes);
+        
         req.getRequestDispatcher("verGrupo.jsp").forward(req, resp);
     }
 

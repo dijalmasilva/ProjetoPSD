@@ -22,11 +22,12 @@
                         <c:if test="${usuariosBuscados != null}"><h3>Usuários encontrados</h3></c:if>
                         <c:if test="${usuariosBuscados == null}"><h3>Nenhum usuário encontrado</h3></c:if>
                         <br>
-                        <div class="row modal-dialog">
+                        <div class="row media-list">
                             <c:forEach items="${usuariosBuscados}" var="u">
-                                <div class="modal-header col-sm-4">
-                                    <img src="${u.foto}" alt="${u.apelido}" title="${u.apelido}" class="img-perfil img-circle">
-                                    <a href="ControlePerfilVisitante?idDoUsuario=${u.id}" class="text-capitalize">${u.apelido}</a>
+                                <div class="modal-header col-sm-3">
+                                    <img src="${u.foto}" alt="${u.apelido}" title="${u.apelido}" class="img-solicitacao img-circle">
+                                    <h3><a href="ControlePerfilVisitante?idDoUsuario=${u.id}" class="text-capitalize active">${u.apelido}</a></h3>
+                                <hr>
                                 </div>
                             </c:forEach>
                         </div>
@@ -40,7 +41,7 @@
                             <section class="text-center margin-top table-responsive modal-header modal-dialog">
                                 <br>
                                 <h2><a href="ControleVerFilme?idFilmeSelecionado=${f.id}">${f.titulo}</a></h2>
-                                <img src="${f.foto}" alt="${f.titulo}" width="300" height="230" title="${f.titulo}">
+                                <img src="${f.foto}" alt="${f.titulo}" width="400" height="450" title="${f.titulo}">
                                 <h5>${f.sinopse}</h5>
                                 <form action="ControleVerFilme" method="post">
                                     <input type="submit" class="botaoPequeno margin-top" value="Ver Filme"><br>  

@@ -50,17 +50,17 @@ public class ControleCadastroFilme extends HttpServlet {
                 itens = (ArrayList<FileItem>) upload.parseRequest(req);
 
                 //Título
-                String titulo = itens.get(0).getString("UTF-8");
+                String titulo = itens.get(0).getString();
                 //Ano
-                int ano = Integer.parseInt(itens.get(1).getString("UTF-8"));
+                int ano = Integer.parseInt(itens.get(1).getString());
                 //Gêneros
-                String generos = itens.get(2).getString("UTF-8");
+                String generos = itens.get(2).getString();
                 //Atores Principais
-                String atores = itens.get(3).getString("UTF-8");
+                String atores = itens.get(3).getString();
                 //Diretores
-                String diretores = itens.get(4).getString("UTF-8");
+                String diretores = itens.get(4).getString();
                 //Sinopse
-                String sinopse = itens.get(5).getString("UTF-8");
+                String sinopse = itens.get(5).getString();
                 //Data de Cadastro
                 LocalDate dataDeCadastro = LocalDate.now();
                 
