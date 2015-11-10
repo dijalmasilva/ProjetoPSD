@@ -22,7 +22,7 @@
                             <br>
                             <h1><a>${filmeSelecionado.titulo}</a></h1>
                             <br>
-                            <img src="${filmeSelecionado.foto}" alt="${filmeSelecionado.titulo}" width="300" height="230" title="${filmeSelecionado.titulo}">
+                            <img src="${filmeSelecionado.foto}" alt="${filmeSelecionado.titulo}" width="400" height="450" title="${filmeSelecionado.titulo}">
                             <br><br>
                             <c:choose>
                                 <c:when test="${rating == 1}">

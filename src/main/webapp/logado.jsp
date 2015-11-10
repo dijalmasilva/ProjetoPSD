@@ -26,7 +26,7 @@
                             <section class="text-center margin-top table-responsive modal-header modal-dialog">
                                 <br>
                                 <h2><a href="ControleVerFilme?idFilmeSelecionado=${f.id}">${f.titulo}</a></h2>
-                                <img src="${f.foto}" alt="${f.titulo}" width="300" height="230" title="${f.titulo}">
+                                <img src="${f.foto}" alt="${f.titulo}" width="400" height="450" title="${f.titulo}">
                                 <h5>${f.sinopse}</h5>
                                 <form action="ControleVerFilme" method="post">
                                     <input type="submit" class="botaoPequeno margin-top" value="Ver Filme"><br>  

@@ -41,9 +41,6 @@ public class ControleCadastroUsuario extends HttpServlet {
             List<FileItem> itens;
 
             try {
-                req.setCharacterEncoding("UTF-8");
-                upload.setHeaderEncoding("UTF-8");
-                JOptionPane.showMessageDialog(null, upload.getHeaderEncoding());
                 itens = (ArrayList<FileItem>) upload.parseRequest(req);
 
                 //Nome Completo

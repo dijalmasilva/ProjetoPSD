@@ -29,7 +29,7 @@
                                 <c:if test="${filmeSelecionado.idUser != user.id}"><a href="ControlePerfilVisitante?idDoUsuario=${filmeSelecionado.idUser}">${usuarioDeCadastro}</a></c:if>
                                 em ${filmeSelecionado.dataDeCadastro}</p>
                             <br>
-                            <img src="${filmeSelecionado.foto}" alt="${filmeSelecionado.titulo}" width="300" height="230" title="${filmeSelecionado.titulo}">
+                            <img src="${filmeSelecionado.foto}" alt="${filmeSelecionado.titulo}" width="400" height="450" title="${filmeSelecionado.titulo}">
                             <br><br>
                             <c:choose>
                                 <c:when test="${rating == 1}">

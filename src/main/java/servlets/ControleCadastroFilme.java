@@ -8,14 +8,24 @@ package servlets;
 import entidades.Filme;
 import entidades.Usuario;
 import gerenciador.GerenciadorFilme;
+import gerenciador.GerenciadorImagem;
+import gerenciador.GerenciadorUsuario;
 import java.io.IOException;
+import java.sql.Date;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.JOptionPane;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileItemFactory;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 /**
  *
@@ -32,25 +42,57 @@ public class ControleCadastroFilme extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        String titulo = req.getParameter("titulo");
-        int ano = Integer.parseInt(req.getParameter("ano"));
-        String foto = "imagens/movie.png";
-        String atores = req.getParameter("atoresPrincipais");
-        String diretores = req.getParameter("diretores");
-        String sinopse = req.getParameter("sinopse");
-        String generos = req.getParameter("generos");
-        LocalDate dataDeCadastro = LocalDate.now();
         int idUser = ((Usuario) req.getSession().getAttribute("user")).getId();
+        
+         if (ServletFileUpload.isMultipartContent(req)) {
+            FileItemFactory factory = new DiskFileItemFactory();
+            ServletFileUpload upload = new ServletFileUpload(factory);
+            List<FileItem> itens;
 
-        boolean cadastro = new GerenciadorFilme().adicionar(new Filme(idUser, titulo, ano, sinopse, foto, generos, atores, diretores, dataDeCadastro));
+            try {
+                itens = (ArrayList<FileItem>) upload.parseRequest(req);
 
-        List<Filme> dezFilmesRecentes = new GerenciadorFilme().buscarDezFilmesRecentes();
-        if (!dezFilmesRecentes.isEmpty()) {
-            getServletContext().setAttribute("dezFilmesRecentes", dezFilmesRecentes);
+                //Título
+                String titulo = itens.get(0).getString();
+                //Ano
+                int ano = Integer.parseInt(itens.get(1).getString());
+                //Gêneros
+                String generos = itens.get(2).getString();
+                //Atores Principais
+                String atores = itens.get(3).getString();
+                //Diretores
+                String diretores = itens.get(4).getString();
+                //Sinopse
+                String sinopse = itens.get(5).getString();
+                //Data de Cadastro
+                LocalDate dataDeCadastro = LocalDate.now();
+                
+                //Foto do Filme
+                String realPath = getServletContext().getRealPath("/imagensFilme");
+                String nomeImagem = titulo;
+                String foto;
+                if (itens.get(6).getString().equals("")){
+                    foto = "imagens/movie.png";
+                }else{
+                    new GerenciadorImagem().inserirImagemPerfil(itens.get(6), realPath, nomeImagem);
+                    foto = "imagensFilme/"+nomeImagem+".jpg";
+                }
+
+                boolean cadastro = new GerenciadorFilme().adicionar(new Filme(idUser, titulo, ano, sinopse, foto, generos, atores, diretores, dataDeCadastro));
+                
+                List<Filme> dezFilmesRecentes = new GerenciadorFilme().buscarDezFilmesRecentes();
+                if (!dezFilmesRecentes.isEmpty()) {
+                    getServletContext().setAttribute("dezFilmesRecentes", dezFilmesRecentes);
+                }
+
+                req.setAttribute("cadastrou", cadastro);
+                
+            } catch (FileUploadException ex) {
+                ex.printStackTrace();
+            }
+
         }
-
-        req.setAttribute("cadastrou", cadastro);
-
+         
         req.getRequestDispatcher("filmeCadastro.jsp").forward(req, resp);
     }
 
