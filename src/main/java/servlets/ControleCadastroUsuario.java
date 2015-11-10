@@ -44,19 +44,19 @@ public class ControleCadastroUsuario extends HttpServlet {
                 itens = (ArrayList<FileItem>) upload.parseRequest(req);
 
                 //Nome Completo
-                String nomeCompleto = itens.get(0).getString();
+                String nomeCompleto = itens.get(0).getString("UTF-8");
                 //Email
-                String email = itens.get(1).getString();
+                String email = itens.get(1).getString("UTF-8");
                 //Senha
-                String senha = itens.get(2).getString();
+                String senha = itens.get(2).getString("UTF-8");
                 //Apelido
-                String apelido = itens.get(3).getString();
+                String apelido = itens.get(3).getString("UTF-8");
                 //Estado
-                String estado = itens.get(4).getString();
+                String estado = itens.get(4).getString("UTF-8");
                 //Cidade
-                String cidade = itens.get(5).getString();
+                String cidade = itens.get(5).getString("UTF-8");
                 //Data  
-                String data = itens.get(6).getString();
+                String data = itens.get(6).getString("UTF-8");
 
                 //FotoDePerfil
                 String realPath = getServletContext().getRealPath("/imagensPerfil");

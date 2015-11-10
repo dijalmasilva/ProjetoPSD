@@ -9,9 +9,7 @@ import entidades.Filme;
 import entidades.Usuario;
 import gerenciador.GerenciadorFilme;
 import gerenciador.GerenciadorImagem;
-import gerenciador.GerenciadorUsuario;
 import java.io.IOException;
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +18,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.JOptionPane;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileItemFactory;
 import org.apache.commons.fileupload.FileUploadException;
@@ -53,17 +50,17 @@ public class ControleCadastroFilme extends HttpServlet {
                 itens = (ArrayList<FileItem>) upload.parseRequest(req);
 
                 //Título
-                String titulo = itens.get(0).getString();
+                String titulo = itens.get(0).getString("UTF-8");
                 //Ano
-                int ano = Integer.parseInt(itens.get(1).getString());
+                int ano = Integer.parseInt(itens.get(1).getString("UTF-8"));
                 //Gêneros
-                String generos = itens.get(2).getString();
+                String generos = itens.get(2).getString("UTF-8");
                 //Atores Principais
-                String atores = itens.get(3).getString();
+                String atores = itens.get(3).getString("UTF-8");
                 //Diretores
-                String diretores = itens.get(4).getString();
+                String diretores = itens.get(4).getString("UTF-8");
                 //Sinopse
-                String sinopse = itens.get(5).getString();
+                String sinopse = itens.get(5).getString("UTF-8");
                 //Data de Cadastro
                 LocalDate dataDeCadastro = LocalDate.now();
                 
